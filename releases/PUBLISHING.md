@@ -33,7 +33,7 @@ python -m asa package-letuen-skill --output releases --version v0.2.0-dev
 
 Result:
 
-- `57 tests OK`
+- `58 tests OK`
 - package generated successfully
 - method skill count: `9`
 - archive structure checked via `tar -tf releases\letuen-skill-anchor-pack-v0.2.0-dev.zip`
@@ -76,7 +76,7 @@ Expected method skill count: `9`.
 
 ## GitHub Release
 
-This workspace may not have a configured remote or authenticated `gh`. Once ready:
+The v0.2.0-dev release has been created at `https://github.com/3yesore/LetUenforskills/releases/tag/v0.2.0-dev`. To recreate it manually:
 
 ```powershell
 gh auth login

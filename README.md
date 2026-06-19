@@ -1,54 +1,68 @@
-# Agent Skill Anatomy
+# LetUen / Agent Skill Anatomy
 
-Agent Skill Anatomy is a multi-agent analysis harness for deconstructing AI agent skills and workflows into reusable knowledge assets.
+[![CI](https://github.com/3yesore/LetUenforskills/actions/workflows/ci.yml/badge.svg)](https://github.com/3yesore/LetUenforskills/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/3yesore/LetUenforskills?include_prereleases)](https://github.com/3yesore/LetUenforskills/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Agent Skill Anatomy 是一个多 Agent 分析框架，用于把 AI Agent Skills 与工作流拆解成可学习、可追溯、可复用的知识资产。
+LetUen is a multi-agent research harness for deconstructing Agent Skills and workflows into readable reports, reusable anchors, Obsidian notes, and structured data assets.
 
-## Goal 目标
+LetUen 是一个多 Agent 研究工具，用于把 Agent Skills 与工作流拆解成可读报告、可复用锚点、Obsidian 知识库和结构化数据资产。
 
-The mid-term goal is a fork-ready and clone-ready project: configure API keys and GitHub sources, run the harness, and generate a bilingual Obsidian vault.
+## What It Produces 产出
 
-中期目标是做到 fork 即用、clone 即用：配置模型 API key 和 GitHub 源，运行 harness，即可生成中英双语 Obsidian 知识库。
+- **Readable report / 拆解说明书**: explains what a skill is, how it is composed, how it triggers, and how it can be reused.
+- **Cinema + Repo surfaces / 展示页面**: local static UI for presenting decomposition results with the same visual language as the report.
+- **Obsidian vault / 知识库**: bilingual notes, MOCs, Mermaid maps, evidence notes, patterns, and reusable assets.
+- **Anchor pack / 可组合 Skill 包**: `skills/asa-*` method skills plus anchor composition contracts for non-destructive reuse.
+- **Quality gates / 质量门禁**: deterministic checks, reviewer summaries, evidence repair, and source-grounded artifacts.
 
-## Core Outputs 核心产物
+## Repository Scope 仓库定位
 
-- Structured JSON artifacts for each analysis stage.
-- Evidence-grounded bilingual Obsidian notes.
-- Reusable skill design patterns, checklists, templates, and Mermaid workflow diagrams.
-- Review reports that flag unsupported claims, weak evidence, and over-inference.
+This repository currently contains the full LetUen project: Python harness, static UI, documentation, sample outputs, tests, and the packaged internal skill anchor pack. A separate skill-only repository can be published later from `package-letuen-skill` artifacts.
 
-## Docs 文档
+当前仓库是完整 LetUen 项目仓库：包含 Python 拆解链路、静态 UI、文档、样例产物、测试，以及已打包的内置 skill anchor pack。后续可以再从 `package-letuen-skill` 产物拆出 skill-only 仓库。
 
-- `docs/fork-ready-guide.md`: clone/fork usage, CI, sample vault workflow.
-- `docs/harness-spec.md`: runtime state machine and quality gates.
-- `docs/agent-protocol.md`: agent responsibilities and boundaries.
-- `docs/evidence-spec.md`: evidence object contract and confidence rules.
-- `docs/provider-spec.md`: model provider interface, retry, and OpenAI adapter.
-- `docs/roadmap.md`: long-term phases and open-source direction.
-- `docs/architecture.md`: layered system architecture.
-- `docs/skill-decomposition-design.md`: evidence-first decomposition taxonomy, deterministic artifacts, LLM agent chain, and feedback forms.
-- `docs/user-facing-output-design.md`: final user-visible surfaces, report sections, skill pages, graph, vault, and review cards.
-- `docs/report-manual-spec.md`: report-as-manual IA for beginners, experts, evidence, and reuse.
-- `docs/llm-skill-integration-design.md`: design for injecting internal meta-skills into LLM-backed analysis stages.
-- `docs/letuen-usage-guide.md`: end-to-end LetUen commands for report, vault, data, anchors, and composition plans.
-- `docs/release-v0.2.0-dev-checklist.md`: dev release acceptance checklist, package contents, and remaining risks.
-- `docs/letuen-capability-evaluation-plan.md`: rubric for reviewing real LetUen skill capability.
-- `docs/letuen-skill-anchor-pack-design.md`: LetUen anchor-based skill decomposition and recomposition method pack.
-- `docs/letuen-lightweight-profile.md`: lightweight L1/L2/L3 profile for keeping LetUen thin and optional.
-- `docs/letuen-anchor-schema.md`: Skill Anchor, composition request, selection, matrix, and plan contracts.
-- `docs/letuen-harness-integration-spec.md`: harness rules for safe anchor composition inside user projects.
-- `docs/letuen-non-destructive-invocation-policy.md`: trigger conflict, dispatch, and sidecar-first invocation policy.
-- `docs/model-comparison-spec.md`: internal development/testing protocol for controlled model calibration, scoring, and disagreement analysis.
-- `docs/graph-data-surface-spec.md`: data table contracts, graph nodes/edges, manifest, and UI expectations.
-- `docs/acceptance-checklist.md`: handoff checklist for docs, runtime, UI, graph/data/vault, and validation.
-- `docs/provider-strategy.md`: multi-provider and Chinese model support strategy.
-- `docs/benchmark-spec.md`: benchmark lab fixtures, roles, metrics, and reports.
-- `docs/output-strategy.md`: Obsidian, visualization, reusable assets, and future website outputs.
-- `docs/ui-strategy.md`: staged UI plan from landing page to local research dashboard.
-- `docs/landing-page-spec.md`: first public website information architecture.
-- `docs/dashboard-roadmap.md`: static report browser and local dashboard roadmap.
-- `docs/quality-spec.md`: deterministic quality layers and current rule set.
-- `CONTRIBUTING.md`: contribution workflow.
+## Quick Start 快速开始
+
+```powershell
+cp .env.example .env
+$env:PYTHONPATH='src'
+python -m asa run --config anatomy.config.example.yaml
+python -m asa export-letuen --run runs\<run-id> --output dist\letuen-demo
+```
+
+For a local visual demo:
+
+```powershell
+npm install
+npm run demo:export
+npm run demo:serve
+```
+
+Open `http://localhost:4173/`.
+
+## Real Model Calls 真实模型调用
+
+The default example config uses `mock` so the harness runs without API keys. For real multi-agent calls, copy one provider config and set the matching environment variable in `.env` or your shell.
+
+默认示例配置使用 `mock`，无需 API key 即可运行。真实多 Agent 调用时，复制对应 provider 配置，并在 `.env` 或 shell 中设置对应环境变量。
+
+| UI route | Config file | API key env | Base URL |
+| --- | --- | --- | --- |
+| `OpenAI · gpt-5.2` | `anatomy.openai.example.yaml` | `OPENAI_API_KEY` | `https://api.openai.com/v1` |
+| `Claude · Opus 4.5` | `anatomy.claude.example.yaml` | `ANTHROPIC_API_KEY` | `https://api.anthropic.com/v1` |
+| `DeepSeek · V4 Pro` | `anatomy.deepseek.example.yaml` | `DEEPSEEK_API_KEY` | `https://api.deepseek.com/v1` |
+| `Qwen · Qwen3.7 Max` | `anatomy.qwen.example.yaml` | `DASHSCOPE_API_KEY` | `https://dashscope.aliyuncs.com/compatible-mode/v1` |
+| `Moonshot · moonshot-v1-32k` | `anatomy.moonshot.example.yaml` | `MOONSHOT_API_KEY` | `https://api.moonshot.cn/v1` |
+
+```powershell
+cp anatomy.openai.example.yaml anatomy.config.yaml
+cp sources.github.example.yaml sources.yaml
+notepad .env
+$env:PYTHONPATH='src'
+python -m asa plan-run --config anatomy.config.yaml --limit-skills 1
+python -m asa run --config anatomy.config.yaml --limit-skills 1
+```
 
 ## Harness Flow 分析流程
 
@@ -59,137 +73,61 @@ GitHub URL / Local Path
   -> Workflow Analyst
   -> Pattern Miner
   -> Asset Builder
-  -> Translator
   -> Reviewer
-  -> Obsidian Vault
+  -> Report / Vault / Data / Anchors
 ```
 
 ## Repository Layout 仓库结构
 
 ```text
-docs/                 Design specs and implementation notes
-prompts/              Role prompts for each agent
-schemas/              JSON Schema contracts for artifacts
-scripts/              Local utility scripts
-templates/obsidian/   Obsidian note templates
-taxonomy/             Skill types, workflow patterns, glossary
-examples/             Example configs and outputs
-runs/                 Generated run artifacts, usually ignored later
-vault/                Generated Obsidian vault, optionally committed
+src/                  Python harness, providers, exporters, quality gates
+site/                 Static local UI: home, cinema, repo, data/settings surfaces
+skills/               LetUen internal method skills and anchor-aware workflow skills
+docs/                 Design specs, harness contracts, UI/output strategy
+examples/             Sample skill, sample vault, anchor composition examples
+runs/demo-multi-skill Committed demo run used by local export/demo scripts
+releases/             Developer-preview skill anchor pack archives
+tests/                Unit tests for runtime, exporters, quality, packaging
 ```
 
-## Quick Start 草案
+## Skill Anchor Pack 技能包
 
-```powershell
-cp .env.example .env
-cp anatomy.config.example.yaml anatomy.config.yaml
-$env:PYTHONPATH='src'
-python -m asa run --config anatomy.config.example.yaml
-```
+The current developer-preview skill pack is available in the GitHub Release and under `releases/`:
 
+- `releases/letuen-skill-anchor-pack-v0.2.0-dev.zip`
+- `releases/letuen-skill-anchor-pack-v0.2.0-dev.tar.gz`
+- `releases/SHA256SUMS.txt`
 
-## LetUen Anchor Workflow
-
-For the current anchor-oriented workflow, use `export-letuen` after a run:
+Rebuild it locally with:
 
 ```powershell
 $env:PYTHONPATH='src'
-python -m asa export-letuen `
-  --run runs\demo-multi-skill `
-  --output tmp\letuen-demo `
-  --composition-request examples\anchor-composition\sample-skill\composition_request.temporary.yaml
+python -m asa package-letuen-skill --output releases --version v0.2.0-dev
 ```
 
-This writes `report/`, `vault/`, `data/`, `anchors/anchors.json`, optional `anchors/composition_plan.json`, and `letuen_manifest.json`. See `docs/letuen-usage-guide.md` for the full flow.
+## Local Model Bridge 本地模型测试 Bridge
 
-Use `sources.github.example.yaml` as a starting point for GitHub URL analysis.
-
-GitHub sources first use shallow `git clone --filter blob:none`. If clone fails, the collector falls back to GitHub zip archives and records `acquisition_method` in `inventory.json`.
-
-Use `asa smoke-github` for collector-only remote checks. It does not run LLM agents.
-
-## Real Model Calls 真实模型调用
-
-The default example config uses `mock` so the harness runs without API keys. For real multi-agent calls, choose one mapped config from the UI/model registry and add the matching API key env var to `.env`.
-
-默认示例配置使用 `mock`，因此无需 API key 即可跑通。若要启用真实多 Agent 模型调用，请从 UI/model registry 选择一个已映射配置，并在 `.env` 中填写对应 API key 环境变量。
-
-
-Mapped model routes used by the local UI are recorded in `models/ui-presets.yaml`:
-
-UI 中的模型选择不是纯展示，真实映射记录在 `models/ui-presets.yaml`：
-
-| UI route | Config file | API key env | Base URL |
-| --- | --- | --- | --- |
-| `OpenAI · gpt-5.2` | `anatomy.openai.example.yaml` | `OPENAI_API_KEY` | `https://api.openai.com/v1` |
-| `Claude · Opus 4.5` | `anatomy.claude.example.yaml` | `ANTHROPIC_API_KEY` | `https://api.anthropic.com/v1` |
-| `DeepSeek · V4 Pro` | `anatomy.deepseek.example.yaml` | `DEEPSEEK_API_KEY` | `https://api.deepseek.com/v1` |
-| `Qwen · Qwen3.7 Max` | `anatomy.qwen.example.yaml` | `DASHSCOPE_API_KEY` | `https://dashscope.aliyuncs.com/compatible-mode/v1` |
-| `Moonshot · moonshot-v1-32k` | `anatomy.moonshot.example.yaml` | `MOONSHOT_API_KEY` | `https://api.moonshot.cn/v1` |
-```powershell
-cp anatomy.openai.example.yaml anatomy.config.yaml
-cp sources.github.example.yaml sources.yaml
-notepad .env
-$env:PYTHONPATH='src'
-python -m asa run --config anatomy.config.yaml
-```
-
-The OpenAI provider uses the Responses API with JSON Schema output. Each analyst/reviewer stage is a separate model call and writes schema-validated artifacts under `runs/<run-id>/`.
-
-OpenAI provider 使用 Responses API 的 JSON Schema 输出。每个 analyst/reviewer 阶段都是独立模型调用，并会在 `runs/<run-id>/` 下写入通过 schema 校验的 artifacts。
-
-
-### Local Model Bridge 本地模型测试 Bridge
-
-The settings page calls a local-only bridge for real connection tests. Start it before clicking `测试连接 / Test connection`:
-
-模型配置页通过本地 bridge 做真实连接测试。点击 `测试连接 / Test connection` 前先启动：
+The settings page calls a local-only bridge for connection tests and home-page GitHub URL analysis. Start it before clicking `测试连接 / Test connection` or running the local UI analysis flow:
 
 ```powershell
 $env:PYTHONPATH='src'
 python scripts/local_bridge.py
 ```
 
-Then open `http://localhost:4173/settings/models/`, paste a newly generated API key in the temporary key field, and test the selected provider. The bridge does not persist keys; for real runs, store keys in `.env` using the mapped env var such as `DEEPSEEK_API_KEY`, `ANTHROPIC_API_KEY`, `DASHSCOPE_API_KEY`, or `OPENAI_API_KEY`.
+Then open `http://localhost:4173/settings/models/`. The bridge does not persist keys; for real CLI runs, store keys in `.env` using the mapped env var such as `DEEPSEEK_API_KEY`, `ANTHROPIC_API_KEY`, `DASHSCOPE_API_KEY`, or `OPENAI_API_KEY`.
 
-然后打开 `http://localhost:4173/settings/models/`，在临时 Key 输入框粘贴新生成的 API key，再测试所选 provider。bridge 不持久化密钥；真实运行时请把 key 写入 `.env`，例如 `DEEPSEEK_API_KEY`、`ANTHROPIC_API_KEY`、`DASHSCOPE_API_KEY` 或 `OPENAI_API_KEY`。
+## Docs 文档
 
-The same bridge also powers the home-page GitHub URL entry for local real runs:
+- `docs/fork-ready-guide.md`: clone/fork usage, CI, sample vault workflow.
+- `docs/harness-spec.md`: runtime state machine and quality gates.
+- `docs/agent-protocol.md`: agent responsibilities and boundaries.
+- `docs/evidence-spec.md`: evidence object contract and confidence rules.
+- `docs/provider-spec.md`: model provider interface, retry, and OpenAI-compatible adapter.
+- `docs/letuen-usage-guide.md`: end-to-end LetUen commands for report, vault, data, anchors, and composition plans.
+- `docs/letuen-skill-anchor-pack-design.md`: LetUen anchor-based skill decomposition and recomposition method pack.
+- `docs/graph-data-surface-spec.md`: data table contracts, graph nodes/edges, manifest, and UI expectations.
+- `docs/ui-strategy.md`: local research dashboard and public website direction.
 
-同一个 bridge 也负责首页 GitHub URL 拆解入口的本地真实运行：
-
-```text
-POST /api/analyze/plan
-POST /api/analyze/run
-```
-
-`/api/analyze/run` writes temporary source/config files, runs `python -m asa run --limit-skills 1`, then refreshes `site/report`, `site/data`, `site/graph`, `site/vault`, and the Demo manifest. If the bridge is not running, the home page falls back to the visual Demo animation.
-
-`/api/analyze/run` 会写入临时 source/config，执行 `python -m asa run --limit-skills 1`，然后刷新 `site/report`、`site/data`、`site/graph`、`site/vault` 与 Demo manifest。如果 bridge 未启动，首页会回退到视觉 Demo 动画。
-## Multi-Skill Demo 多 Skill Demo
-
-Use the bundled `runs/demo-multi-skill` fixture to preview the Demo/repo page with real `Repo / Skill` switching and a visible Skill selector. See `docs/demo-fixtures.md` for fixture structure and replacement guidance.
-
-使用内置 `runs/demo-multi-skill` 样例，可以直接预览 Demo/repo 页里的 `Repo / Skill` 切换和多 Skill 选择器。fixture 结构和替换真实 run 的说明见 `docs/demo-fixtures.md`。
-
-```powershell
-$env:PYTHONPATH='src'
-python scripts/export_demo.py
-python -m http.server 4173 -d site
-```
-
-Then open:
-
-```text
-http://localhost:4173/cinema/  # visible label: Demo
-```
-
-If Node is available, the same export can be run with:
-
-```powershell
-npm run demo:export
-npm run demo:serve
-```
 ## CLI Commands 命令
 
 ```powershell
