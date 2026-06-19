@@ -1,0 +1,28 @@
+name: Build Sample Vault
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-sample-vault:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build sample vault
+        env:
+          PYTHONPATH: src
+        run: python -m asa run --config anatomy.config.example.yaml
+
+      - name: Upload vault artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-vault
+          path: vault
+

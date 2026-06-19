@@ -1,0 +1,2 @@
+f73a263272c79b5a6e47d79b45e4b202815db77980f109166060a1e73e822d30  letuen-skill-anchor-pack-v0.2.0-dev.zip
+55b204d5e9580a0d8122a5209fc8796d92e4d16c8dbe3f4c0a68471d01a1b504  letuen-skill-anchor-pack-v0.2.0-dev.tar.gz

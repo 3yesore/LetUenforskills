@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "skill_id": "sample-skill-sample-skill",
+  "workflow_summary": {
+    "zh": "占位工作流：识别技能、读取结构、产出分析。",
+    "en": "Placeholder workflow: detect skill, inspect structure, produce analysis."
+  },
+  "workflow_steps": [
+    {
+      "id": "step_1",
+      "name": {
+        "zh": "识别技能包",
+        "en": "Detect skill package"
+      },
+      "action": {
+        "zh": "根据 SKILL.md 定位技能包。",
+        "en": "Locate the package through SKILL.md."
+      },
+      "step_type": "detect",
+      "actor": "model",
+      "evidence": [],
+      "inferred": true,
+      "confidence": "low"
+    },
+    {
+      "id": "step_2",
+      "name": {
+        "zh": "交付分析",
+        "en": "Deliver analysis"
+      },
+      "action": {
+        "zh": "输出结构化分析 artifact。",
+        "en": "Emit structured analysis artifacts."
+      },
+      "step_type": "deliver",
+      "actor": "model",
+      "evidence": [],
+      "inferred": true,
+      "confidence": "low"
+    }
+  ],
+  "decision_points": [],
+  "verification_points": [],
+  "failure_modes": [],
+  "context_loading": {
+    "strategy": "unknown",
+    "details": "Mock output",
+    "evidence": []
+  },
+  "tool_boundary": {
+    "model_responsibilities": [],
+    "script_responsibilities": [],
+    "external_tool_responsibilities": [],
+    "evidence": []
+  },
+  "mermaid": {
+    "flowchart": "flowchart TD\n  A[Detect Skill] --> B[Analyze Structure]\n  B --> C[Deliver Artifacts]"
+  },
+  "reusable_candidates": [],
+  "warnings": [
+    "Mock workflow analysis is not evidence-grounded."
+  ]
+}

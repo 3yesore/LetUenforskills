@@ -1,0 +1,5 @@
+run_id,skill_id,path,role,stage,read_policy,reuse_value,risk
+20260614T193006Z,anthropics-skills-skills-algorithmic-art,skills/algorithmic-art/SKILL.md,"Main instruction file, defines workflow, philosophy concepts, coding requirements, and output format.","activation, planning, execution",must_read,high,
+20260614T193006Z,anthropics-skills-skills-algorithmic-art,skills/algorithmic-art/templates/viewer.html,HTML template providing fixed Anthropic-branded layout and seed/action controls. Must be used as the starting point for every artwork.,"preparation, execution",must_read,high,over-reliance; misuse if replaced entirely
+20260614T193006Z,anthropics-skills-skills-algorithmic-art,skills/algorithmic-art/templates/generator_template.js,Reference document demonstrating p5.js best practices and code structure principles. Not a pattern to copy; for learning organisational approaches.,"planning, learning",on_demand,medium,
+20260614T193006Z,anthropics-skills-skills-algorithmic-art,skills/algorithmic-art/LICENSE.txt,Legal license file for the skill package.,compliance,ignore,low,

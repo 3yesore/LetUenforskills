@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "run_id": "20260614T193006Z",
+  "skill_count": 1,
+  "files": {
+    "skills": "skills.jsonl",
+    "resource_roles": "resource_roles.csv",
+    "workflow_trace": "workflow_trace.jsonl",
+    "evidence_audit": "evidence_audit.jsonl",
+    "reuse_assets": "reuse_assets.jsonl",
+    "graph": "graph-data.json",
+    "graph_mermaid": "graph.mmd"
+  },
+  "row_counts": {
+    "skills": 1,
+    "resource_roles": 4,
+    "workflow_trace": 9,
+    "evidence_audit": 16,
+    "reuse_assets": 1
+  }
+}

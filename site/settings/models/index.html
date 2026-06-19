@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Agent Skill Anatomy model settings: configure OpenAI-compatible LLM routes for local Skill decomposition runs."
+    />
+    <title>Model Settings · Agent Skill Anatomy</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+      <span class="orb orb-c"></span>
+    </div>
+
+    <header class="topbar">
+      <a class="brand" href="../../index.html#top" aria-label="Agent Skill Anatomy">
+        <span class="brand-mark"></span>
+        <span class="brand-text">Agent Skill Anatomy</span>
+      </a>
+      <nav class="nav" aria-label="页面导航">
+        <a href="../../index.html#entry" data-i18n data-zh="入口" data-en="Entry">入口</a>
+        <a href="../../index.html#surfaces" data-i18n data-zh="输出" data-en="Surfaces">输出</a>
+        <a href="../../report/" data-i18n data-zh="报告" data-en="Report">报告</a>
+        <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch language">EN</button>
+      </nav>
+    </header>
+
+    <main id="top" class="settings-shell">
+      <section class="hero panel beam-panel reveal settings-hero">
+        <div class="hero-copy">
+          <p class="label hero-label"><span data-i18n data-zh="模型配置" data-en="Model Settings">模型配置</span><i></i><span>Model Settings</span></p>
+          <h1 class="hero-title settings-title" aria-label="配置 LLM 路由"><span class="title-primary"><span class="title-cn" data-i18n data-zh="配置" data-en="Configure">配置</span><span class="title-en">LLM</span></span><span class="title-secondary" data-i18n data-zh="路由与密钥" data-en="routes and keys">路由与密钥</span></h1>
+          <p class="lead" data-i18n data-zh="为本地拆解运行准备真实模型连接：选择 provider，填写 Base URL、模型名与 API Key，生成可复用配置并通过本地 bridge 测试连接。" data-en="Prepare real model connections for local anatomy runs: choose a provider, fill Base URL, model ID and API key, generate reusable config, and test through a local bridge.">
+            为本地拆解运行准备真实模型连接：选择 provider，填写 Base URL、模型名与 API Key，生成可复用配置并通过本地 bridge 测试连接。
+          </p>
+        </div>
+        <aside class="settings-status-card settings-route-card" aria-label="Local bridge status">
+          <div class="route-card-top">
+            <span data-i18n data-zh="本地调用边界" data-en="Local call boundary">本地调用边界</span>
+            <em>localhost:8765</em>
+          </div>
+          <strong data-i18n data-zh="密钥只在本地流转" data-en="Keys stay on device">密钥只在本地流转</strong>
+          <p data-i18n data-zh="公开展示页不会保存或转发 API Key。真实测试通过本地 bridge；也可接入自定义 endpoint 与模型 ID。" data-en="The public static page never stores or forwards API keys. Real tests go through a local bridge; custom endpoints and model IDs are supported.">公开展示页不会保存或转发 API Key。真实测试通过本地 bridge；也可接入自定义 endpoint 与模型 ID。</p>
+          <div class="route-flow" aria-hidden="true">
+            <span>UI</span><i></i><span>Bridge</span><i></i><span>Provider</span>
+          </div>
+          <div class="route-metrics">
+            <div><span>presets</span><strong>6</strong></div>
+            <div><span>native</span><strong>Claude</strong></div>
+            <div><span>custom</span><strong>URL</strong></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section reveal model-settings-section">
+        <div class="section-title narrow">
+          <span class="section-mark">01 <em>Providers</em></span>
+          <h2 data-i18n data-zh="选择或自定义模型路由" data-en="Choose or customize a model route">选择或自定义模型路由</h2>
+          <p data-i18n data-zh="这里的配置对应首页拆解入口里的模型路由；后续本地 WebUI 会把它写入 anatomy.local.yaml 与 .env。" data-en="These settings map to the model route in the home entry. A local WebUI can later write them into anatomy.local.yaml and .env.">这里的配置对应首页拆解入口里的模型路由；后续本地 WebUI 会把它写入 anatomy.local.yaml 与 .env。</p>
+        </div>
+
+        <div class="model-workbench" data-settings-workbench>
+          <aside class="provider-list" aria-label="Provider presets">
+            <button class="provider-row is-active" type="button" data-settings-preset data-label="OpenAI · gpt-5.2" data-provider="openai" data-model="gpt-5.2" data-config="anatomy.openai.example.yaml" data-env="OPENAI_API_KEY" data-base="https://api.openai.com/v1">
+              <span>OpenAI</span><strong>gpt-5.2</strong><em>latest flagship</em>
+            </button>
+            <button class="provider-row" type="button" data-settings-preset data-label="Claude · Opus 4.5" data-provider="anthropic" data-model="claude-opus-4-5-20251101" data-config="anatomy.claude.example.yaml" data-env="ANTHROPIC_API_KEY" data-base="https://api.anthropic.com/v1">
+              <span>Claude</span><strong>Opus 4.5</strong><em>quality / review</em>
+            </button>
+            <button class="provider-row" type="button" data-settings-preset data-label="Claude · Sonnet 4.5" data-provider="anthropic" data-model="claude-sonnet-4-5-20250929" data-config="anatomy.claude.example.yaml" data-env="ANTHROPIC_API_KEY" data-base="https://api.anthropic.com/v1">
+              <span>Claude</span><strong>Sonnet 4.5</strong><em>balanced</em>
+            </button>
+            <button class="provider-row" type="button" data-settings-preset data-label="DeepSeek · V4 Pro" data-provider="openai" data-model="deepseek-v4-pro" data-config="anatomy.deepseek.example.yaml" data-env="DEEPSEEK_API_KEY" data-base="https://api.deepseek.com">
+              <span>DeepSeek</span><strong>V4 Pro</strong><em>CN · compatible</em>
+            </button>
+            <button class="provider-row" type="button" data-settings-preset data-label="Qwen · Qwen3.7 Max" data-provider="openai" data-model="qwen3.7-max" data-config="anatomy.qwen.example.yaml" data-env="DASHSCOPE_API_KEY" data-base="https://dashscope.aliyuncs.com/compatible-mode/v1">
+              <span>Qwen</span><strong>Qwen3.7 Max</strong><em>DashScope</em>
+            </button>
+            <button class="provider-row" type="button" data-settings-preset data-label="Custom · OpenAI-compatible" data-provider="openai" data-model="custom-model" data-config="anatomy.local.yaml" data-env="OPENAI_COMPATIBLE_API_KEY" data-base="http://localhost:8000/v1">
+              <span>Custom</span><strong>OpenAI-compatible</strong><em>editable endpoint</em>
+            </button>
+          </aside>
+
+          <div class="provider-editor">
+            <div class="editor-head">
+              <span data-i18n data-zh="当前路由" data-en="Current route">当前路由</span>
+              <strong data-settings-label>OpenAI · gpt-5.2</strong>
+            </div>
+            <div class="settings-form">
+              <label><span data-i18n data-zh="Provider 类型" data-en="Provider type">Provider 类型</span><input data-settings-field="provider" value="openai" /></label>
+              <label><span data-i18n data-zh="模型 ID" data-en="Model ID">模型 ID</span><input data-settings-field="model" value="gpt-5.2" /></label>
+              <label class="wide"><span data-i18n data-zh="Base URL" data-en="Base URL">Base URL</span><input data-settings-field="base" value="https://api.openai.com/v1" /></label>
+              <label><span data-i18n data-zh="API Key 环境变量" data-en="API key env">API Key 环境变量</span><input data-settings-field="env" value="OPENAI_API_KEY" /></label>
+              <label><span data-i18n data-zh="API Key 临时输入" data-en="Temporary API key">API Key 临时输入</span><input data-settings-field="key" type="password" placeholder="sk-..." autocomplete="off" /></label>
+              <label class="wide"><span data-i18n data-zh="配置文件名" data-en="Config file">配置文件名</span><input data-settings-field="config" value="anatomy.openai.example.yaml" /></label>
+            </div>
+            <div class="settings-actions">
+              <button class="button primary" type="button" data-test-model data-i18n data-zh="测试连接" data-en="Test connection">测试连接</button>
+              <button class="button ghost" type="button" data-copy-config data-i18n data-zh="生成配置片段" data-en="Generate config">生成配置片段</button>
+              <button class="button ghost" type="button" data-save-settings-route data-i18n data-zh="保存到拆解入口" data-en="Save to entry">保存到拆解入口</button>
+              <a class="button ghost" href="../../index.html#entry" data-i18n data-zh="返回拆解入口" data-en="Back to entry">返回拆解入口</a>
+            </div>
+            <div class="settings-log" aria-live="polite" data-settings-log>
+              <p><span>ready</span><strong data-i18n data-zh="等待配置或测试连接" data-en="Waiting for configuration or test">等待配置或测试连接</strong></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal config-preview-section">
+        <div class="section-title narrow">
+          <span class="section-mark">02 <em>Config</em></span>
+          <h2 data-i18n data-zh="生成可复制配置" data-en="Generate copyable config">生成可复制配置</h2>
+          <p data-i18n data-zh="静态页面不会直接写文件；本地 bridge 接入后可把这里的内容写入 anatomy.local.yaml 与 .env。" data-en="The static page does not write files directly. Once the local bridge is connected, it can write this into anatomy.local.yaml and .env.">静态页面不会直接写文件；本地 bridge 接入后可把这里的内容写入 anatomy.local.yaml 与 .env。</p>
+        </div>
+        <pre class="config-preview"><code data-config-preview>providers:
+  default:
+    type: openai
+    model: gpt-5.2
+    base_url: https://api.openai.com/v1
+    api_key_env: OPENAI_API_KEY</code></pre>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Agent Skill Anatomy</span>
+      <span data-i18n data-zh="本地模型配置 · provider route · bridge ready" data-en="Local model settings · provider route · bridge ready">本地模型配置 · provider route · bridge ready</span>
+    </footer>
+
+    <script src="../../script.js"></script>
+  </body>
+</html>

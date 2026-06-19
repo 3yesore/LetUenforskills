@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "source_skill": {
+    "skill_id": "sample-skill",
+    "name": "sample-skill",
+    "source_path": "examples/sample-skill/SKILL.md",
+    "description": "Demonstrates the Agent Skill Anatomy harness with a tiny local skill."
+  },
+  "anchors": [
+    {
+      "id": "anchor.sample-skill.identity.runtime-skeleton-test",
+      "source_skill_id": "sample-skill",
+      "anchor_type": "identity_anchor",
+      "name": {
+        "zh": "运行骨架测试身份",
+        "en": "Runtime Skeleton Test Identity"
+      },
+      "summary": {
+        "zh": "该 skill 的用途是测试 Agent Skill Anatomy 的运行时骨架，而不是提供生产级自动化。",
+        "en": "This skill exists to test the Agent Skill Anatomy runtime skeleton rather than provide production automation."
+      },
+      "source_evidence": [
+        {
+          "path": "examples/sample-skill/SKILL.md",
+          "quote": "Use this skill when testing the Agent Skill Anatomy runtime skeleton.",
+          "evidence_type": "explicit_instruction",
+          "confidence": "high"
+        }
+      ],
+      "portability": {
+        "score": "high",
+        "reasons": ["The purpose statement is generic and can be reused as a test-skill identity pattern."]
+      },
+      "risk": {
+        "score": "low",
+        "notes": ["Identity is explicitly stated in SKILL.md."]
+      },
+      "reuse_modes": ["reference_only", "learning_note", "new_skill_spec"],
+      "harness_contract": {
+        "input_shape": "markdown",
+        "output_shape": "markdown",
+        "side_effects": "none",
+        "requires_user_approval": false,
+        "reversible": true
+      }
+    },
+    {
+      "id": "anchor.sample-skill.workflow.progressive-read-then-deliver",
+      "source_skill_id": "sample-skill",
+      "anchor_type": "workflow_anchor",
+      "name": {
+        "zh": "按需读取后交付",
+        "en": "Progressive Read Then Deliver"
+      },
+      "summary": {
+        "zh": "先检查请求，再只加载必要文件，随后生成简洁结果并校验格式。",
+        "en": "Inspect the request, load only needed files, produce a concise result, then verify output format."
+      },
+      "source_evidence": [
+        {
+          "path": "examples/sample-skill/SKILL.md",
+          "quote": "Inspect the user request.",
+          "evidence_type": "workflow_order",
+          "confidence": "high"
+        },
+        {
+          "path": "examples/sample-skill/SKILL.md",
+          "quote": "Load only the files needed for the task.",
+          "evidence_type": "workflow_order",
+          "confidence": "high"
+        },
+        {
+          "path": "examples/sample-skill/SKILL.md",
+          "quote": "Verify that the output matches the requested format.",
+          "evidence_type": "workflow_order",
+          "confidence": "high"
+        }
+      ],
+      "portability": {
+        "score": "high",
+        "reasons": ["The workflow is tool-agnostic and side-effect-free."]
+      },
+      "risk": {
+        "score": "low",
+        "notes": ["The steps are explicit and do not require hidden scripts or external services."]
+      },
+      "requires": {
+        "anchors": [],
+        "resources": [],
+        "tools": [],
+        "environment": []
+      },
+      "reuse_modes": ["temporary_composition", "prompt_fragment", "workflow_step", "quality_gate"],
+      "harness_contract": {
+        "input_shape": "markdown",
+        "output_shape": "markdown",
+        "side_effects": "reads_files",
+        "requires_user_approval": false,
+        "reversible": true
+      }
+    },
+    {
+      "id": "anchor.sample-skill.boundary.no-destructive-commands",
+      "source_skill_id": "sample-skill",
+      "anchor_type": "boundary_anchor",
+      "name": {
+        "zh": "禁止破坏性命令边界",
+        "en": "No Destructive Commands Boundary"
+      },
+      "summary": {
+        "zh": "执行中不得运行破坏性命令，可作为组合时的安全边界。",
+        "en": "Do not execute destructive commands; this can be reused as a safety boundary during composition."
+      },
+      "source_evidence": [
+        {
+          "path": "examples/sample-skill/SKILL.md",
+          "quote": "Do not execute destructive commands.",
+          "evidence_type": "explicit_instruction",
+          "confidence": "high"
+        }
+      ],
+      "portability": {
+        "score": "high",
+        "reasons": ["The safety rule is broadly applicable and independent of specific resources."]
+      },
+      "risk": {
+        "score": "low",
+        "notes": ["The boundary reduces risk when borrowed into other workflows."]
+      },
+      "reuse_modes": ["quality_gate", "agent_rule_patch", "temporary_composition"],
+      "harness_contract": {
+        "input_shape": "none",
+        "output_shape": "markdown",
+        "side_effects": "none",
+        "requires_user_approval": false,
+        "reversible": true
+      }
+    },
+    {
+      "id": "anchor.sample-skill.validation.requested-format-check",
+      "source_skill_id": "sample-skill",
+      "anchor_type": "validation_anchor",
+      "name": {
+        "zh": "请求格式校验门",
+        "en": "Requested Format Validation Gate"
+      },
+      "summary": {
+        "zh": "输出前检查结果是否匹配用户要求的格式，适合作为轻量质量门。",
+        "en": "Before delivery, check whether the result matches the user-requested format; useful as a lightweight quality gate."
+      },
+      "source_evidence": [
+        {
+          "path": "examples/sample-skill/SKILL.md",
+          "quote": "Verify that the output matches the requested format.",
+          "evidence_type": "workflow_order",
+          "confidence": "high"
+        }
+      ],
+      "portability": {
+        "score": "high",
+        "reasons": ["The validation rule is generic and can be attached to many outputs."]
+      },
+      "risk": {
+        "score": "low",
+        "notes": ["Requires the requested format to be known."]
+      },
+      "reuse_modes": ["quality_gate", "temporary_composition", "workflow_step"],
+      "harness_contract": {
+        "input_shape": "markdown",
+        "output_shape": "markdown",
+        "side_effects": "none",
+        "requires_user_approval": false,
+        "reversible": true
+      }
+    }
+  ]
+}

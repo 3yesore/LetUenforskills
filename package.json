@@ -1,0 +1,25 @@
+{
+  "name": "letuen",
+  "version": "1.0.0",
+  "description": "Agent Skill Anatomy is a multi-agent analysis harness for deconstructing AI agent skills and workflows into reusable knowledge assets.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "test": "tests"
+  },
+  "scripts": {
+    "demo:export": "set PYTHONPATH=src&& python scripts/export_demo.py",
+    "demo:serve": "python -m http.server 4173 -d site",
+    "demo:check": "node --check site/script.js",
+    "bridge": "python scripts/local_bridge.py",
+    "local": "python scripts/local_bridge.py"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}

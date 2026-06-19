@@ -1,0 +1,31 @@
+{
+  "generated_notes": [
+    {
+      "path": "00 Maps/Skill Anatomy MOC.md",
+      "note_type": "moc"
+    },
+    {
+      "path": "00 Maps/Source Repos MOC.md",
+      "note_type": "moc"
+    },
+    {
+      "path": "00 Maps/Workflow Pattern MOC.md",
+      "note_type": "moc"
+    },
+    {
+      "path": "01 Sources/sample-skill.md",
+      "note_type": "source"
+    },
+    {
+      "path": "02 Skills/sample-skill-sample-skill.md",
+      "note_type": "skill"
+    },
+    {
+      "path": "03 Patterns/Skill Package Anatomy.md",
+      "note_type": "pattern"
+    }
+  ],
+  "generated_note_count": 6,
+  "patterns_count": 1,
+  "generated_at": "2026-06-07T18:53:28Z"
+}

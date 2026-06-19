@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "skill_id": "research-skill-research-skill",
+  "workflow_summary": {
+    "zh": "收集来源、拆分证据、评估复用模式、输出研究笔记。",
+    "en": "Collect sources, split evidence, evaluate reuse patterns, publish notes."
+  },
+  "workflow_steps": [
+    {
+      "id": "step_1",
+      "name": {
+        "zh": "收集来源",
+        "en": "Collect sources"
+      },
+      "action": {
+        "zh": "读取 README、SKILL.md 与引用文件。",
+        "en": "Read README, SKILL.md, and references."
+      },
+      "step_type": "collect",
+      "actor": "agent",
+      "evidence": [],
+      "inferred": false,
+      "confidence": "medium"
+    },
+    {
+      "id": "step_2",
+      "name": {
+        "zh": "建立证据链",
+        "en": "Build evidence chain"
+      },
+      "action": {
+        "zh": "将结论绑定到路径和引用。",
+        "en": "Bind claims to paths and quotes."
+      },
+      "step_type": "review",
+      "actor": "agent",
+      "evidence": [],
+      "inferred": false,
+      "confidence": "medium"
+    },
+    {
+      "id": "step_3",
+      "name": {
+        "zh": "输出笔记",
+        "en": "Publish note"
+      },
+      "action": {
+        "zh": "生成 Obsidian 学习笔记与复用 checklist。",
+        "en": "Generate Obsidian notes and reuse checklist."
+      },
+      "step_type": "deliver",
+      "actor": "agent",
+      "evidence": [],
+      "inferred": false,
+      "confidence": "medium"
+    }
+  ],
+  "decision_points": [
+    {
+      "id": "decision_1",
+      "question": "证据是否足够？"
+    }
+  ],
+  "verification_points": [
+    {
+      "id": "verify_1",
+      "name": "source coverage"
+    }
+  ],
+  "failure_modes": [
+    {
+      "id": "failure_1",
+      "name": "stale source"
+    }
+  ],
+  "context_loading": {
+    "strategy": "progressive",
+    "details": "Load checklist after initial scan.",
+    "evidence": []
+  },
+  "tool_boundary": {
+    "model_responsibilities": [
+      "synthesis"
+    ],
+    "script_responsibilities": [
+      "source collection"
+    ],
+    "external_tool_responsibilities": [
+      "browser verification"
+    ],
+    "evidence": []
+  },
+  "mermaid": {
+    "flowchart": "flowchart TD\n  A[Collect] --> B[Evidence]\n  B --> C[Publish]"
+  },
+  "reusable_candidates": [
+    "evidence-first research loop",
+    "Obsidian note template"
+  ],
+  "warnings": []
+}

@@ -1,0 +1,16 @@
+sources:
+  - name: anthropic-algorithmic-art
+    path: C:\Users\Y2516\Desktop\LetUen\.cache\sources\anthropics-skills-5fd8be57d764\skills\algorithmic-art
+    language: bilingual
+  - name: anthropic-frontend-design
+    path: C:\Users\Y2516\Desktop\LetUen\.cache\sources\anthropics-skills-5fd8be57d764\skills\frontend-design
+    language: bilingual
+  - name: anthropic-skill-creator
+    path: C:\Users\Y2516\Desktop\LetUen\.cache\sources\anthropics-skills-5fd8be57d764\skills\skill-creator
+    language: bilingual
+  - name: anthropic-mcp-builder
+    path: C:\Users\Y2516\Desktop\LetUen\.cache\sources\anthropics-skills-5fd8be57d764\skills\mcp-builder
+    language: bilingual
+  - name: anthropic-pdf
+    path: C:\Users\Y2516\Desktop\LetUen\.cache\sources\anthropics-skills-5fd8be57d764\skills\pdf
+    language: bilingual

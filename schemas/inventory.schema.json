@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-skill-anatomy.local/schemas/inventory.schema.json",
+  "title": "Inventory",
+  "type": "object",
+  "required": ["schema_version", "source", "repository", "skill_packages"],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "source": {
+      "type": "object",
+      "required": ["name", "type", "fetched_at"],
+      "properties": {
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["github", "local", "multi"] },
+        "url": { "type": ["string", "null"] },
+        "path": { "type": ["string", "null"] },
+        "ref": { "type": ["string", "null"] },
+        "resolved_commit": { "type": ["string", "null"] },
+        "fetched_at": { "type": "string" },
+        "license": { "type": ["string", "null"] },
+        "acquisition_method": { "type": ["string", "null"], "enum": ["git_clone", "github_archive", "local", null] }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "required": ["root_path", "total_files_scanned"],
+      "properties": {
+        "root_path": { "type": "string" },
+        "readme_path": { "type": ["string", "null"] },
+        "license_path": { "type": ["string", "null"] },
+        "total_files_scanned": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "skill_packages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "root_path", "skill_md_path"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "root_path": { "type": "string" },
+          "skill_md_path": { "type": "string" },
+          "readme_path": { "type": ["string", "null"] },
+          "scripts": { "type": "array", "items": { "$ref": "#/$defs/file_ref" } },
+          "references": { "type": "array", "items": { "$ref": "#/$defs/file_ref" } },
+          "assets": { "type": "array", "items": { "$ref": "#/$defs/file_ref" } },
+          "examples": { "type": "array", "items": { "$ref": "#/$defs/file_ref" } },
+          "related_files": { "type": "array", "items": { "$ref": "#/$defs/file_ref" } }
+        }
+      }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "file_ref": {
+      "type": "object",
+      "required": ["path", "file_type", "size_bytes"],
+      "properties": {
+        "path": { "type": "string" },
+        "file_type": { "type": "string" },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "reason": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "sources": [
+    {
+      "name": "local-sample",
+      "path": "examples/sample-skill",
+      "language": "bilingual",
+      "include": [
+        "**/SKILL.md"
+      ],
+      "exclude": [
+        "**/.git/**",
+        "**/node_modules/**"
+      ]
+    }
+  ],
+  "locked_at": "2026-06-07T18:53:28Z"
+}

@@ -1,0 +1,13 @@
+{
+  "source": {
+    "name": "research-skill"
+  },
+  "files": [
+    {
+      "path": "research-skill/SKILL.md"
+    },
+    {
+      "path": "research-skill/references/checklist.md"
+    }
+  ]
+}

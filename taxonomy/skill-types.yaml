@@ -1,0 +1,8 @@
+skill_types:
+  file: Handles files such as PDF, DOCX, CSV, images, or notebooks.
+  tool: Wraps a CLI, API, MCP server, browser, or external service.
+  workflow: Defines a repeatable multi-step process.
+  meta: Helps create, install, manage, or review other skills.
+  domain: Encodes domain-specific expertise.
+  governance: Handles safety, quality, compliance, or operational rules.
+

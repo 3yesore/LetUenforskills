@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Agent Skill Anatomy Demo: scroll-driven Skill decomposition narrative." />
+    <title>Demo · Agent Skill Anatomy</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="cinema-lab-body">
+    <main class="cinema-lab" data-cinema-lab>
+      <header class="cinema-lab-topbar">
+        <a class="brand" href="../index.html#top" aria-label="Agent Skill Anatomy"><span class="brand-mark"></span><span class="brand-text">Agent Skill Anatomy</span></a>
+        <nav class="cinema-route-nav nav" aria-label="Demo navigation">
+          <a href="../index.html#entry" data-i18n data-zh="拆解首页" data-en="Home">拆解首页</a>
+          <a href="../cinema/" data-i18n data-zh="Demo" data-en="Demo">Demo</a>
+          <a href="../repo/" data-i18n data-zh="Repo" data-en="Repo">Repo</a>
+          <a href="../report/" data-i18n data-zh="Report" data-en="Report">Report</a>
+          <a href="../data/" data-i18n data-zh="Data" data-en="Data">Data</a>
+          <a href="../graph/" data-i18n data-zh="Graph" data-en="Graph">Graph</a>
+          <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch language">EN</button>
+        </nav>
+      </header>
+
+      <section class="cinema-mode is-active" data-cinema-mode="ae" aria-label="AE scroll cinematic report unfolding">
+        <div class="ae-scroll-cinema" data-ae-cinema>
+          <div class="ae-sticky-stage">
+            <div class="ae-scene-copy" data-ae-copy>
+              <span class="ae-sequence-label" data-ae-sequence>01 / 06</span>
+              <button class="ae-repo-profile" type="button" data-ae-repo-profile>
+                <span data-ae-repo-source>local source</span>
+                <strong data-ae-repo-name>Agent Skill Anatomy</strong>
+              </button>
+              <div class="ae-skill-switcher" data-ae-skill-switcher hidden>
+                <span>Skill Select</span>
+                <div data-ae-skill-options></div>
+              </div>
+              <h2 data-ae-title>Repo Signal</h2>
+              <p data-ae-text>把 GitHub 仓库转成可分析的来源信号，先定位 SKILL.md、脚本、引用和资产入口。</p>
+              <dl class="ae-insight-list" data-ae-insights>
+                <div><dt>输入</dt><dd>GitHub URL / 本地仓库</dd></div>
+                <div><dt>动作</dt><dd>扫描目录与候选 skill 包</dd></div>
+                <div><dt>产物</dt><dd>repo inventory 与来源索引</dd></div>
+              </dl>
+              <div class="ae-quick-links" data-ae-links>
+                <a href="../report/#skills">Skill 清单</a>
+                <a href="../report/#patterns">候选模式</a>
+              </div>
+            </div>
+
+            <div class="ae-card-field" aria-hidden="false" data-ae-card-field>
+              <div class="ae-depth-grid"></div>
+              <a class="ae-card" href="../report/#skills" data-ae-card data-card-index="0">
+                <span class="ae-card-index">01</span>
+                <strong>Source</strong>
+                <p><b>输入</b> GitHub URL<br><b>分析</b> inventory / candidates<br><b>产物</b> 来源索引</p>
+                <div class="ae-card-tags"><em>README</em><em>tree</em><em>manifest</em></div>
+              </a>
+              <a class="ae-card" href="../report/skills/sample-skill-sample-skill.html" data-ae-card data-card-index="1">
+                <span class="ae-card-index">02</span>
+                <strong>Core</strong>
+                <p><b>输入</b> SKILL.md<br><b>分析</b> trigger / boundary / tools<br><b>产物</b> 结构化拆解</p>
+                <div class="ae-card-tags"><em>SKILL.md</em><em>trigger</em><em>rules</em></div>
+              </a>
+              <a class="ae-card" href="../report/#patterns" data-ae-card data-card-index="2">
+                <span class="ae-card-index">03</span>
+                <strong>Resources</strong>
+                <p><b>输入</b> scripts / refs / assets<br><b>分析</b> 复用边界<br><b>产物</b> 资产候选</p>
+                <div class="ae-card-tags"><em>scripts</em><em>refs</em><em>assets</em></div>
+              </a>
+              <a class="ae-card" href="../report/skills/sample-skill-sample-skill.html" data-ae-card data-card-index="3">
+                <span class="ae-card-index">04</span>
+                <strong>Workflow</strong>
+                <p><b>输入</b> 自然语言规则<br><b>分析</b> step / decision / handoff<br><b>产物</b> 可审计路径</p>
+                <div class="ae-card-tags"><em>steps</em><em>tools</em><em>handoff</em></div>
+              </a>
+              <a class="ae-card" href="../report/#quality" data-ae-card data-card-index="4">
+                <span class="ae-card-index">05</span>
+                <strong>Evidence</strong>
+                <p><b>输入</b> 结论与引用<br><b>分析</b> path / quote / reviewer<br><b>产物</b> 证据扎根</p>
+                <div class="ae-card-tags"><em>quotes</em><em>paths</em><em>review</em></div>
+              </a>
+              <a class="ae-card" href="../report/" data-ae-card data-card-index="5">
+                <span class="ae-card-index">06</span>
+                <strong>Report</strong>
+                <p><b>输入</b> 多 agent 结果<br><b>分析</b> 汇总与门禁<br><b>产物</b> Web / Obsidian / Graph</p>
+                <div class="ae-card-tags"><em>Web</em><em>Obsidian</em><em>Graph</em></div>
+              </a>
+            </div>
+            <aside class="ae-detail-panel" data-ae-detail-panel aria-live="polite">
+              <button class="ae-detail-close" type="button" data-ae-detail-close aria-label="Close detail">×</button>
+              <span class="ae-detail-label" data-ae-detail-label>repo card</span>
+              <h3 data-ae-detail-title>Repo Card</h3>
+              <div class="ae-trust-strip" data-ae-trust-strip hidden></div>
+              <p data-ae-detail-body>点击底部卡片查看该部分的真实 run 摘要。</p>
+              <dl class="ae-detail-facts" data-ae-detail-facts></dl>
+              <div class="ae-detail-items" data-ae-detail-items></div>
+              <div class="ae-detail-tags" data-ae-detail-tags></div>
+              <div class="ae-detail-outputs" data-ae-detail-outputs hidden></div>
+              <a class="ae-detail-link" href="../report/" data-ae-detail-link>打开报告</a>
+            </aside>
+            <div class="ae-progress-rail" aria-hidden="true"><i data-ae-progress></i></div>
+          </div>
+          <div class="ae-scroll-steps" aria-hidden="true">
+            <article data-ae-step data-title="Repo Signal" data-text="把 GitHub 仓库转成可分析的来源信号，先定位 SKILL.md、脚本、引用和资产入口。" data-input="GitHub URL / 本地仓库" data-action="扫描目录与候选 skill 包" data-output="repo inventory 与来源索引" data-links="Skill 清单|../report/#skills;候选模式|../report/#patterns">
+              <span>01</span><h3>Source</h3><p>GitHub URL → inventory → SKILL.md candidates</p>
+            </article>
+            <article data-ae-step data-title="Skill Core" data-text="把 SKILL.md 拆成触发条件、边界、工具依赖与执行步骤，形成可以比较的结构。" data-input="SKILL.md" data-action="提取 trigger / boundary / tools" data-output="结构化 skill 拆解" data-links="Skill 详情|../report/skills/sample-skill-sample-skill.html;Reviewer|../report/#reviews">
+              <span>02</span><h3>Core</h3><p>Trigger / Boundary / Tools / Steps</p>
+            </article>
+            <article data-ae-step data-title="Resource Split" data-text="把 scripts、references、assets 拉成资源轨道，判断它们是否能沉淀为复用资产。" data-input="scripts / references / assets" data-action="识别复用边界与依赖关系" data-output="资源索引与候选模式" data-links="候选模式|../report/#patterns;Artifacts|../report/artifacts/">
+              <span>03</span><h3>Resources</h3><p>Scripts and references become reusable evidence.</p>
+            </article>
+            <article data-ae-step data-title="Workflow Trace" data-text="把自然语言工作流展开成可审计路径，每个节点都对应 action、decision 或 handoff。" data-input="规则与步骤描述" data-action="追踪 step / decision / handoff" data-output="workflow 审计路径" data-links="Skill 详情|../report/skills/sample-skill-sample-skill.html;报告首页|../report/">
+              <span>04</span><h3>Workflow</h3><p>Natural language becomes an execution path.</p>
+            </article>
+            <article data-ae-step data-title="Evidence Lock" data-text="把结论锁定到文件路径、引用和 reviewer 判断，降低幻觉和过度推断。" data-input="拆解结论与引用" data-action="检查 path / quote / reviewer" data-output="证据扎根与质量状态" data-links="质量门禁|../report/#quality;Reviewer|../report/#reviews">
+              <span>05</span><h3>Evidence</h3><p>Claims are locked to source quotes and paths.</p>
+            </article>
+            <article data-ae-step data-title="Report Release" data-text="把多 agent 拆解结果汇总成可读作品，并为 Obsidian、Data、Graph 等出口预留入口。" data-input="结构 / workflow / evidence" data-action="汇总、门禁与发布" data-output="Web 报告与复用资产" data-links="打开报告|../report/;输出格式|../index.html#surfaces">
+              <span>06</span><h3>Report</h3><p>Report becomes the primary presentation surface.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
+

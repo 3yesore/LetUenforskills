@@ -1,0 +1,1359 @@
+{
+  "schema_version": 1,
+  "run_id": "20260614T193006Z",
+  "report_href": "../report/",
+  "repo_href": "../repo/",
+  "repo_profile": {
+    "name": "anthropics-skills",
+    "run_kind": "real run",
+    "run_notice": "Real run exported from canonical JSON artifacts.",
+    "source_label": "multi-source",
+    "source_type": "multi",
+    "source_name": "anthropics-skills",
+    "url": null,
+    "root_path": "C:\\Users\\Y2516\\Desktop\\LetUen",
+    "readme_path": "README.md",
+    "license_path": null,
+    "resolved_commit": null,
+    "ref": null,
+    "primary_skill": "algorithmic-art",
+    "run_id": "20260614T193006Z",
+    "provider": "openai",
+    "language": "bilingual",
+    "status": "completed",
+    "facts": [
+      {
+        "label": "run",
+        "value": "20260614T193006Z"
+      },
+      {
+        "label": "source",
+        "value": "multi-source"
+      },
+      {
+        "label": "skill",
+        "value": "algorithmic-art"
+      },
+      {
+        "label": "readme",
+        "value": "README.md"
+      },
+      {
+        "label": "license",
+        "value": "—"
+      },
+      {
+        "label": "commit",
+        "value": "—"
+      },
+      {
+        "label": "model",
+        "value": "openai"
+      },
+      {
+        "label": "status",
+        "value": "completed"
+      }
+    ],
+    "outputs": [
+      {
+        "label": "Formal Repo",
+        "href": "../repo/",
+        "kind": "repo"
+      },
+      {
+        "label": "Web Report",
+        "href": "../report/",
+        "kind": "report"
+      },
+      {
+        "label": "Artifacts",
+        "href": "../report/artifacts/",
+        "kind": "data"
+      },
+      {
+        "label": "Obsidian",
+        "href": "../vault/Open%20in%20Obsidian.html",
+        "kind": "vault"
+      },
+      {
+        "label": "Surfaces",
+        "href": "../index.html#surfaces",
+        "kind": "hub"
+      }
+    ],
+    "trust": [
+      {
+        "label": "facts",
+        "value": "18",
+        "tone": "fact"
+      },
+      {
+        "label": "rules",
+        "value": "3",
+        "tone": "warn"
+      },
+      {
+        "label": "review",
+        "value": "1",
+        "tone": "warn"
+      },
+      {
+        "label": "approved",
+        "value": "1",
+        "tone": "fact"
+      }
+    ]
+  },
+  "summary": {
+    "skills": 1,
+    "files": 18,
+    "scripts": 0,
+    "references": 0,
+    "assets": 0,
+    "workflow_steps": 9,
+    "quality_issues": 3,
+    "review_issues": 1,
+    "patterns": 1,
+    "approved": 1,
+    "status": "needs_review"
+  },
+  "model": {
+    "provider": "openai",
+    "language": "bilingual",
+    "status": "completed",
+    "created_at": "2026-06-14T19:30:06Z",
+    "completed_at": "2026-06-14T19:33:25Z"
+  },
+  "skill_preview": [
+    {
+      "id": "anthropics-skills-skills-algorithmic-art",
+      "name": "algorithmic-art",
+      "status": "publishable",
+      "summary": "为 Claude 提供基于 p5.js 的算法艺术创作能力，包括生成算法哲学宣言和输出自包含的交互式 HTML 艺术作品。强调原创性，禁止复制现有艺术家作品。",
+      "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html"
+    }
+  ],
+  "top_patterns": [
+    {
+      "id": "candidate-parameterized-art-generation",
+      "canonical_name": "Parameterized Art Generation",
+      "zh_name": "参数化艺术生成",
+      "category": "tool",
+      "status": "candidate",
+      "definition": {
+        "zh": "通过参数化代码模板和外部渲染库，将用户意图转化为生成艺术作品的技能模式。",
+        "en": "A skill pattern that transforms user intent into generative art artifacts using parameterized code templates and external rendering libraries."
+      },
+      "problem": {
+        "zh": "用户想要创建算法艺术，但缺乏将创意意图转化为可执行代码的方法，且需面对复杂的渲染库。",
+        "en": "Users want to create algorithmic art but lack a method to translate creative intent into executable code while facing complex rendering libraries."
+      },
+      "solution": {
+        "zh": "提供预置模板和参数接口，指导模型填充关键变量并调用外部库（如p5.js），输出可直接运行的艺术代码或可视化结果。",
+        "en": "Provide preset templates and parameter interfaces, instructing the model to fill key variables and call external libraries (e.g., p5.js), outputting directly runnable art code or visual results."
+      },
+      "when_to_use": {
+        "zh": "当任务涉及创意编程或生成性视觉输出，且存在可复用的代码模板时。",
+        "en": "When the task involves creative coding or generative visual output and there is a reusable code template."
+      },
+      "signals": [],
+      "examples": [
+        {
+          "skill_id": "anthropics-skills-skills-algorithmic-art",
+          "source_path": "skills/algorithmic-art/SKILL.md",
+          "evidence": []
+        }
+      ],
+      "counterexamples": [],
+      "reusable_template": {
+        "zh": "使用 {library} 和以下参数 {parameters} 生成艺术，输出 {output_format}。",
+        "en": "Use {library} with parameters {parameters} to generate art, output {output_format}."
+      },
+      "related_patterns": [],
+      "minimum_examples_required": 2,
+      "confidence": "low"
+    }
+  ],
+  "quality_cards": [
+    {
+      "title": "anthropics-skills-skills-algorithmic-art",
+      "severity": "review",
+      "body": "status=publishable, issues=1",
+      "href": "../report/#reviews"
+    }
+  ],
+  "resource_nodes": [],
+  "skill_focus": {
+    "id": "anthropics-skills-skills-algorithmic-art",
+    "name": "algorithmic-art",
+    "summary": "为 Claude 提供基于 p5.js 的算法艺术创作能力，包括生成算法哲学宣言和输出自包含的交互式 HTML 艺术作品。强调原创性，禁止复制现有艺术家作品。",
+    "status": "publishable",
+    "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+    "cards": [
+      {
+        "title": "Trigger",
+        "subtitle": "9 signals",
+        "body": "user requests creating art using code · user requests generative art · user requests algorithmic art",
+        "facts": [
+          {
+            "label": "explicit",
+            "value": "5"
+          },
+          {
+            "label": "inferred",
+            "value": "4"
+          },
+          {
+            "label": "source",
+            "value": "skills/algorithmic-art/SKILL.md"
+          }
+        ],
+        "tags": [
+          "activation",
+          "signals",
+          "skill.md"
+        ],
+        "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+        "details": [
+          {
+            "label": "signal 1",
+            "title": "user requests creating art using code",
+            "body": "",
+            "tone": "signal"
+          },
+          {
+            "label": "signal 2",
+            "title": "user requests generative art",
+            "body": "",
+            "tone": "signal"
+          },
+          {
+            "label": "signal 3",
+            "title": "user requests algorithmic art",
+            "body": "",
+            "tone": "signal"
+          },
+          {
+            "label": "signal 4",
+            "title": "user requests flow fields",
+            "body": "",
+            "tone": "signal"
+          },
+          {
+            "label": "signal 5",
+            "title": "user requests particle systems",
+            "body": "",
+            "tone": "signal"
+          }
+        ]
+      },
+      {
+        "title": "Boundary",
+        "subtitle": "workflow",
+        "body": "Boundary and context strategy are not yet grounded.",
+        "facts": [
+          {
+            "label": "agent",
+            "value": "Claude"
+          },
+          {
+            "label": "type",
+            "value": "workflow"
+          },
+          {
+            "label": "confidence",
+            "value": "high"
+          }
+        ],
+        "tags": [
+          "scope",
+          "context",
+          "confidence"
+        ],
+        "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+        "details": [
+          {
+            "label": "scope 1",
+            "title": "Claude",
+            "body": "",
+            "tone": "scope"
+          }
+        ]
+      },
+      {
+        "title": "Tools",
+        "subtitle": "1 tools",
+        "body": "p5.js CDN (https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js)",
+        "facts": [
+          {
+            "label": "tools",
+            "value": "1"
+          },
+          {
+            "label": "scripts",
+            "value": "0"
+          },
+          {
+            "label": "risks",
+            "value": "4"
+          }
+        ],
+        "tags": [
+          "tools",
+          "scripts",
+          "risk"
+        ],
+        "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+        "details": [
+          {
+            "label": "tool 1",
+            "title": "p5.js CDN (https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js)",
+            "body": "",
+            "tone": "tool"
+          },
+          {
+            "label": "tool 2",
+            "title": "Copyright infringement if the user asks for an existing artist's style (skill explicitly forbids copying).",
+            "body": "",
+            "tone": "tool"
+          },
+          {
+            "label": "tool 3",
+            "title": "Generated HTML artifact may be large and exceed context/output limits.",
+            "body": "",
+            "tone": "tool"
+          },
+          {
+            "label": "tool 4",
+            "title": "Reliance on external p5.js CDN may break if offline or CDN changes.",
+            "body": "",
+            "tone": "tool"
+          },
+          {
+            "label": "tool 5",
+            "title": "Seeded randomness may produce unexpected or low-quality results if parameters are poorly tuned.",
+            "body": "",
+            "tone": "tool"
+          }
+        ]
+      },
+      {
+        "title": "Workflow",
+        "subtitle": "9 steps",
+        "body": "检测激活条件 · 加载技能说明 · 规划两阶段流程",
+        "facts": [
+          {
+            "label": "steps",
+            "value": "9"
+          },
+          {
+            "label": "decisions",
+            "value": "3"
+          },
+          {
+            "label": "failures",
+            "value": "4"
+          }
+        ],
+        "tags": [
+          "steps",
+          "decision",
+          "handoff"
+        ],
+        "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+        "details": [
+          {
+            "label": "step 1",
+            "title": "检测激活条件",
+            "body": "判断用户请求是否包含代码艺术、生成艺术、算法艺术、流场或粒子系统等触发词。",
+            "tone": "detect"
+          },
+          {
+            "label": "step 2",
+            "title": "加载技能说明",
+            "body": "读取并理解SKILL.md中的完整工作流、约束和输出要求。",
+            "tone": "load_context"
+          },
+          {
+            "label": "step 3",
+            "title": "规划两阶段流程",
+            "body": "依照技能指示，确定先生成算法哲学（.md），再实现p5.js交互艺术品（.html），并决定先读取观景器模板。",
+            "tone": "plan"
+          },
+          {
+            "label": "step 4",
+            "title": "加载观景器模板",
+            "body": "通过Read工具读取templates/viewer.html，熟记固定布局、品牌样式以及标记为可替换的区域。",
+            "tone": "load_context"
+          },
+          {
+            "label": "step 5",
+            "title": "生成算法哲学",
+            "body": "创作一份4-6段的算法哲学宣言，命名运动，阐述算法美学与过程价值，输出为.md文件。",
+            "tone": "execute"
+          },
+          {
+            "label": "step 6",
+            "title": "提炼概念种子",
+            "body": "从用户原始请求中提取一个微妙的、内嵌的概念性参考，将其转化为算法参数与行为的精神内核。",
+            "tone": "execute"
+          }
+        ]
+      },
+      {
+        "title": "Evidence",
+        "subtitle": "publishable",
+        "body": "No review issues",
+        "facts": [
+          {
+            "label": "issues",
+            "value": "1"
+          },
+          {
+            "label": "missing",
+            "value": "0"
+          },
+          {
+            "label": "approved",
+            "value": "true"
+          }
+        ],
+        "tags": [
+          "evidence",
+          "review",
+          "publishable"
+        ],
+        "href": "../report/#reviews",
+        "details": [
+          {
+            "label": "empty",
+            "title": "No reviewer issues found",
+            "body": "",
+            "tone": "missing"
+          }
+        ]
+      },
+      {
+        "title": "Reuse",
+        "subtitle": "3 candidates",
+        "body": "{'path': 'templates/viewer.html', 'reuse_type': 'template', 'reuse_value': 'high', 'description': {'zh': 'Anthropic品牌化的交互框架，每次创作均以此为基础。', 'en': 'Anthropic-branded interactive framework to be used as the starting point for every artwork.'}} · {'path': 'templates/generator_template.js', 'reuse_type': 'reference_code', 'reuse_value': 'medium', 'description': {'zh': 'p5.js最佳实践参考，展示参数组织与随机种子用法，可指导新算法结构。', 'en': 'Reference for p5.js best practices, showing parameter organization and seed usage; can guide new algorithm structures.'}} · {'path': 'philosophy_generation_pattern', 'reuse_type': 'pattern', 'reuse_value': 'low', 'description': {'zh': '生成算法哲学的流程和风格可复用，但具体内容必须原创。', 'en': 'The process and style of generating an algorithmic philosophy can be reused, but the content must be original.'}}",
+        "facts": [
+          {
+            "label": "reuse",
+            "value": "3"
+          },
+          {
+            "label": "refs",
+            "value": "0"
+          },
+          {
+            "label": "assets",
+            "value": "0"
+          }
+        ],
+        "tags": [
+          "reuse",
+          "templates",
+          "assets"
+        ],
+        "href": "../report/#patterns",
+        "details": [
+          {
+            "label": "asset 1",
+            "title": "templates/viewer.html",
+            "body": "Anthropic品牌化的交互框架，每次创作均以此为基础。",
+            "tone": "asset"
+          },
+          {
+            "label": "asset 2",
+            "title": "templates/generator_template.js",
+            "body": "p5.js最佳实践参考，展示参数组织与随机种子用法，可指导新算法结构。",
+            "tone": "asset"
+          },
+          {
+            "label": "asset 3",
+            "title": "philosophy_generation_pattern",
+            "body": "生成算法哲学的流程和风格可复用，但具体内容必须原创。",
+            "tone": "asset"
+          }
+        ]
+      }
+    ]
+  },
+  "skill_focuses": [
+    {
+      "id": "anthropics-skills-skills-algorithmic-art",
+      "name": "algorithmic-art",
+      "summary": "为 Claude 提供基于 p5.js 的算法艺术创作能力，包括生成算法哲学宣言和输出自包含的交互式 HTML 艺术作品。强调原创性，禁止复制现有艺术家作品。",
+      "status": "publishable",
+      "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+      "cards": [
+        {
+          "title": "Trigger",
+          "subtitle": "9 signals",
+          "body": "user requests creating art using code · user requests generative art · user requests algorithmic art",
+          "facts": [
+            {
+              "label": "explicit",
+              "value": "5"
+            },
+            {
+              "label": "inferred",
+              "value": "4"
+            },
+            {
+              "label": "source",
+              "value": "skills/algorithmic-art/SKILL.md"
+            }
+          ],
+          "tags": [
+            "activation",
+            "signals",
+            "skill.md"
+          ],
+          "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+          "details": [
+            {
+              "label": "signal 1",
+              "title": "user requests creating art using code",
+              "body": "",
+              "tone": "signal"
+            },
+            {
+              "label": "signal 2",
+              "title": "user requests generative art",
+              "body": "",
+              "tone": "signal"
+            },
+            {
+              "label": "signal 3",
+              "title": "user requests algorithmic art",
+              "body": "",
+              "tone": "signal"
+            },
+            {
+              "label": "signal 4",
+              "title": "user requests flow fields",
+              "body": "",
+              "tone": "signal"
+            },
+            {
+              "label": "signal 5",
+              "title": "user requests particle systems",
+              "body": "",
+              "tone": "signal"
+            }
+          ]
+        },
+        {
+          "title": "Boundary",
+          "subtitle": "workflow",
+          "body": "Boundary and context strategy are not yet grounded.",
+          "facts": [
+            {
+              "label": "agent",
+              "value": "Claude"
+            },
+            {
+              "label": "type",
+              "value": "workflow"
+            },
+            {
+              "label": "confidence",
+              "value": "high"
+            }
+          ],
+          "tags": [
+            "scope",
+            "context",
+            "confidence"
+          ],
+          "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+          "details": [
+            {
+              "label": "scope 1",
+              "title": "Claude",
+              "body": "",
+              "tone": "scope"
+            }
+          ]
+        },
+        {
+          "title": "Tools",
+          "subtitle": "1 tools",
+          "body": "p5.js CDN (https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js)",
+          "facts": [
+            {
+              "label": "tools",
+              "value": "1"
+            },
+            {
+              "label": "scripts",
+              "value": "0"
+            },
+            {
+              "label": "risks",
+              "value": "4"
+            }
+          ],
+          "tags": [
+            "tools",
+            "scripts",
+            "risk"
+          ],
+          "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+          "details": [
+            {
+              "label": "tool 1",
+              "title": "p5.js CDN (https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js)",
+              "body": "",
+              "tone": "tool"
+            },
+            {
+              "label": "tool 2",
+              "title": "Copyright infringement if the user asks for an existing artist's style (skill explicitly forbids copying).",
+              "body": "",
+              "tone": "tool"
+            },
+            {
+              "label": "tool 3",
+              "title": "Generated HTML artifact may be large and exceed context/output limits.",
+              "body": "",
+              "tone": "tool"
+            },
+            {
+              "label": "tool 4",
+              "title": "Reliance on external p5.js CDN may break if offline or CDN changes.",
+              "body": "",
+              "tone": "tool"
+            },
+            {
+              "label": "tool 5",
+              "title": "Seeded randomness may produce unexpected or low-quality results if parameters are poorly tuned.",
+              "body": "",
+              "tone": "tool"
+            }
+          ]
+        },
+        {
+          "title": "Workflow",
+          "subtitle": "9 steps",
+          "body": "检测激活条件 · 加载技能说明 · 规划两阶段流程",
+          "facts": [
+            {
+              "label": "steps",
+              "value": "9"
+            },
+            {
+              "label": "decisions",
+              "value": "3"
+            },
+            {
+              "label": "failures",
+              "value": "4"
+            }
+          ],
+          "tags": [
+            "steps",
+            "decision",
+            "handoff"
+          ],
+          "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+          "details": [
+            {
+              "label": "step 1",
+              "title": "检测激活条件",
+              "body": "判断用户请求是否包含代码艺术、生成艺术、算法艺术、流场或粒子系统等触发词。",
+              "tone": "detect"
+            },
+            {
+              "label": "step 2",
+              "title": "加载技能说明",
+              "body": "读取并理解SKILL.md中的完整工作流、约束和输出要求。",
+              "tone": "load_context"
+            },
+            {
+              "label": "step 3",
+              "title": "规划两阶段流程",
+              "body": "依照技能指示，确定先生成算法哲学（.md），再实现p5.js交互艺术品（.html），并决定先读取观景器模板。",
+              "tone": "plan"
+            },
+            {
+              "label": "step 4",
+              "title": "加载观景器模板",
+              "body": "通过Read工具读取templates/viewer.html，熟记固定布局、品牌样式以及标记为可替换的区域。",
+              "tone": "load_context"
+            },
+            {
+              "label": "step 5",
+              "title": "生成算法哲学",
+              "body": "创作一份4-6段的算法哲学宣言，命名运动，阐述算法美学与过程价值，输出为.md文件。",
+              "tone": "execute"
+            },
+            {
+              "label": "step 6",
+              "title": "提炼概念种子",
+              "body": "从用户原始请求中提取一个微妙的、内嵌的概念性参考，将其转化为算法参数与行为的精神内核。",
+              "tone": "execute"
+            }
+          ]
+        },
+        {
+          "title": "Evidence",
+          "subtitle": "publishable",
+          "body": "No review issues",
+          "facts": [
+            {
+              "label": "issues",
+              "value": "1"
+            },
+            {
+              "label": "missing",
+              "value": "0"
+            },
+            {
+              "label": "approved",
+              "value": "true"
+            }
+          ],
+          "tags": [
+            "evidence",
+            "review",
+            "publishable"
+          ],
+          "href": "../report/#reviews",
+          "details": [
+            {
+              "label": "empty",
+              "title": "No reviewer issues found",
+              "body": "",
+              "tone": "missing"
+            }
+          ]
+        },
+        {
+          "title": "Reuse",
+          "subtitle": "3 candidates",
+          "body": "{'path': 'templates/viewer.html', 'reuse_type': 'template', 'reuse_value': 'high', 'description': {'zh': 'Anthropic品牌化的交互框架，每次创作均以此为基础。', 'en': 'Anthropic-branded interactive framework to be used as the starting point for every artwork.'}} · {'path': 'templates/generator_template.js', 'reuse_type': 'reference_code', 'reuse_value': 'medium', 'description': {'zh': 'p5.js最佳实践参考，展示参数组织与随机种子用法，可指导新算法结构。', 'en': 'Reference for p5.js best practices, showing parameter organization and seed usage; can guide new algorithm structures.'}} · {'path': 'philosophy_generation_pattern', 'reuse_type': 'pattern', 'reuse_value': 'low', 'description': {'zh': '生成算法哲学的流程和风格可复用，但具体内容必须原创。', 'en': 'The process and style of generating an algorithmic philosophy can be reused, but the content must be original.'}}",
+          "facts": [
+            {
+              "label": "reuse",
+              "value": "3"
+            },
+            {
+              "label": "refs",
+              "value": "0"
+            },
+            {
+              "label": "assets",
+              "value": "0"
+            }
+          ],
+          "tags": [
+            "reuse",
+            "templates",
+            "assets"
+          ],
+          "href": "../report/#patterns",
+          "details": [
+            {
+              "label": "asset 1",
+              "title": "templates/viewer.html",
+              "body": "Anthropic品牌化的交互框架，每次创作均以此为基础。",
+              "tone": "asset"
+            },
+            {
+              "label": "asset 2",
+              "title": "templates/generator_template.js",
+              "body": "p5.js最佳实践参考，展示参数组织与随机种子用法，可指导新算法结构。",
+              "tone": "asset"
+            },
+            {
+              "label": "asset 3",
+              "title": "philosophy_generation_pattern",
+              "body": "生成算法哲学的流程和风格可复用，但具体内容必须原创。",
+              "tone": "asset"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "repo_overview_cards": [
+    {
+      "title": "Skills",
+      "subtitle": "1 detected",
+      "body": "algorithmic-art",
+      "facts": [
+        {
+          "label": "skills",
+          "value": "1"
+        },
+        {
+          "label": "approved",
+          "value": "1"
+        },
+        {
+          "label": "revision",
+          "value": "0"
+        }
+      ],
+      "tags": [
+        "1 approved",
+        "0 revision",
+        "inventory"
+      ],
+      "href": "../report/#skills"
+    },
+    {
+      "title": "Workflow",
+      "subtitle": "9 steps",
+      "body": "Action paths, fallback signals, and future condition nodes.",
+      "facts": [
+        {
+          "label": "steps",
+          "value": "9"
+        },
+        {
+          "label": "source",
+          "value": "workflow analysis"
+        },
+        {
+          "label": "next",
+          "value": "conditions / fallbacks"
+        }
+      ],
+      "tags": [
+        "9 steps",
+        "trace",
+        "audit"
+      ],
+      "href": "../report/#workflow"
+    },
+    {
+      "title": "Resources",
+      "subtitle": "0 assets",
+      "body": "Scripts 0, references 0, assets 0.",
+      "facts": [
+        {
+          "label": "scripts",
+          "value": "0"
+        },
+        {
+          "label": "refs",
+          "value": "0"
+        },
+        {
+          "label": "assets",
+          "value": "0"
+        }
+      ],
+      "tags": [
+        "0 scripts",
+        "0 refs",
+        "0 assets"
+      ],
+      "href": "../report/#resources"
+    },
+    {
+      "title": "Quality",
+      "subtitle": "1 review issues",
+      "body": "status=publishable, issues=1",
+      "facts": [
+        {
+          "label": "rules",
+          "value": "3"
+        },
+        {
+          "label": "review",
+          "value": "1"
+        },
+        {
+          "label": "status",
+          "value": "needs review"
+        }
+      ],
+      "tags": [
+        "3 rules",
+        "1 review",
+        "grounded"
+      ],
+      "href": "../report/#quality"
+    },
+    {
+      "title": "Patterns",
+      "subtitle": "1 candidates",
+      "body": "参数化艺术生成",
+      "facts": [
+        {
+          "label": "patterns",
+          "value": "1"
+        },
+        {
+          "label": "top",
+          "value": "参数化艺术生成"
+        },
+        {
+          "label": "mode",
+          "value": "reuse candidates"
+        }
+      ],
+      "tags": [
+        "reuse",
+        "template",
+        "1 patterns"
+      ],
+      "href": "../report/#patterns"
+    },
+    {
+      "title": "Model",
+      "subtitle": "openai",
+      "body": "Provider openai · language bilingual · status completed.",
+      "facts": [
+        {
+          "label": "provider",
+          "value": "openai"
+        },
+        {
+          "label": "language",
+          "value": "bilingual"
+        },
+        {
+          "label": "status",
+          "value": "completed"
+        }
+      ],
+      "tags": [
+        "openai",
+        "bilingual",
+        "completed"
+      ],
+      "href": "../report/#models"
+    }
+  ],
+  "repo_cards": [
+    {
+      "title": "Trigger",
+      "subtitle": "9 signals",
+      "body": "user requests creating art using code · user requests generative art · user requests algorithmic art",
+      "facts": [
+        {
+          "label": "explicit",
+          "value": "5"
+        },
+        {
+          "label": "inferred",
+          "value": "4"
+        },
+        {
+          "label": "source",
+          "value": "skills/algorithmic-art/SKILL.md"
+        }
+      ],
+      "tags": [
+        "activation",
+        "signals",
+        "skill.md"
+      ],
+      "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+      "details": [
+        {
+          "label": "signal 1",
+          "title": "user requests creating art using code",
+          "body": "",
+          "tone": "signal"
+        },
+        {
+          "label": "signal 2",
+          "title": "user requests generative art",
+          "body": "",
+          "tone": "signal"
+        },
+        {
+          "label": "signal 3",
+          "title": "user requests algorithmic art",
+          "body": "",
+          "tone": "signal"
+        },
+        {
+          "label": "signal 4",
+          "title": "user requests flow fields",
+          "body": "",
+          "tone": "signal"
+        },
+        {
+          "label": "signal 5",
+          "title": "user requests particle systems",
+          "body": "",
+          "tone": "signal"
+        }
+      ]
+    },
+    {
+      "title": "Boundary",
+      "subtitle": "workflow",
+      "body": "Boundary and context strategy are not yet grounded.",
+      "facts": [
+        {
+          "label": "agent",
+          "value": "Claude"
+        },
+        {
+          "label": "type",
+          "value": "workflow"
+        },
+        {
+          "label": "confidence",
+          "value": "high"
+        }
+      ],
+      "tags": [
+        "scope",
+        "context",
+        "confidence"
+      ],
+      "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+      "details": [
+        {
+          "label": "scope 1",
+          "title": "Claude",
+          "body": "",
+          "tone": "scope"
+        }
+      ]
+    },
+    {
+      "title": "Tools",
+      "subtitle": "1 tools",
+      "body": "p5.js CDN (https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js)",
+      "facts": [
+        {
+          "label": "tools",
+          "value": "1"
+        },
+        {
+          "label": "scripts",
+          "value": "0"
+        },
+        {
+          "label": "risks",
+          "value": "4"
+        }
+      ],
+      "tags": [
+        "tools",
+        "scripts",
+        "risk"
+      ],
+      "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+      "details": [
+        {
+          "label": "tool 1",
+          "title": "p5.js CDN (https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js)",
+          "body": "",
+          "tone": "tool"
+        },
+        {
+          "label": "tool 2",
+          "title": "Copyright infringement if the user asks for an existing artist's style (skill explicitly forbids copying).",
+          "body": "",
+          "tone": "tool"
+        },
+        {
+          "label": "tool 3",
+          "title": "Generated HTML artifact may be large and exceed context/output limits.",
+          "body": "",
+          "tone": "tool"
+        },
+        {
+          "label": "tool 4",
+          "title": "Reliance on external p5.js CDN may break if offline or CDN changes.",
+          "body": "",
+          "tone": "tool"
+        },
+        {
+          "label": "tool 5",
+          "title": "Seeded randomness may produce unexpected or low-quality results if parameters are poorly tuned.",
+          "body": "",
+          "tone": "tool"
+        }
+      ]
+    },
+    {
+      "title": "Workflow",
+      "subtitle": "9 steps",
+      "body": "检测激活条件 · 加载技能说明 · 规划两阶段流程",
+      "facts": [
+        {
+          "label": "steps",
+          "value": "9"
+        },
+        {
+          "label": "decisions",
+          "value": "3"
+        },
+        {
+          "label": "failures",
+          "value": "4"
+        }
+      ],
+      "tags": [
+        "steps",
+        "decision",
+        "handoff"
+      ],
+      "href": "../report/skills/anthropics-skills-skills-algorithmic-art.html",
+      "details": [
+        {
+          "label": "step 1",
+          "title": "检测激活条件",
+          "body": "判断用户请求是否包含代码艺术、生成艺术、算法艺术、流场或粒子系统等触发词。",
+          "tone": "detect"
+        },
+        {
+          "label": "step 2",
+          "title": "加载技能说明",
+          "body": "读取并理解SKILL.md中的完整工作流、约束和输出要求。",
+          "tone": "load_context"
+        },
+        {
+          "label": "step 3",
+          "title": "规划两阶段流程",
+          "body": "依照技能指示，确定先生成算法哲学（.md），再实现p5.js交互艺术品（.html），并决定先读取观景器模板。",
+          "tone": "plan"
+        },
+        {
+          "label": "step 4",
+          "title": "加载观景器模板",
+          "body": "通过Read工具读取templates/viewer.html，熟记固定布局、品牌样式以及标记为可替换的区域。",
+          "tone": "load_context"
+        },
+        {
+          "label": "step 5",
+          "title": "生成算法哲学",
+          "body": "创作一份4-6段的算法哲学宣言，命名运动，阐述算法美学与过程价值，输出为.md文件。",
+          "tone": "execute"
+        },
+        {
+          "label": "step 6",
+          "title": "提炼概念种子",
+          "body": "从用户原始请求中提取一个微妙的、内嵌的概念性参考，将其转化为算法参数与行为的精神内核。",
+          "tone": "execute"
+        }
+      ]
+    },
+    {
+      "title": "Evidence",
+      "subtitle": "publishable",
+      "body": "No review issues",
+      "facts": [
+        {
+          "label": "issues",
+          "value": "1"
+        },
+        {
+          "label": "missing",
+          "value": "0"
+        },
+        {
+          "label": "approved",
+          "value": "true"
+        }
+      ],
+      "tags": [
+        "evidence",
+        "review",
+        "publishable"
+      ],
+      "href": "../report/#reviews",
+      "details": [
+        {
+          "label": "empty",
+          "title": "No reviewer issues found",
+          "body": "",
+          "tone": "missing"
+        }
+      ]
+    },
+    {
+      "title": "Reuse",
+      "subtitle": "3 candidates",
+      "body": "{'path': 'templates/viewer.html', 'reuse_type': 'template', 'reuse_value': 'high', 'description': {'zh': 'Anthropic品牌化的交互框架，每次创作均以此为基础。', 'en': 'Anthropic-branded interactive framework to be used as the starting point for every artwork.'}} · {'path': 'templates/generator_template.js', 'reuse_type': 'reference_code', 'reuse_value': 'medium', 'description': {'zh': 'p5.js最佳实践参考，展示参数组织与随机种子用法，可指导新算法结构。', 'en': 'Reference for p5.js best practices, showing parameter organization and seed usage; can guide new algorithm structures.'}} · {'path': 'philosophy_generation_pattern', 'reuse_type': 'pattern', 'reuse_value': 'low', 'description': {'zh': '生成算法哲学的流程和风格可复用，但具体内容必须原创。', 'en': 'The process and style of generating an algorithmic philosophy can be reused, but the content must be original.'}}",
+      "facts": [
+        {
+          "label": "reuse",
+          "value": "3"
+        },
+        {
+          "label": "refs",
+          "value": "0"
+        },
+        {
+          "label": "assets",
+          "value": "0"
+        }
+      ],
+      "tags": [
+        "reuse",
+        "templates",
+        "assets"
+      ],
+      "href": "../report/#patterns",
+      "details": [
+        {
+          "label": "asset 1",
+          "title": "templates/viewer.html",
+          "body": "Anthropic品牌化的交互框架，每次创作均以此为基础。",
+          "tone": "asset"
+        },
+        {
+          "label": "asset 2",
+          "title": "templates/generator_template.js",
+          "body": "p5.js最佳实践参考，展示参数组织与随机种子用法，可指导新算法结构。",
+          "tone": "asset"
+        },
+        {
+          "label": "asset 3",
+          "title": "philosophy_generation_pattern",
+          "body": "生成算法哲学的流程和风格可复用，但具体内容必须原创。",
+          "tone": "asset"
+        }
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "key": "source",
+      "title": "Repo Signal",
+      "card_title": "Source",
+      "text": "本次 run 读取 18 个文件，检测到 1 个 skill package。",
+      "input": "GitHub URL / Local path",
+      "action": "collect inventory and detect skill packages",
+      "output": "1 skill(s), 18 file(s)",
+      "tags": [
+        "18 files",
+        "1 skills",
+        "inventory"
+      ],
+      "links": [
+        {
+          "label": "Skill 清单",
+          "href": "../report/#skills"
+        },
+        {
+          "label": "覆盖率",
+          "href": "../report/#coverage"
+        }
+      ]
+    },
+    {
+      "key": "core",
+      "title": "Skill Core",
+      "card_title": "Core",
+      "text": "结构分析已生成 1 个 skill 档案，用于呈现 identity、activation、boundary 与 outputs。",
+      "input": "SKILL.md / package layout",
+      "action": "structure analysis",
+      "output": "skill detail pages",
+      "tags": [
+        "identity",
+        "boundary",
+        "1 approved"
+      ],
+      "links": [
+        {
+          "label": "Skill 详情",
+          "href": "../report/#skills"
+        }
+      ]
+    },
+    {
+      "key": "resources",
+      "title": "Resource Split",
+      "card_title": "Resources",
+      "text": "资源层识别 scripts=0、references=0、assets=0。",
+      "input": "scripts / references / assets",
+      "action": "classify resources and dependencies",
+      "output": "resource map",
+      "tags": [
+        "0 scripts",
+        "0 refs",
+        "0 assets"
+      ],
+      "links": [
+        {
+          "label": "资源依赖",
+          "href": "../report/#resources"
+        }
+      ]
+    },
+    {
+      "key": "workflow",
+      "title": "Workflow Trace",
+      "card_title": "Workflow",
+      "text": "工作流层当前包含 9 个 step，后续会扩展 action、condition、fallback 与 stop 节点。",
+      "input": "workflow signals / LLM analysis",
+      "action": "reconstruct workflow",
+      "output": "9 workflow step(s)",
+      "tags": [
+        "9 steps",
+        "actions",
+        "fallbacks"
+      ],
+      "links": [
+        {
+          "label": "Workflow",
+          "href": "../report/#workflow"
+        }
+      ]
+    },
+    {
+      "key": "evidence",
+      "title": "Evidence Lock",
+      "card_title": "Evidence",
+      "text": "质量层发现 3 个确定性问题，Reviewer 汇总 1 个问题。",
+      "input": "evidence / reviewer outputs",
+      "action": "quality and grounding review",
+      "output": "review cards",
+      "tags": [
+        "3 rule issues",
+        "1 review",
+        "grounding"
+      ],
+      "links": [
+        {
+          "label": "质量证据",
+          "href": "../report/#quality"
+        },
+        {
+          "label": "Reviewer",
+          "href": "../report/#reviews"
+        }
+      ]
+    },
+    {
+      "key": "report",
+      "title": "Report Release",
+      "card_title": "Report",
+      "text": "拆解结果汇总为 Web Report，并继续分发到 Obsidian、Graph 与 JSON/Data 出口。",
+      "input": "reviewed artifacts",
+      "action": "publish report surfaces",
+      "output": "Web / Obsidian / Graph / JSON",
+      "tags": [
+        "web",
+        "obsidian",
+        "json"
+      ],
+      "links": [
+        {
+          "label": "打开报告",
+          "href": "../report/"
+        },
+        {
+          "label": "输出中心",
+          "href": "../report/#exports"
+        }
+      ]
+    }
+  ]
+}

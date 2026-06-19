@@ -1,0 +1,49 @@
+{
+  "run_dir": "C:\\Users\\Y2516\\Desktop\\LetUen\\runs\\20260607T185328Z",
+  "reviewed_skill_count": 1,
+  "status_counts": {
+    "needs_revision": 1,
+    "approved": 1
+  },
+  "average_scores": {
+    "evidence_score": 1.0,
+    "structure_score": 2.0,
+    "workflow_score": 2.0,
+    "pattern_score": 1.0,
+    "bilingual_score": 3.0,
+    "obsidian_score": 3.0
+  },
+  "totals": {
+    "issues": 1,
+    "unsupported_claims": 0,
+    "missing_evidence": 0,
+    "over_inference": 0,
+    "skills": 2
+  },
+  "skills": [
+    {
+      "skill_id": "sample-skill-sample-skill",
+      "status": "needs_revision",
+      "scores": {
+        "evidence_score": 1,
+        "structure_score": 2,
+        "workflow_score": 2,
+        "pattern_score": 1,
+        "bilingual_score": 3,
+        "obsidian_score": 3
+      },
+      "issue_count": 1,
+      "unsupported_claim_count": 0,
+      "missing_evidence_count": 0,
+      "over_inference_count": 0,
+      "approved_for_publish": false,
+      "path": "skills\\sample-skill-sample-skill\\review_report.json"
+    },
+    {
+      "skill_id": "research-skill-research-skill",
+      "status": "approved",
+      "issue_count": 0,
+      "approved_for_publish": true
+    }
+  ]
+}

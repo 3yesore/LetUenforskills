@@ -1,0 +1,40 @@
+[
+  {
+    "run_id": "20260613T183941Z",
+    "provider": "openai",
+    "model": "openai",
+    "skill_id": "anthropics-skills-skills-algorithmic-art",
+    "skill_name": "algorithmic-art",
+    "summary_zh": "用于使用 p5.js 创建算法艺术的技能。它引导智能体首先编写算法哲学，然后实现为自包含的交互式HTML作品。强调种子随机性、参数探索和Anthropic用户界面品牌。",
+    "skill_type": "workflow",
+    "workflow_steps": 9,
+    "review_status": "publishable",
+    "review_issues": 0,
+    "patterns": 1,
+    "evidence_score": 4,
+    "structure_score": 5,
+    "workflow_score": 5,
+    "pattern_score": 4,
+    "bilingual_score": 5,
+    "obsidian_score": 5
+  },
+  {
+    "run_id": "20260613T175026Z",
+    "provider": "openai",
+    "model": "openai",
+    "skill_id": "anthropics-skills-skills-algorithmic-art",
+    "skill_name": "algorithmic-art",
+    "summary_zh": "该技能包定义了一个创建算法艺术的流程：先生成算法哲学文件(.md)，然后基于该哲学实现 p5.js 交互式生成艺术(.html + .js)。包含模板文件作为起始点。",
+    "skill_type": "workflow",
+    "workflow_steps": 6,
+    "review_status": "publishable",
+    "review_issues": 2,
+    "patterns": 0,
+    "evidence_score": 4,
+    "structure_score": 5,
+    "workflow_score": 5,
+    "pattern_score": 4,
+    "bilingual_score": 5,
+    "obsidian_score": 3
+  }
+]

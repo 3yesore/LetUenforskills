@@ -1,0 +1,50 @@
+.env
+.cache/
+node_modules/
+tmp/
+__pycache__/
+*.pyc
+runs/*
+!runs/.gitkeep
+vault/*
+!vault/.gitkeep
+
+site/report/
+dist/
+indexes/
+datasets/
+graph/
+site/vault/
+!runs/demo-multi-skill/
+!runs/demo-multi-skill/**
+
+anatomy.local-run.yaml
+
+# generated evaluation outputs
+evaluations/runs/
+evaluations/*/letuen/
+evaluations/*/letuen*/
+evaluations/**/*-quality*.json
+!evaluations/anatomy.deepseek.pro.anthropic-benchmark-five.yaml
+!evaluations/sources.anthropic-benchmark-five.yaml
+!evaluations/deepseek-v4pro-benchmark-five/release_evaluation.md
+!evaluations/deepseek-v4pro-benchmark-five/evaluation.md
+
+# generated local outputs
+site/report/
+site/vault/
+dist/
+
+# private/local notes
+memory/
+
+# generated evaluation notebooks and smoke inventories
+evaluations/vault/
+evaluations/github-skill-smoke*/
+evaluations/anthropic-five-*/
+evaluations/deepseek-v4pro-benchmark-one/
+
+# old generated release artifacts
+releases/agent-skill-anatomy-meta-skills-*
+releases/LETUEN-SHA256SUMS.txt
+releases/letuen-skill-anchor-pack/

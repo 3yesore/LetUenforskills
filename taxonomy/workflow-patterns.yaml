@@ -1,0 +1,17 @@
+patterns:
+  - id: progressive-disclosure
+    canonical_name: Progressive Disclosure
+    zh_name: 渐进式披露
+    category: context
+    status: seed
+  - id: script-backed-skill
+    canonical_name: Script-backed Skill
+    zh_name: 脚本支撑型技能
+    category: tool
+    status: seed
+  - id: verification-loop
+    canonical_name: Verification Loop
+    zh_name: 验证循环
+    category: verification
+    status: seed
+

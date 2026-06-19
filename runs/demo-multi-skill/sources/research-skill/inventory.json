@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "source": {
+    "name": "research-skill",
+    "type": "local",
+    "url": null,
+    "path": "examples/research-skill",
+    "ref": null,
+    "resolved_commit": null,
+    "fetched_at": "2026-06-07T18:53:28Z",
+    "license": null
+  },
+  "repository": {
+    "root_path": "examples/research-skill",
+    "readme_path": "README.md",
+    "license_path": null,
+    "total_files_scanned": 3
+  },
+  "skill_packages": [
+    {
+      "id": "research-skill-research-skill",
+      "name": "research-skill",
+      "root_path": "research-skill",
+      "skill_md_path": "research-skill/SKILL.md",
+      "readme_path": "research-skill/README.md",
+      "scripts": [
+        {
+          "path": "research-skill/scripts/collect.py"
+        }
+      ],
+      "references": [
+        {
+          "path": "research-skill/references/checklist.md"
+        }
+      ],
+      "assets": [],
+      "examples": [],
+      "related_files": [],
+      "source_name": "research-skill",
+      "source_inventory_path": "sources/research-skill/inventory.json"
+    }
+  ],
+  "warnings": []
+}

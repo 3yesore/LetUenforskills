@@ -1,0 +1,23 @@
+schema_version: 1
+goal:
+  type: temporary_composition
+  description: "Borrow the sample skill's progressive read workflow and format validation as a one-off safe response pattern."
+constraints:
+  avoid_full_workflow: true
+  preserve_existing_skill_structure: true
+  target_agent: codex
+  target_project_path: null
+  allowed_side_effects:
+    - none
+    - reads_files
+  require_dry_run: false
+selected_anchor_types:
+  - workflow_anchor
+  - boundary_anchor
+  - validation_anchor
+selected_source_skills:
+  - sample-skill
+excluded_source_skills: []
+preferred_outputs:
+  - markdown
+  - json

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "skill_id": "research-skill-research-skill",
+  "source": {
+    "repo": null,
+    "commit": null,
+    "root_path": "research-skill",
+    "skill_md_path": "research-skill/SKILL.md"
+  },
+  "frontmatter": {
+    "name": "research-skill"
+  },
+  "summary": {
+    "zh": "研究型 skill，用于收集来源、建立证据链并产出可复用研究笔记。",
+    "en": "Research skill for source collection, evidence chains, and reusable notes."
+  },
+  "target_agents": [
+    "codex",
+    "claude-code"
+  ],
+  "skill_type": {
+    "primary": "research",
+    "secondary": [
+      "evidence",
+      "workflow"
+    ]
+  },
+  "trigger_conditions": {
+    "explicit": [
+      "用户要求研究 GitHub 项目",
+      "需要整理证据来源"
+    ],
+    "inferred": [
+      "需要产出 Obsidian 笔记"
+    ]
+  },
+  "inputs": [
+    "GitHub URL",
+    "research question"
+  ],
+  "outputs": [
+    "evidence table",
+    "Obsidian note",
+    "reuse checklist"
+  ],
+  "file_anatomy": {
+    "skill_md": {
+      "purpose": "Primary research workflow instruction.",
+      "sections": [
+        "Trigger",
+        "Evidence",
+        "Outputs"
+      ]
+    },
+    "scripts": [
+      {
+        "path": "research-skill/scripts/collect.py"
+      }
+    ],
+    "references": [
+      {
+        "path": "research-skill/references/checklist.md"
+      }
+    ],
+    "assets": []
+  },
+  "context_strategy": {
+    "summary": "先读 SKILL.md，再按需加载 checklist 和脚本。",
+    "progressive_disclosure": "load references only when evidence review starts",
+    "evidence": []
+  },
+  "tools": [
+    {
+      "name": "git",
+      "purpose": "inspect repository history"
+    },
+    {
+      "name": "browser",
+      "purpose": "verify external sources"
+    }
+  ],
+  "risks": [
+    {
+      "name": "stale source",
+      "severity": "medium"
+    }
+  ],
+  "confidence": {
+    "overall": "medium",
+    "notes": "Demo fixture with grounded-looking structure."
+  }
+}

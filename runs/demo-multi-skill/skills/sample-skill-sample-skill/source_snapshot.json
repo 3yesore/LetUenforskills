@@ -1,0 +1,39 @@
+{
+  "source": {
+    "name": "sample-skill",
+    "type": "local",
+    "url": null,
+    "path": "C:\\Users\\Y2516\\Desktop\\LetUen\\examples\\sample-skill",
+    "ref": null,
+    "resolved_commit": null,
+    "fetched_at": "2026-06-07T18:53:28.817817+00:00",
+    "license": null,
+    "acquisition_method": "local"
+  },
+  "skill_package": {
+    "id": "sample-skill-sample-skill",
+    "name": "sample-skill",
+    "root_path": ".",
+    "skill_md_path": "SKILL.md",
+    "readme_path": null,
+    "scripts": [],
+    "references": [],
+    "assets": [],
+    "examples": [],
+    "related_files": [],
+    "source_name": "sample-skill",
+    "source_inventory_path": "sources\\sample-skill\\inventory.json"
+  },
+  "skill_context": {
+    "skill_md": {
+      "path": "SKILL.md",
+      "size_bytes": 419,
+      "truncated": false,
+      "content": "---\nname: sample-skill\ndescription: Demonstrates the Agent Skill Anatomy harness with a tiny local skill.\n---\n\n# Sample Skill\n\nUse this skill when testing the Agent Skill Anatomy runtime skeleton.\n\n## Workflow\n\n1. Inspect the user request.\n2. Load only the files needed for the task.\n3. Produce a concise result.\n4. Verify that the output matches the requested format.\n\n## Safety\n\nDo not execute destructive commands.\n\n"
+    },
+    "readme": null,
+    "scripts_manifest": [],
+    "references_manifest": [],
+    "assets_manifest": []
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "patterns": [
+    {
+      "id": "skill-package-anatomy",
+      "canonical_name": "Skill Package Anatomy",
+      "zh_name": "技能包解剖",
+      "category": "packaging",
+      "status": "candidate",
+      "definition": {
+        "zh": "围绕 SKILL.md 识别技能包结构。",
+        "en": "Identify package structure around SKILL.md."
+      },
+      "problem": {
+        "zh": "技能资产分散在多个文件中。",
+        "en": "Skill assets are spread across files."
+      },
+      "solution": {
+        "zh": "用统一 inventory 归档结构。",
+        "en": "Use a unified inventory to capture structure."
+      },
+      "when_to_use": {
+        "zh": "分析 SKILL.md 风格仓库时使用。",
+        "en": "Use when analyzing SKILL.md-style repositories."
+      },
+      "signals": [],
+      "examples": [
+        {
+          "skill_id": "sample-skill-sample-skill",
+          "source_path": "SKILL.md",
+          "evidence": []
+        }
+      ],
+      "counterexamples": [],
+      "reusable_template": {
+        "zh": "先收集，再分析，再渲染。",
+        "en": "Collect, analyze, then render."
+      },
+      "related_patterns": [],
+      "minimum_examples_required": 2,
+      "confidence": "low"
+    },
+    {
+      "id": "evidence-first-research-loop",
+      "canonical_name": "Evidence First Research Loop",
+      "zh_name": "证据优先研究循环",
+      "category": "research",
+      "status": "candidate",
+      "definition": {
+        "zh": "先收集证据，再做归纳。",
+        "en": "Collect evidence before synthesis."
+      },
+      "examples": [
+        {
+          "skill_id": "research-skill-research-skill",
+          "source_path": "research-skill/SKILL.md",
+          "evidence": []
+        }
+      ],
+      "confidence": "medium"
+    }
+  ]
+}

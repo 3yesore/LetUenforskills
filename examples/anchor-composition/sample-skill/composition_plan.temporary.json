@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "request_id": "sample-skill-temporary-safe-response",
+  "composition_form": "temporary_composition",
+  "summary": {
+    "zh": "临时借用 sample-skill 的按需读取、安全边界和格式校验，不生成新 workflow，不修改用户 skill。",
+    "en": "Temporarily borrow sample-skill's progressive reading, safety boundary, and format validation without generating a new workflow or modifying user skills."
+  },
+  "selected_anchors": [
+    {
+      "anchor_id": "anchor.sample-skill.workflow.progressive-read-then-deliver",
+      "reason": "Provides the minimal read-plan-deliver sequence requested by the composition goal.",
+      "evidence_confidence": "high",
+      "portability_score": "high",
+      "risk_score": "low",
+      "selected_reuse_mode": "temporary_composition"
+    },
+    {
+      "anchor_id": "anchor.sample-skill.boundary.no-destructive-commands",
+      "reason": "Adds a clear non-destructive safety boundary to the borrowed method.",
+      "evidence_confidence": "high",
+      "portability_score": "high",
+      "risk_score": "low",
+      "selected_reuse_mode": "temporary_composition"
+    },
+    {
+      "anchor_id": "anchor.sample-skill.validation.requested-format-check",
+      "reason": "Adds a lightweight quality gate before delivering the response.",
+      "evidence_confidence": "high",
+      "portability_score": "high",
+      "risk_score": "low",
+      "selected_reuse_mode": "quality_gate"
+    }
+  ],
+  "rejected_anchors": [
+    {
+      "anchor_id": "anchor.sample-skill.identity.runtime-skeleton-test",
+      "reason": "Useful as learning context, but not needed for the temporary response composition."
+    }
+  ],
+  "compatibility_matrix": [
+    {
+      "left_anchor": "anchor.sample-skill.workflow.progressive-read-then-deliver",
+      "right_anchor": "anchor.sample-skill.boundary.no-destructive-commands",
+      "compatibility": "strong_fit",
+      "notes": "The workflow can run under the non-destructive boundary without adapters."
+    },
+    {
+      "left_anchor": "anchor.sample-skill.workflow.progressive-read-then-deliver",
+      "right_anchor": "anchor.sample-skill.validation.requested-format-check",
+      "compatibility": "strong_fit",
+      "notes": "The validation gate is already the final workflow step."
+    }
+  ],
+  "dispatch_policy": {
+    "policy": "prefer_existing_skill",
+    "reason": "No trigger patch is generated; if an existing user skill already handles the request, it remains primary."
+  },
+  "outputs": [
+    {
+      "path": "examples/anchor-composition/sample-skill/temporary_prompt_bundle.md",
+      "kind": "prompt_patch",
+      "destructive": false,
+      "reversible": true
+    }
+  ],
+  "solidification": {
+    "requested": false,
+    "reason": "The user goal is temporary composition, not a new skill or full workflow.",
+    "approved": false
+  },
+  "next_steps": [
+    "Use the prompt bundle for a single task.",
+    "Promote to a new skill only if the user explicitly asks to persist the composition."
+  ]
+}

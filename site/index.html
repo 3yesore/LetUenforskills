@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Agent Skill Anatomy: local research UI for decomposing agent skills and workflows into evidence-grounded reusable assets."
+    />
+    <title>Agent Skill Anatomy</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+      <span class="orb orb-c"></span>
+    </div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Agent Skill Anatomy">
+        <span class="brand-mark"></span>
+        <span class="brand-text">Agent Skill Anatomy</span>
+      </a>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#entry" data-i18n data-zh="入口" data-en="Entry">入口</a>
+        <a href="#surfaces" data-i18n data-zh="输出" data-en="Surfaces">输出</a>
+        <a href="#archive" data-i18n data-zh="档案" data-en="Archive">档案</a>
+        <a href="#flow" data-i18n data-zh="流程" data-en="Flow">流程</a>
+        <button class="lang-toggle" type="button" data-lang-toggle aria-label="Switch language">EN</button>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section id="entry" class="hero panel beam-panel reveal portal-hero">
+        <div class="hero-copy">
+          <p class="label hero-label"><span>本地研究工具</span><i></i><span>Local Research UI</span></p>
+          <h1 class="hero-title" aria-label="拆解 Skill 沉淀可复用资产"><span class="title-primary"><span class="title-cn">拆解</span><span class="title-en">Skill</span></span><span class="title-secondary" data-i18n data-zh="沉淀可复用资产" data-en="Reusable assets">沉淀可复用资产</span></h1>
+          <p class="lead" data-i18n data-zh="输入 GitHub URL，触发多 Agent 拆解，把 Skills 与 workflow 归档为网页版报告、Obsidian 笔记、研究数据和关系图谱。" data-en="Input a GitHub URL, run multi-agent decomposition, and archive Skills plus workflows as a web report, Obsidian notes, research data, and graph views.">
+            输入 GitHub URL，触发多 Agent 拆解，把 Skills 与 workflow 归档为网页版报告、Obsidian 笔记、研究数据和关系图谱。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#surfaces" data-i18n data-zh="选择输出格式" data-en="Choose surface">选择输出格式</a>
+            <a class="button ghost" href="cinema/" data-i18n data-zh="首次观看 Demo" data-en="First-run demo">首次观看 Demo</a>
+            <a class="button ghost" href="repo/" data-i18n data-zh="正式 Repo 档案" data-en="Formal repo dossier">正式 Repo 档案</a>
+          </div>
+        </div>
+
+        <aside class="analyze-console interactive-console" aria-label="GitHub analysis entry" data-analyze-console>
+          <div class="console-head">
+            <span data-i18n data-zh="拆解入口" data-en="Analyze Entry">拆解入口</span>
+            <strong data-analyze-state>ready</strong>
+          </div>
+          <label class="url-field">
+            <span data-i18n data-zh="GitHub 仓库地址" data-en="GitHub repository URL">GitHub 仓库地址</span>
+            <input data-github-input type="url" value="https://github.com/anthropics/skills" aria-label="GitHub URL" spellcheck="false" />
+          </label>
+          <div class="model-selector is-collapsed" aria-label="LLM provider selector" data-model-selector>
+            <button class="model-summary" type="button" data-model-toggle aria-expanded="false">
+              <span>
+                <em data-i18n data-zh="模型路由" data-en="Model route">模型路由</em>
+                <strong data-model-label>Local Mock · fork-ready</strong>
+              </span>
+              <i data-i18n data-zh="展开配置" data-en="Configure">展开配置</i>
+              <b class="model-save-chip" data-save-model-config data-i18n data-zh="保存" data-en="Save">保存</b>
+            </button>
+            <div class="model-drawer" data-model-drawer>
+              <div class="model-options" role="radiogroup" aria-label="LLM providers">
+                <button class="model-option is-active" type="button" role="radio" aria-checked="true" data-model-option data-model="Local Mock · fork-ready" data-model-id="mock" data-provider="mock" data-api-mode="" data-config="anatomy.config.example.yaml" data-key-env="" data-base-url="local"><span>Local</span><strong>Mock</strong></button>
+                <button class="model-option" type="button" role="radio" aria-checked="false" data-model-option data-model="OpenAI · gpt-5.2" data-model-id="gpt-5.2" data-provider="openai" data-api-mode="responses" data-config="anatomy.openai.example.yaml" data-key-env="OPENAI_API_KEY" data-base-url="https://api.openai.com/v1"><span>OpenAI</span><strong>gpt-5.2</strong></button>
+                <button class="model-option" type="button" role="radio" aria-checked="false" data-model-option data-model="Claude · Opus 4.5" data-model-id="claude-opus-4-5" data-provider="anthropic" data-api-mode="messages" data-config="anatomy.claude.example.yaml" data-key-env="ANTHROPIC_API_KEY" data-base-url="https://api.anthropic.com/v1"><span>Claude</span><strong>Opus 4.5</strong></button>
+                <button class="model-option" type="button" role="radio" aria-checked="false" data-model-option data-model="DeepSeek · V4 Pro" data-model-id="deepseek-v4-pro" data-provider="openai" data-api-mode="chat_completions" data-config="anatomy.deepseek.example.yaml" data-key-env="DEEPSEEK_API_KEY" data-base-url="https://api.deepseek.com"><span>DeepSeek</span><strong>V4 Pro</strong></button>
+                <button class="model-option" type="button" role="radio" aria-checked="false" data-model-option data-model="Qwen · Qwen3.7 Max" data-model-id="qwen3.7-max" data-provider="openai" data-api-mode="chat_completions" data-config="anatomy.qwen.example.yaml" data-key-env="DASHSCOPE_API_KEY" data-base-url="https://dashscope.aliyuncs.com/compatible-mode/v1"><span>Qwen</span><strong>Qwen3.7</strong></button>
+              </div>
+              <div class="model-config-grid">
+                <label><span data-i18n data-zh="配置文件" data-en="Config file">配置文件</span><input data-model-config-field="config" value="anatomy.config.example.yaml" /></label>
+                <label><span data-i18n data-zh="API Key 环境变量" data-en="API key env">API Key 环境变量</span><input data-model-config-field="keyEnv" value="" /></label>
+                <label><span data-i18n data-zh="模型名" data-en="Model ID">模型名</span><input data-model-config-field="modelId" value="mock" /></label>
+                <label><span data-i18n data-zh="API Key" data-en="API Key">API Key</span><input data-model-config-field="apiKey" value="" type="password" autocomplete="off" /></label>
+                <label class="wide"><span data-i18n data-zh="Base URL" data-en="Base URL">Base URL</span><input data-model-config-field="baseUrl" value="local" /></label>
+              </div>
+              <div class="model-drawer-actions">
+                <button class="model-save-button ghost" type="button" data-clear-model-config data-i18n data-zh="清除保存" data-en="Clear saved">清除保存</button>
+                <a class="model-settings-link" href="settings/models/" data-i18n data-zh="打开高级模型配置" data-en="Open advanced model settings">打开高级模型配置</a>
+              </div>
+            </div>
+          </div>
+          <div class="entry-actions">
+            <button class="button primary analyze-button" type="button" data-run-analysis data-i18n data-zh="开始拆解" data-en="Run anatomy">开始拆解</button>
+            <button class="button ghost sample-button" type="button" data-load-sample data-i18n data-zh="载入示例" data-en="Load sample">载入示例</button>
+          </div>
+          <div class="agent-track" aria-label="Analysis agents">
+            <span class="is-active" data-agent-step="collect">Collect</span>
+            <span data-agent-step="analyze">Analyze</span>
+            <span data-agent-step="review">Review</span>
+            <span data-agent-step="export">Export</span>
+          </div>
+          <div class="entry-grid compact">
+            <div><span data-i18n data-zh="调用方式" data-en="Mode">调用方式</span><strong data-i18n data-zh="真实多轮模型" data-en="Multi-call LLM">真实多轮模型</strong></div>
+            <div><span data-i18n data-zh="输出选择" data-en="Surface">输出选择</span><strong data-i18n data-zh="报告 · Vault · 数据 · 图谱" data-en="Report · Vault · Data · Graph">报告 · Vault · 数据 · 图谱</strong></div>
+          </div>
+          <div class="console-log" aria-live="polite" data-console-log>
+            <p><span>ready</span><strong data-i18n data-zh="等待 GitHub URL" data-en="Waiting for GitHub URL">等待 GitHub URL</strong></p>
+            <p><span>config</span><strong data-config-hint>python -m asa run --config anatomy.openai.example.yaml</strong></p>
+          </div>
+          <div class="result-handoff" data-result-handoff aria-live="polite">
+            <span data-i18n data-zh="拆解完成" data-en="Anatomy complete">拆解完成</span>
+            <strong data-i18n data-zh="Skill 拆解档案已生成" data-en="Skill archive is ready">Skill 拆解档案已生成</strong>
+            <p data-i18n data-zh="首次拆解默认进入 Demo；后续可选择 Demo 或正式 Repo 档案。" data-en="The first anatomy run opens Demo by default; later runs can choose Demo or the formal Repo dossier.">首次拆解默认进入 Demo；后续可选择 Demo 或正式 Repo 档案。</p>
+            <a class="handoff-route" href="cinema/" data-handoff-route data-i18n data-zh="打开本次拆解" data-en="Open this run">打开本次拆解</a>
+          </div>
+        </aside>
+      </section>
+
+      <section id="surfaces" class="section reveal surfaces-section">
+        <div class="section-title narrow">
+          <span class="section-mark">01 <em>Surfaces</em></span>
+          <h2 data-i18n data-zh="输出格式在界面里选择" data-en="Choose output surfaces in the UI">输出格式在界面里选择</h2>
+          <p data-i18n data-zh="首页负责选择阅读方式与跳转；完整网页版 repo 报告独立承载，避免把作品页做成后台面板。" data-en="The home UI selects surfaces and routes users; the full repo report stays independent so the work reads like an archive, not an admin panel.">首页负责选择阅读方式与跳转；完整网页版 repo 报告独立承载，避免把作品页做成后台面板。</p>
+        </div>
+        <div class="surface-board" data-surface-board>
+          <div class="surface-tabs" role="tablist" aria-label="Output surfaces">
+            <button class="surface-tab is-active" type="button" data-surface-tab="cinema" role="tab" aria-selected="true"><span data-i18n data-zh="Demo 首映" data-en="Demo First">Demo 首映</span></button>
+            <button class="surface-tab" type="button" data-surface-tab="repo" role="tab" aria-selected="false"><span data-i18n data-zh="正式 Repo" data-en="Formal Repo">正式 Repo</span></button>
+            <button class="surface-tab" type="button" data-surface-tab="report" role="tab" aria-selected="false"><span data-i18n data-zh="网页版报告" data-en="Web Report">网页版报告</span></button>
+            <button class="surface-tab" type="button" data-surface-tab="vault" role="tab" aria-selected="false"><span data-i18n data-zh="Obsidian 学习" data-en="Obsidian Learning">Obsidian 学习</span></button>
+            <button class="surface-tab" type="button" data-surface-tab="data" role="tab" aria-selected="false"><span data-i18n data-zh="数据研究" data-en="Data Research">数据研究</span></button>
+            <button class="surface-tab" type="button" data-surface-tab="graph" role="tab" aria-selected="false"><span data-i18n data-zh="图谱视图" data-en="Graph View">图谱视图</span></button>
+          </div>
+          <div class="surface-preview">
+            <article class="surface-pane is-active" data-surface-pane="cinema">
+              <span class="surface-status ready" data-i18n data-zh="首次默认" data-en="First default">首次默认</span>
+              <h3 data-i18n data-zh="Demo 拆解首映" data-en="Demo anatomy premiere">Demo 拆解首映</h3>
+              <p data-i18n data-zh="第一次完成 Skill 拆解后，默认进入滚轮叙事：用动效解释来源、边界、工具、workflow、证据与复用沉淀。" data-en="After the first skill anatomy run, open the scroll story by default: source, boundary, tools, workflow, evidence, and reuse." >第一次完成 Skill 拆解后，默认进入滚轮叙事：用动效解释来源、边界、工具、workflow、证据与复用沉淀。</p>
+              <a class="surface-link" href="cinema/" data-i18n data-zh="观看 Demo" data-en="Watch Demo">观看 Demo</a>
+            </article>
+            <article class="surface-pane" data-surface-pane="repo">
+              <span class="surface-status ready" data-i18n data-zh="正式展示" data-en="Formal surface">正式展示</span>
+              <h3 data-i18n data-zh="正式 Repo 拆解档案" data-en="Formal repo dossier">正式 Repo 拆解档案</h3>
+              <p data-i18n data-zh="后续拆解可直接进入正式 Repo：同步 Demo 的字体、动效和毛玻璃语言，但更适合稳定阅读与验收。" data-en="Later runs can open the formal repo directly: same typography, motion, and glass language as Demo, optimized for review." >后续拆解可直接进入正式 Repo：同步 Demo 的字体、动效和毛玻璃语言，但更适合稳定阅读与验收。</p>
+              <a class="surface-link" href="repo/" data-i18n data-zh="打开 Repo 档案" data-en="Open repo dossier">打开 Repo 档案</a>
+            </article>
+            <article class="surface-pane" data-surface-pane="report">
+              <span class="surface-status ready" data-i18n data-zh="可跳转" data-en="Ready">可跳转</span>
+              <h3 data-i18n data-zh="网页版 repo 报告" data-en="Web repo report">网页版 repo 报告</h3>
+              <p data-i18n data-zh="面向公开展示的主作品页：汇总 Skill 结构、workflow、证据、review 与可复用模式。" data-en="The primary public-facing artifact: Skill structure, workflows, evidence, review, and reusable patterns in one polished archive.">面向公开展示的主作品页：汇总 Skill 结构、workflow、证据、review 与可复用模式。</p>
+              <a class="surface-link" href="report/" data-i18n data-zh="进入报告" data-en="Open report">进入报告</a>
+            </article>
+            <article class="surface-pane" data-surface-pane="vault">
+              <span class="surface-status ready" data-i18n data-zh="可跳转" data-en="Ready">可跳转</span>
+              <h3 data-i18n data-zh="Obsidian 学习库" data-en="Obsidian learning vault">Obsidian 学习库</h3>
+              <p data-i18n data-zh="把报告拆成长期学习笔记、反链索引、模式页与来源页，适合二次整理。" data-en="Splits the report into durable notes, backlinks, pattern pages, and source pages for long-form study.">把报告拆成长期学习笔记、反链索引、模式页与来源页，适合二次整理。</p>
+              <a class="surface-link" href="vault/Open%20in%20Obsidian.html" data-i18n data-zh="打开知识库" data-en="Open vault">打开知识库</a>
+            </article>
+            <article class="surface-pane" data-surface-pane="data">
+              <span class="surface-status ready" data-i18n data-zh="可跳转" data-en="Ready">可跳转</span>
+              <h3 data-i18n data-zh="结构化研究数据" data-en="Structured research data">结构化研究数据</h3>
+              <p data-i18n data-zh="面向结构化复查与二次研究，输出 JSONL/CSV、质量指标和可复现实验记录。" data-en="For structured review and follow-up research: JSONL/CSV, quality metrics, and reproducible experiment records.">面向结构化复查与二次研究，输出 JSONL/CSV、质量指标和可复现实验记录。</p>
+              <a class="surface-link" href="data/" data-i18n data-zh="打开数据页" data-en="Open data">打开数据页</a>
+            </article>
+            <article class="surface-pane" data-surface-pane="graph">
+              <span class="surface-status ready" data-i18n data-zh="可跳转" data-en="Ready">可跳转</span>
+              <h3 data-i18n data-zh="关系图谱视图" data-en="Relationship graph view">关系图谱视图</h3>
+              <p data-i18n data-zh="将 Skill、workflow、evidence、pattern 与复用线索映射成可浏览图谱。" data-en="Maps skills, workflows, evidence, patterns, and reuse signals into a browsable graph.">将 Skill、workflow、evidence、pattern 与复用线索映射成可浏览图谱。</p>
+              <a class="surface-link" href="graph/" data-i18n data-zh="打开图谱" data-en="Open graph">打开图谱</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="archive" class="section reveal archive-section">
+        <div class="section-title">
+          <span class="section-mark">02 <em>Archive</em></span>
+          <h2 data-i18n data-zh="报告页是一份 Skill 拆解档案" data-en="The report is a Skill anatomy archive">报告页是一份 Skill 拆解档案</h2>
+          <p data-i18n data-zh="它不抢入口职责，只负责把拆解后的详细内容汇总成可分享、可审计、可复用的作品。" data-en="It does not own the entry flow; it turns detailed decomposition into a shareable, auditable, reusable work.">它不抢入口职责，只负责把拆解后的详细内容汇总成可分享、可审计、可复用的作品。</p>
+        </div>
+        <div class="archive-preview beam-panel">
+          <div class="archive-copy">
+            <span class="surface-status ready">Web Report</span>
+            <h3>Skill Anatomy Archive</h3>
+            <p data-i18n data-zh="汇总结构、步骤、证据、质量、review 与候选模式；质量状态降级为元信息，不作为主视觉。" data-en="Collects structure, steps, evidence, quality, review, and pattern candidates; quality state becomes metadata, not the hero visual.">汇总结构、步骤、证据、质量、review 与候选模式；质量状态降级为元信息，不作为主视觉。</p>
+            <a class="button primary" href="report/" data-i18n data-zh="查看 Skill 拆解档案" data-en="Open Skill archive">查看 Skill 拆解档案</a>
+          </div>
+          <div class="archive-rail" aria-hidden="true">
+            <span>Structure</span>
+            <span>Workflow</span>
+            <span>Evidence</span>
+            <span>Review</span>
+            <span>Patterns</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="flow" class="section reveal">
+        <div class="section-title narrow">
+          <span class="section-mark">03 <em>Flow</em></span>
+          <h2 data-i18n data-zh="从仓库到复用资产" data-en="From repository to reusable assets">从仓库到复用资产</h2>
+          <p data-i18n data-zh="流程保持横向叙事：收集、拆解、证据扎根、审查、导出。" data-en="The flow stays as a horizontal narrative: collect, decompose, ground evidence, review, export.">流程保持横向叙事：收集、拆解、证据扎根、审查、导出。</p>
+        </div>
+        <div class="flow-line" aria-label="Analysis flow">
+          <article><span>Collect</span><strong data-i18n data-zh="收集仓库与清单" data-en="Collect repositories">收集仓库与清单</strong></article>
+          <article><span>Analyze</span><strong data-i18n data-zh="拆解 Skill 结构" data-en="Decompose skills">拆解 Skill 结构</strong></article>
+          <article><span>Trace</span><strong data-i18n data-zh="抽取 workflow 证据" data-en="Trace evidence">抽取 workflow 证据</strong></article>
+          <article><span>Review</span><strong data-i18n data-zh="检查推断与质量" data-en="Review quality">检查推断与质量</strong></article>
+          <article><span>Export</span><strong data-i18n data-zh="生成多格式资产" data-en="Export surfaces">生成多格式资产</strong></article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Agent Skill Anatomy</span>
+      <span data-i18n data-zh="研究门户 · 报告档案 · 复用资产" data-en="Research portal · report archive · reusable assets">研究门户 · 报告档案 · 复用资产</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

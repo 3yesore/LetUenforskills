@@ -1,0 +1,65 @@
+project:
+  name: agent-skill-anatomy
+  language: bilingual
+  output: obsidian
+  timezone: Asia/Shanghai
+
+providers:
+  default:
+    type: openai
+    model: deepseek-v4-pro
+    base_url: https://api.deepseek.com
+    api_key_env: DEEPSEEK_API_KEY
+    api_mode: chat_completions
+  reviewer:
+    type: openai
+    model: deepseek-v4-pro
+    base_url: https://api.deepseek.com
+    api_key_env: DEEPSEEK_API_KEY
+    api_mode: chat_completions
+  translator:
+    type: openai
+    model: deepseek-v4-pro
+    base_url: https://api.deepseek.com
+    api_key_env: DEEPSEEK_API_KEY
+    api_mode: chat_completions
+
+github:
+  clone_depth: 1
+  pin_commit: true
+  include_license: true
+
+sources_file: sources.yaml
+
+analysis:
+  evidence_required: true
+  allow_inference: true
+  max_quote_words: 25
+  max_reference_file_kb: 256
+  analyze_scripts: true
+  analyze_assets_manifest: true
+  analyze_references: selective
+
+agents:
+  collector:
+    enabled: true
+  structure_analyst:
+    enabled: true
+  workflow_analyst:
+    enabled: true
+  pattern_miner:
+    enabled: true
+  asset_builder:
+    enabled: true
+  translator:
+    enabled: true
+  reviewer:
+    enabled: true
+
+obsidian:
+  vault_path: ./vault
+  use_wikilinks: true
+  use_frontmatter: true
+  generate_mermaid: true
+  generate_moc: true
+  tag_prefix: asa

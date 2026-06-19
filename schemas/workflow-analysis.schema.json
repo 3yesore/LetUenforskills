@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workflow Analysis",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "skill_id",
+    "workflow_summary",
+    "workflow_steps"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "skill_id": {
+      "type": "string"
+    },
+    "workflow_summary": {
+      "$ref": "#/$defs/bilingual_text"
+    },
+    "workflow_steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "action",
+          "step_type",
+          "actor",
+          "inferred",
+          "confidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "$ref": "#/$defs/bilingual_text"
+          },
+          "action": {
+            "$ref": "#/$defs/bilingual_text"
+          },
+          "step_type": {
+            "type": "string",
+            "enum": [
+              "detect",
+              "inspect",
+              "plan",
+              "load_context",
+              "execute",
+              "verify",
+              "deliver",
+              "recover"
+            ]
+          },
+          "actor": {
+            "type": "string",
+            "enum": [
+              "model",
+              "script",
+              "human",
+              "external_tool",
+              "unknown"
+            ]
+          },
+          "evidence": {
+            "$ref": "#/$defs/evidence_array"
+          },
+          "inferred": {
+            "type": "boolean"
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low",
+              "unknown"
+            ]
+          }
+        }
+      }
+    },
+    "decision_points": {
+      "type": "array"
+    },
+    "verification_points": {
+      "type": "array"
+    },
+    "failure_modes": {
+      "type": "array"
+    },
+    "context_loading": {
+      "type": "object"
+    },
+    "tool_boundary": {
+      "type": "object"
+    },
+    "mermaid": {
+      "type": "object"
+    },
+    "reusable_candidates": {
+      "type": "array"
+    },
+    "warnings": {
+      "type": "array"
+    },
+    "workflow_trace": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "$ref": "#/$defs/bilingual_text"
+        },
+        "pipeline": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "$ref": "#/$defs/bilingual_text"
+              },
+              "input": {
+                "type": [
+                  "string",
+                  "object",
+                  "array",
+                  "null"
+                ]
+              },
+              "action": {
+                "type": [
+                  "string",
+                  "object"
+                ]
+              },
+              "output": {
+                "type": [
+                  "string",
+                  "object",
+                  "array",
+                  "null"
+                ]
+              },
+              "actor": {
+                "type": "string",
+                "enum": [
+                  "model",
+                  "script",
+                  "human",
+                  "external_tool",
+                  "unknown"
+                ]
+              },
+              "resources": {
+                "type": "array"
+              },
+              "downstream": {
+                "type": "array"
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium",
+                  "low",
+                  "unknown"
+                ]
+              },
+              "inferred": {
+                "type": "boolean"
+              },
+              "evidence": {
+                "$ref": "#/$defs/evidence_array"
+              }
+            }
+          }
+        },
+        "decision_points": {
+          "type": "array"
+        },
+        "verification_points": {
+          "type": "array"
+        },
+        "failure_modes": {
+          "type": "array"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "bilingual_text": {
+      "type": "object",
+      "properties": {
+        "zh": {
+          "type": "string"
+        },
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence_array": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "source_path",
+        "quote",
+        "evidence_type"
+      ],
+      "properties": {
+        "source_path": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "line_start": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "line_end": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "evidence_type": {
+          "type": "string",
+          "enum": [
+            "explicit",
+            "structural",
+            "inferred"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

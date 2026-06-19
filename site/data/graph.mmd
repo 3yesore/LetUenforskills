@@ -1,0 +1,79 @@
+graph TD
+  N1["20260614T193006Z"]
+  N2["algorithmic-art"]
+  N3["SKILL.md"]
+  N4["viewer.html"]
+  N5["generator_template.js"]
+  N6["LICENSE.txt"]
+  N7["检测激活"]
+  N8["加载指令"]
+  N9["SKILL.md"]
+  N10["规划"]
+  N11["加载模板"]
+  N12["viewer.html"]
+  N13["生成哲学"]
+  N14["提炼概念种子"]
+  N15["实现算法与工件"]
+  N16["p5.js CDN (as reference)"]
+  N17["验证"]
+  N18["交付"]
+  N19["skill name and description from source lines 1-4"]
+  N20["explicit triggers (creating art using code, generative art, etc.) from line 3"]
+  N21["negative trigger (copying artists) from line 4"]
+  N22["two‑stage workflow (philosophy + p5.js) from lines 11–13"]
+  N23["template reading requirement from lines 122–124"]
+  N24["philosophy creation instructions (4‑6 paragraphs, .md output) from line 101"]
+  N25["conceptual seed deduction step from lines 104–105"]
+  N26["implementation rule to replace only VARIABLE sections from line 126"]
+  N27["primary outputs (.md, .html, .js) from line 9"]
+  N28["use of p5.js CDN link in delivered artifact"]
+  N29["resource roles for SKILL.md, viewer.html, generator_template.js, LICENSE.txt"]
+  N30["target agent identified as Claude (supported by internal references, reasonable "]
+  N31["semantic triggers (p5.js, creative coding, etc.) – not explicit in source"]
+  N32["step load_skill_instructions – implied context loading step"]
+  N33["step verify_artifact – implied from quality directives"]
+  N34["boundary conditions: seeded randomness, Anthropic branding, self‑contained HTML "]
+  N35["参数化艺术生成"]
+  N1 -- "contains_skill" --> N2
+  N2 -- "uses_resource" --> N3
+  N2 -- "uses_resource" --> N4
+  N2 -- "uses_resource" --> N5
+  N2 -- "uses_resource" --> N6
+  N2 -- "has_step" --> N7
+  N2 -- "has_step" --> N8
+  N7 -- "next_step" --> N8
+  N8 -- "step_uses_resource" --> N9
+  N2 -- "has_step" --> N10
+  N8 -- "next_step" --> N10
+  N2 -- "has_step" --> N11
+  N10 -- "next_step" --> N11
+  N11 -- "step_uses_resource" --> N12
+  N2 -- "has_step" --> N13
+  N11 -- "next_step" --> N13
+  N2 -- "has_step" --> N14
+  N13 -- "next_step" --> N14
+  N2 -- "has_step" --> N15
+  N14 -- "next_step" --> N15
+  N15 -- "step_uses_resource" --> N12
+  N15 -- "step_uses_resource" --> N16
+  N2 -- "has_step" --> N17
+  N15 -- "next_step" --> N17
+  N2 -- "has_step" --> N18
+  N17 -- "next_step" --> N18
+  N2 -- "has_evidence_audit" --> N19
+  N2 -- "has_evidence_audit" --> N20
+  N2 -- "has_evidence_audit" --> N21
+  N2 -- "has_evidence_audit" --> N22
+  N2 -- "has_evidence_audit" --> N23
+  N2 -- "has_evidence_audit" --> N24
+  N2 -- "has_evidence_audit" --> N25
+  N2 -- "has_evidence_audit" --> N26
+  N2 -- "has_evidence_audit" --> N27
+  N2 -- "has_evidence_audit" --> N28
+  N2 -- "has_evidence_audit" --> N29
+  N2 -- "has_evidence_audit" --> N30
+  N2 -- "has_evidence_audit" --> N31
+  N2 -- "has_evidence_audit" --> N32
+  N2 -- "has_evidence_audit" --> N33
+  N2 -- "has_evidence_audit" --> N34
+  N2 -- "has_reuse_asset" --> N35

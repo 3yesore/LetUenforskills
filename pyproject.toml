@@ -1,0 +1,20 @@
+[project]
+name = "agent-skill-anatomy"
+version = "0.1.0"
+description = "Multi-agent harness for deconstructing agent skills into reusable knowledge assets."
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+asa = "asa.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

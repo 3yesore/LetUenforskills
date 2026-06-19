@@ -1,0 +1,20 @@
+{
+  "run_dir": "C:\\Users\\Y2516\\Desktop\\LetUen\\runs\\20260607T185328Z",
+  "checked_skill_count": 1,
+  "issue_count": 0,
+  "severity_counts": {},
+  "code_counts": {},
+  "skills": [
+    {
+      "skill_id": "sample-skill-sample-skill",
+      "issue_count": 0
+    },
+    {
+      "skill_id": "research-skill-research-skill",
+      "issue_count": 0,
+      "issues": []
+    }
+  ],
+  "issues": [],
+  "publishable_by_rules": true
+}

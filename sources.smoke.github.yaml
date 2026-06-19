@@ -1,0 +1,11 @@
+sources:
+  - name: anthropics-skills-smoke
+    url: https://github.com/anthropics/skills
+    ref: main
+    language: bilingual
+    include:
+      - "**/SKILL.md"
+    exclude:
+      - "**/.git/**"
+      - "**/node_modules/**"
+

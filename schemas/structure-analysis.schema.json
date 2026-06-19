@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Structure Analysis",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "skill_id",
+    "source",
+    "summary",
+    "skill_type",
+    "confidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "skill_id": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object"
+    },
+    "frontmatter": {
+      "type": "object"
+    },
+    "summary": {
+      "$ref": "#/$defs/bilingual_text"
+    },
+    "target_agents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/target_agent"
+      }
+    },
+    "skill_type": {
+      "type": "object",
+      "required": [
+        "primary"
+      ],
+      "properties": {
+        "primary": {
+          "type": "string",
+          "enum": [
+            "file",
+            "tool",
+            "workflow",
+            "meta",
+            "domain",
+            "governance",
+            "unknown"
+          ]
+        },
+        "secondary": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "trigger_conditions": {
+      "type": "object",
+      "properties": {
+        "explicit": {
+          "type": "array"
+        },
+        "inferred": {
+          "type": "array"
+        }
+      }
+    },
+    "inputs": {
+      "type": "array"
+    },
+    "outputs": {
+      "type": "array"
+    },
+    "file_anatomy": {
+      "type": "object"
+    },
+    "context_strategy": {
+      "type": "object"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tool"
+      }
+    },
+    "risks": {
+      "type": "array"
+    },
+    "confidence": {
+      "$ref": "#/$defs/confidence_block"
+    },
+    "identity": {
+      "type": "object"
+    },
+    "activation": {
+      "type": "object"
+    },
+    "resource_roles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "stage": {
+            "type": "string"
+          },
+          "read_policy": {
+            "type": "string",
+            "enum": [
+              "must_read",
+              "on_demand",
+              "optional",
+              "ignore",
+              "unknown"
+            ]
+          },
+          "reuse_value": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low",
+              "unknown"
+            ]
+          },
+          "risk": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence": {
+            "$ref": "#/$defs/evidence_array"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "bilingual_text": {
+      "type": "object",
+      "properties": {
+        "zh": {
+          "type": "string"
+        },
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "confidence_block": {
+      "type": "object",
+      "properties": {
+        "overall": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence_array": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "source_path",
+        "quote",
+        "evidence_type"
+      ],
+      "properties": {
+        "source_path": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "line_start": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "line_end": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "evidence_type": {
+          "type": "string",
+          "enum": [
+            "explicit",
+            "structural",
+            "inferred"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "target_agent": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low",
+            "unknown"
+          ]
+        },
+        "inferred": {
+          "type": "boolean"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence_array"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "tool": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence_array"
+        }
+      }
+    }
+  }
+}

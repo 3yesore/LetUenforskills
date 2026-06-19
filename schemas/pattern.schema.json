@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Patterns",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "patterns"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "canonical_name",
+          "zh_name",
+          "category",
+          "status",
+          "definition",
+          "examples",
+          "confidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "canonical_name": {
+            "type": "string"
+          },
+          "zh_name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "context",
+              "tool",
+              "verification",
+              "delegation",
+              "safety",
+              "packaging",
+              "governance",
+              "unknown"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "candidate",
+              "emerging",
+              "established"
+            ]
+          },
+          "definition": {
+            "$ref": "#/$defs/bilingual_text"
+          },
+          "problem": {
+            "$ref": "#/$defs/bilingual_text"
+          },
+          "solution": {
+            "$ref": "#/$defs/bilingual_text"
+          },
+          "when_to_use": {
+            "$ref": "#/$defs/bilingual_text"
+          },
+          "signals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "signal": {
+                  "type": "string"
+                },
+                "evidence": {
+                  "$ref": "#/$defs/evidence_array"
+                }
+              }
+            }
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "skill_id",
+                "source_path",
+                "evidence"
+              ],
+              "properties": {
+                "skill_id": {
+                  "type": "string"
+                },
+                "source_path": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "evidence": {
+                  "$ref": "#/$defs/evidence_array"
+                }
+              }
+            }
+          },
+          "counterexamples": {
+            "type": "array"
+          },
+          "reusable_template": {
+            "$ref": "#/$defs/bilingual_text"
+          },
+          "related_patterns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "minimum_examples_required": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low",
+              "unknown"
+            ]
+          }
+        }
+      }
+    },
+    "reuse_assets": {
+      "type": "object",
+      "properties": {
+        "patterns": {
+          "type": "array"
+        },
+        "templates": {
+          "type": "array"
+        },
+        "checklists": {
+          "type": "array"
+        },
+        "anti_patterns": {
+          "type": "array"
+        },
+        "extension_ideas": {
+          "type": "array"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "bilingual_text": {
+      "type": "object",
+      "properties": {
+        "zh": {
+          "type": "string"
+        },
+        "en": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence_array": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "source_path",
+        "quote",
+        "evidence_type"
+      ],
+      "properties": {
+        "source_path": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "line_start": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "line_end": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "evidence_type": {
+          "type": "string",
+          "enum": [
+            "explicit",
+            "structural",
+            "inferred"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

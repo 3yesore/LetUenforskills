@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run unit tests
+        env:
+          PYTHONPATH: src
+        run: python -m unittest discover -s tests
+
+      - name: Compile sources
+        env:
+          PYTHONPATH: src
+        run: python -m compileall src scripts -q
+
+      - name: Run mock harness
+        env:
+          PYTHONPATH: src
+        run: python -m asa run --config anatomy.config.example.yaml
+
+      - name: Validate latest run
+        env:
+          PYTHONPATH: src
+        run: |
+          latest_run=$(ls -td runs/*/ | head -n 1)
+          python -m asa validate --run "$latest_run"
+

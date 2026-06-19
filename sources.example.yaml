@@ -1,0 +1,10 @@
+sources:
+  - name: local-sample
+    path: examples/sample-skill
+    language: bilingual
+    include:
+      - "**/SKILL.md"
+    exclude:
+      - "**/.git/**"
+      - "**/node_modules/**"
+

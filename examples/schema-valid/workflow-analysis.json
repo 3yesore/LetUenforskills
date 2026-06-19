@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "skill_id": "sample-skill-sample-skill",
+  "workflow_summary": {
+    "zh": "示例技能要求检查请求、按需加载文件、输出并验证结果。",
+    "en": "The sample skill asks the agent to inspect the request, load needed files, produce output, and verify it."
+  },
+  "workflow_steps": [
+    {
+      "id": "step_1",
+      "name": { "zh": "检查请求", "en": "Inspect request" },
+      "action": { "zh": "阅读用户请求并判断任务。", "en": "Read the user request and identify the task." },
+      "step_type": "inspect",
+      "actor": "model",
+      "required_inputs": ["user_request"],
+      "expected_outputs": ["task_understanding"],
+      "evidence": [
+        {
+          "source_path": "examples/sample-skill/SKILL.md",
+          "quote": "Inspect the user request",
+          "line_start": null,
+          "line_end": null,
+          "evidence_type": "explicit",
+          "notes": null
+        }
+      ],
+      "inferred": false,
+      "confidence": "high"
+    }
+  ],
+  "decision_points": [],
+  "verification_points": [],
+  "failure_modes": [],
+  "context_loading": { "strategy": "selective", "details": "Load only needed files.", "evidence": [] },
+  "tool_boundary": {
+    "model_responsibilities": ["Inspect and summarize"],
+    "script_responsibilities": [],
+    "external_tool_responsibilities": [],
+    "evidence": []
+  },
+  "mermaid": { "flowchart": "flowchart TD\n  A[Inspect] --> B[Load Context]" },
+  "reusable_candidates": [],
+  "warnings": []
+}
+

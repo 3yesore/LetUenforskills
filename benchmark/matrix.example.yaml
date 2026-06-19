@@ -1,0 +1,152 @@
+# Example benchmark matrix for Agent Skill Anatomy.
+# Copy to benchmark/matrix.yaml and replace fixture paths/model keys as needed.
+version: 1
+benchmark_id: asa-provider-role-smoke
+registry: models/registry.example.yaml
+mode: role_routed
+
+budgets:
+  max_total_calls: 80
+  max_total_cost_usd: 25.00
+  max_input_tokens_per_call: 120000
+  timeout_seconds_per_call: 120
+  schema_retry_count: 1
+
+languages:
+  - en
+  - bilingual
+
+fixtures:
+  - id: minimal-skill
+    path: benchmark/fixtures/minimal_skill
+    class: minimal_skill
+    required_roles: [structure_analyst, renderer, reviewer]
+    gates:
+      min_score: 0.85
+      max_forbidden_claim_rate: 0
+      require_schema_valid: true
+      require_evidence: true
+  - id: scripted-skill
+    path: benchmark/fixtures/scripted_skill
+    class: scripted_skill
+    required_roles: [structure_analyst, workflow_analyst, renderer, reviewer]
+    gates:
+      min_score: 0.82
+      max_forbidden_claim_rate: 0.02
+      require_schema_valid: true
+      require_evidence: true
+  - id: ambiguous-claims
+    path: benchmark/fixtures/ambiguous_claims
+    class: ambiguous_claims
+    required_roles: [structure_analyst, workflow_analyst, reviewer]
+    gates:
+      min_score: 0.88
+      max_forbidden_claim_rate: 0
+      require_reviewer_findings: true
+      require_schema_valid: true
+  - id: bilingual-skill
+    path: benchmark/fixtures/bilingual_skill
+    class: bilingual_skill
+    required_roles: [structure_analyst, renderer, translator, reviewer]
+    gates:
+      min_score: 0.82
+      min_bilingual_consistency: 0.85
+      require_schema_valid: true
+      require_evidence: true
+
+roles:
+  structure_analyst:
+    schema: schemas/structure-analysis.schema.json
+    metrics:
+      - schema_valid_rate
+      - required_fact_recall
+      - evidence_precision
+      - source_boundary_compliance
+  workflow_analyst:
+    schema: schemas/workflow-analysis.schema.json
+    metrics:
+      - schema_valid_rate
+      - workflow_order_accuracy
+      - evidence_coverage
+      - inference_labeling
+  pattern_miner:
+    schema: schemas/pattern.schema.json
+    metrics:
+      - schema_valid_rate
+      - reuse_value
+      - forbidden_claim_rate
+      - evidence_precision
+  renderer:
+    schema: future/render-manifest.schema.json
+    metrics:
+      - frontmatter_validity
+      - link_integrity
+      - readability
+      - bilingual_consistency
+  reviewer:
+    schema: schemas/review_report.schema.json
+    metrics:
+      - unsupported_claim_detection
+      - missing_evidence_detection
+      - reviewer_actionability
+  translator:
+    schema: future/skill-note.schema.json
+    metrics:
+      - bilingual_consistency
+      - canonical_term_preservation
+      - path_and_command_preservation
+
+model_sets:
+  openai_baseline:
+    structure_analyst: openai:gpt-5.2
+    workflow_analyst: openai:gpt-5.2
+    pattern_miner: openai:gpt-5.2
+    renderer: openai:gpt-5.2
+    reviewer: openai:gpt-5.2
+    translator: openai:gpt-5.2
+  mixed_quality:
+    structure_analyst: openai:gpt-5.2
+    workflow_analyst: anthropic:claude-sonnet
+    pattern_miner: openai:gpt-5.2
+    renderer: qwen:qwen-plus
+    reviewer: openai:gpt-5.2
+    translator: qwen:qwen-plus
+  china_provider_comparison:
+    structure_analyst: qwen:qwen-plus
+    workflow_analyst: moonshot:kimi
+    pattern_miner: deepseek:reasoner
+    renderer: qwen:qwen-plus
+    reviewer: zhipu:glm
+    translator: qwen:qwen-plus
+  gateway_smoke:
+    structure_analyst: siliconflow:qwen-gateway
+    workflow_analyst: deepseek:reasoner
+    renderer: siliconflow:qwen-gateway
+    reviewer: zhipu:glm
+
+runs:
+  - id: deterministic-ci
+    mode: deterministic
+    provider: mock
+    fixtures: [minimal-skill, scripted-skill]
+    languages: [en]
+    model_set: openai_baseline
+  - id: provider-smoke
+    mode: single_model
+    fixtures: [minimal-skill]
+    languages: [en]
+    model_sets: [openai_baseline, gateway_smoke]
+  - id: bilingual-quality
+    mode: role_routed
+    fixtures: [bilingual-skill, ambiguous-claims]
+    languages: [bilingual]
+    model_sets: [mixed_quality, china_provider_comparison]
+
+reporting:
+  output_json: runs/${run_id}/benchmark_report.json
+  output_markdown: runs/${run_id}/benchmark_report.md
+  include_artifact_links: true
+  include_cost_summary: true
+  include_latency_summary: true
+  include_provider_failures: true
+  publish_to_obsidian: false

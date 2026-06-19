@@ -1,0 +1,204 @@
+# Example model capability registry for Agent Skill Anatomy.
+# Copy to models/registry.yaml and adjust model IDs, pricing, and feature flags for your environment.
+version: 1
+updated: 2026-06-08
+
+capability_keys:
+  - strict_json
+  - reasoning
+  - long_context
+  - bilingual
+  - chinese_first
+  - low_cost
+  - vision
+  - tool_use
+  - streaming
+
+roles:
+  - inventory_builder
+  - structure_analyst
+  - workflow_analyst
+  - pattern_miner
+  - renderer
+  - reviewer
+  - translator
+
+models:
+  openai:gpt-5.2:
+    provider: openai
+    endpoint_style: responses
+    served_model: gpt-5.2
+    api_key_env: OPENAI_API_KEY
+    context_window_tokens: 256000
+    max_output_tokens: 16000
+    structured_output: json_schema
+    multimodal_inputs: [text, image]
+    capabilities: [strict_json, reasoning, long_context, bilingual, vision, tool_use, streaming]
+    recommended_roles: [structure_analyst, workflow_analyst, pattern_miner, reviewer]
+    defaults:
+      temperature: 0
+      timeout_seconds: 120
+      schema_retry_count: 1
+    cost_tier: high
+    notes: Reference model for schema-first quality gates and reviewer roles.
+
+  openai-compatible:gateway-default:
+    provider: openai_compatible
+    endpoint_style: chat_completions
+    served_model: configured-by-endpoint
+    base_url_env: OPENAI_COMPATIBLE_BASE_URL
+    api_key_env: OPENAI_COMPATIBLE_API_KEY
+    context_window_tokens: unknown
+    max_output_tokens: unknown
+    structured_output: configurable
+    multimodal_inputs: [text]
+    capabilities: [streaming]
+    recommended_roles: [inventory_builder, renderer]
+    defaults:
+      temperature: 0
+      timeout_seconds: 90
+      schema_retry_count: 1
+    cost_tier: variable
+    notes: Generic adapter entry; replace with concrete gateway-served models before benchmark comparisons.
+
+  anthropic:claude-sonnet:
+    provider: anthropic
+    endpoint_style: messages
+    served_model: claude-sonnet-latest
+    api_key_env: ANTHROPIC_API_KEY
+    context_window_tokens: 200000
+    max_output_tokens: 16000
+    structured_output: tool_or_prompt_json
+    multimodal_inputs: [text, image]
+    capabilities: [reasoning, long_context, bilingual, vision, tool_use, streaming]
+    recommended_roles: [workflow_analyst, pattern_miner, reviewer]
+    defaults:
+      temperature: 0
+      timeout_seconds: 120
+      schema_retry_count: 1
+    cost_tier: high
+    notes: Strong candidate for long-context workflow analysis and cross-review.
+
+  gemini:pro:
+    provider: gemini
+    endpoint_style: generate_content
+    served_model: gemini-pro-latest
+    api_key_env: GEMINI_API_KEY
+    context_window_tokens: 1000000
+    max_output_tokens: 16000
+    structured_output: response_schema
+    multimodal_inputs: [text, image, pdf, audio, video]
+    capabilities: [long_context, bilingual, vision, streaming]
+    recommended_roles: [structure_analyst, workflow_analyst, renderer]
+    defaults:
+      temperature: 0
+      timeout_seconds: 120
+      schema_retry_count: 1
+    cost_tier: medium
+    notes: Use for large fixtures and future multimodal asset analysis.
+
+  deepseek:reasoner:
+    provider: deepseek
+    endpoint_style: openai_compatible
+    served_model: deepseek-reasoner
+    api_key_env: DEEPSEEK_API_KEY
+    context_window_tokens: 64000
+    max_output_tokens: 8000
+    structured_output: prompt_json
+    multimodal_inputs: [text]
+    capabilities: [reasoning, low_cost, bilingual, streaming]
+    recommended_roles: [workflow_analyst, reviewer]
+    defaults:
+      temperature: 0
+      timeout_seconds: 120
+      schema_retry_count: 1
+    cost_tier: low
+    notes: Benchmark evidence precision before using for large unattended runs.
+
+  qwen:qwen-plus:
+    provider: dashscope
+    endpoint_style: dashscope_or_openai_compatible
+    served_model: qwen-plus
+    api_key_env: DASHSCOPE_API_KEY
+    context_window_tokens: 128000
+    max_output_tokens: 8000
+    structured_output: prompt_json
+    multimodal_inputs: [text]
+    capabilities: [bilingual, chinese_first, long_context, low_cost, streaming]
+    recommended_roles: [renderer, translator, structure_analyst]
+    defaults:
+      temperature: 0
+      timeout_seconds: 90
+      schema_retry_count: 1
+    cost_tier: low
+    notes: Good candidate for bilingual rendering and Chinese terminology consistency.
+
+  zhipu:glm:
+    provider: zhipu
+    endpoint_style: native_or_openai_compatible
+    served_model: glm-latest
+    api_key_env: ZHIPU_API_KEY
+    context_window_tokens: 128000
+    max_output_tokens: 8000
+    structured_output: prompt_json
+    multimodal_inputs: [text]
+    capabilities: [bilingual, chinese_first, reasoning, streaming]
+    recommended_roles: [translator, renderer, reviewer]
+    defaults:
+      temperature: 0
+      timeout_seconds: 90
+      schema_retry_count: 1
+    cost_tier: medium
+    notes: Evaluate Chinese evidence phrasing and unsupported-claim detection.
+
+  moonshot:kimi:
+    provider: moonshot
+    endpoint_style: openai_compatible
+    served_model: kimi-latest
+    api_key_env: MOONSHOT_API_KEY
+    context_window_tokens: 200000
+    max_output_tokens: 8000
+    structured_output: prompt_json
+    multimodal_inputs: [text]
+    capabilities: [long_context, bilingual, chinese_first, streaming]
+    recommended_roles: [workflow_analyst, structure_analyst, renderer]
+    defaults:
+      temperature: 0
+      timeout_seconds: 120
+      schema_retry_count: 1
+    cost_tier: medium
+    notes: Candidate for large Chinese/English source bundles.
+
+  siliconflow:qwen-gateway:
+    provider: siliconflow
+    endpoint_style: openai_compatible
+    served_model: Qwen/Qwen3-or-configured
+    api_key_env: SILICONFLOW_API_KEY
+    context_window_tokens: model_dependent
+    max_output_tokens: model_dependent
+    structured_output: prompt_json
+    multimodal_inputs: [text]
+    capabilities: [bilingual, low_cost, streaming]
+    recommended_roles: [inventory_builder, renderer, translator]
+    defaults:
+      temperature: 0
+      timeout_seconds: 90
+      schema_retry_count: 1
+    cost_tier: low
+    notes: Gateway-served models must be benchmarked separately from native provider variants.
+
+routing_examples:
+  quality_first:
+    structure_analyst: openai:gpt-5.2
+    workflow_analyst: anthropic:claude-sonnet
+    pattern_miner: openai:gpt-5.2
+    renderer: qwen:qwen-plus
+    reviewer: openai:gpt-5.2
+    translator: qwen:qwen-plus
+  cost_controlled_bilingual:
+    structure_analyst: qwen:qwen-plus
+    workflow_analyst: deepseek:reasoner
+    pattern_miner: deepseek:reasoner
+    renderer: qwen:qwen-plus
+    reviewer: zhipu:glm
+    translator: qwen:qwen-plus

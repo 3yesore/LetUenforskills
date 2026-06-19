@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "skill_id": "research-skill-research-skill",
+  "status": "approved",
+  "scores": {
+    "evidence_score": 4,
+    "structure_score": 4,
+    "workflow_score": 4,
+    "pattern_score": 3,
+    "bilingual_score": 4,
+    "obsidian_score": 4
+  },
+  "issues": [],
+  "unsupported_claims": [],
+  "missing_evidence": [],
+  "over_inference": [],
+  "approved_for_publish": {
+    "value": true,
+    "rationale": "Demo fixture passes review for UI testing."
+  }
+}

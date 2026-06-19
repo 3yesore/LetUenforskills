@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "source": {
+    "name": "sample-skill",
+    "type": "local",
+    "url": null,
+    "path": "C:\\Users\\Y2516\\Desktop\\LetUen\\examples\\sample-skill",
+    "ref": null,
+    "resolved_commit": null,
+    "fetched_at": "2026-06-07T18:53:28.817817+00:00",
+    "license": null,
+    "acquisition_method": "local"
+  },
+  "repository": {
+    "root_path": "C:\\Users\\Y2516\\Desktop\\LetUen\\examples\\sample-skill",
+    "readme_path": null,
+    "license_path": null,
+    "total_files_scanned": 1
+  },
+  "skill_packages": [
+    {
+      "id": "sample-skill-sample-skill",
+      "name": "sample-skill",
+      "root_path": ".",
+      "skill_md_path": "SKILL.md",
+      "readme_path": null,
+      "scripts": [],
+      "references": [],
+      "assets": [],
+      "examples": [],
+      "related_files": []
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,28 @@
+name: GitHub Collector Smoke
+
+on:
+  workflow_dispatch:
+
+jobs:
+  github-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run GitHub collector smoke
+        env:
+          PYTHONPATH: src
+        run: python -m asa smoke-github --sources sources.smoke.github.yaml --output runs/github-smoke
+
+      - name: Upload smoke inventories
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-smoke-inventories
+          path: runs/github-smoke
+

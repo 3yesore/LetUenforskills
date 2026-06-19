@@ -1,0 +1,509 @@
+{
+  "schema_version": 1,
+  "run_id": "20260614T193006Z",
+  "nodes": [
+    {
+      "id": "run:20260614T193006Z",
+      "type": "run",
+      "label": "20260614T193006Z"
+    },
+    {
+      "id": "skill:anthropics-skills-skills-algorithmic-art",
+      "type": "skill",
+      "label": "algorithmic-art",
+      "status": "publishable",
+      "skill_type": "workflow"
+    },
+    {
+      "id": "resource:anthropics-skills-skills-algorithmic-art:skills/algorithmic-art/SKILL.md",
+      "type": "resource",
+      "label": "SKILL.md",
+      "path": "skills/algorithmic-art/SKILL.md",
+      "read_policy": "must_read",
+      "reuse_value": "high"
+    },
+    {
+      "id": "resource:anthropics-skills-skills-algorithmic-art:skills/algorithmic-art/templates/viewer.html",
+      "type": "resource",
+      "label": "viewer.html",
+      "path": "skills/algorithmic-art/templates/viewer.html",
+      "read_policy": "must_read",
+      "reuse_value": "high"
+    },
+    {
+      "id": "resource:anthropics-skills-skills-algorithmic-art:skills/algorithmic-art/templates/generator_template.js",
+      "type": "resource",
+      "label": "generator_template.js",
+      "path": "skills/algorithmic-art/templates/generator_template.js",
+      "read_policy": "on_demand",
+      "reuse_value": "medium"
+    },
+    {
+      "id": "resource:anthropics-skills-skills-algorithmic-art:skills/algorithmic-art/LICENSE.txt",
+      "type": "resource",
+      "label": "LICENSE.txt",
+      "path": "skills/algorithmic-art/LICENSE.txt",
+      "read_policy": "ignore",
+      "reuse_value": "low"
+    },
+    {
+      "id": "step:anthropics-skills-skills-algorithmic-art:detect_trigger",
+      "type": "workflow_step",
+      "label": "检测激活",
+      "actor": "model",
+      "confidence": "high"
+    },
+    {
+      "id": "step:anthropics-skills-skills-algorithmic-art:load_skill_instructions",
+      "type": "workflow_step",
+      "label": "加载指令",
+      "actor": "model",
+      "confidence": "medium"
+    },
+    {
+      "id": "resource:anthropics-skills-skills-algorithmic-art:SKILL.md",
+      "type": "resource",
+      "label": "SKILL.md",
+      "path": "SKILL.md"
+    },
+    {
+      "id": "step:anthropics-skills-skills-algorithmic-art:plan_workflow",
+      "type": "workflow_step",
+      "label": "规划",
+      "actor": "model",
+      "confidence": "high"
+    },
+    {
+      "id": "step:anthropics-skills-skills-algorithmic-art:load_viewer_template",
+      "type": "workflow_step",
+      "label": "加载模板",
+      "actor": "model",
+      "confidence": "high"
+    },
+    {
+      "id": "resource:anthropics-skills-skills-algorithmic-art:templates/viewer.html",
+      "type": "resource",
+      "label": "viewer.html",
+      "path": "templates/viewer.html"
+    },
+    {
+      "id": "step:anthropics-skills-skills-algorithmic-art:generate_philosophy",
+      "type": "workflow_step",
+      "label": "生成哲学",
+      "actor": "model",
+      "confidence": "high"
+    },
+    {
+      "id": "step:anthropics-skills-skills-algorithmic-art:deduce_conceptual_seed",
+      "type": "workflow_step",
+      "label": "提炼概念种子",
+      "actor": "model",
+      "confidence": "high"
+    },
+    {
+      "id": "step:anthropics-skills-skills-algorithmic-art:implement_p5js_algorithm",
+      "type": "workflow_step",
+      "label": "实现算法与工件",
+      "actor": "model",
+      "confidence": "high"
+    },
+    {
+      "id": "resource:anthropics-skills-skills-algorithmic-art:p5.js CDN (as reference)",
+      "type": "resource",
+      "label": "p5.js CDN (as reference)",
+      "path": "p5.js CDN (as reference)"
+    },
+    {
+      "id": "step:anthropics-skills-skills-algorithmic-art:verify_artifact",
+      "type": "workflow_step",
+      "label": "验证",
+      "actor": "model",
+      "confidence": "medium"
+    },
+    {
+      "id": "step:anthropics-skills-skills-algorithmic-art:deliver_artifact",
+      "type": "workflow_step",
+      "label": "交付",
+      "actor": "model",
+      "confidence": "high"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:925546",
+      "type": "evidence",
+      "label": "skill name and description from source lines 1-4",
+      "category": "supported_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:924037",
+      "type": "evidence",
+      "label": "explicit triggers (creating art using code, generative art, etc.) from line 3",
+      "category": "supported_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:557109",
+      "type": "evidence",
+      "label": "negative trigger (copying artists) from line 4",
+      "category": "supported_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:386223",
+      "type": "evidence",
+      "label": "two‑stage workflow (philosophy + p5.js) from lines 11–13",
+      "category": "supported_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:857265",
+      "type": "evidence",
+      "label": "template reading requirement from lines 122–124",
+      "category": "supported_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:908655",
+      "type": "evidence",
+      "label": "philosophy creation instructions (4‑6 paragraphs, .md output) from line 101",
+      "category": "supported_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:893913",
+      "type": "evidence",
+      "label": "conceptual seed deduction step from lines 104–105",
+      "category": "supported_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:797049",
+      "type": "evidence",
+      "label": "implementation rule to replace only VARIABLE sections from line 126",
+      "category": "supported_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:172718",
+      "type": "evidence",
+      "label": "primary outputs (.md, .html, .js) from line 9",
+      "category": "supported_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:6783",
+      "type": "evidence",
+      "label": "use of p5.js CDN link in delivered artifact",
+      "category": "supported_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:371641",
+      "type": "evidence",
+      "label": "resource roles for SKILL.md, viewer.html, generator_template.js, LICENSE.txt",
+      "category": "supported_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:inferred_claims:176087",
+      "type": "evidence",
+      "label": "target agent identified as Claude (supported by internal references, reasonable ",
+      "category": "inferred_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:inferred_claims:289738",
+      "type": "evidence",
+      "label": "semantic triggers (p5.js, creative coding, etc.) – not explicit in source",
+      "category": "inferred_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:inferred_claims:848068",
+      "type": "evidence",
+      "label": "step load_skill_instructions – implied context loading step",
+      "category": "inferred_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:inferred_claims:550379",
+      "type": "evidence",
+      "label": "step verify_artifact – implied from quality directives",
+      "category": "inferred_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "audit:anthropics-skills-skills-algorithmic-art:inferred_claims:474562",
+      "type": "evidence",
+      "label": "boundary conditions: seeded randomness, Anthropic branding, self‑contained HTML ",
+      "category": "inferred_claims",
+      "publishable": "publishable"
+    },
+    {
+      "id": "reuse:1:patterns",
+      "type": "reuse",
+      "label": "参数化艺术生成",
+      "category": "patterns"
+    }
+  ],
+  "edges": [
+    {
+      "source": "run:20260614T193006Z",
+      "target": "skill:anthropics-skills-skills-algorithmic-art",
+      "type": "contains_skill",
+      "confidence": "deterministic"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "resource:anthropics-skills-skills-algorithmic-art:skills/algorithmic-art/SKILL.md",
+      "type": "uses_resource",
+      "confidence": "structural"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "resource:anthropics-skills-skills-algorithmic-art:skills/algorithmic-art/templates/viewer.html",
+      "type": "uses_resource",
+      "confidence": "structural"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "resource:anthropics-skills-skills-algorithmic-art:skills/algorithmic-art/templates/generator_template.js",
+      "type": "uses_resource",
+      "confidence": "structural"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "resource:anthropics-skills-skills-algorithmic-art:skills/algorithmic-art/LICENSE.txt",
+      "type": "uses_resource",
+      "confidence": "structural"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "step:anthropics-skills-skills-algorithmic-art:detect_trigger",
+      "type": "has_step",
+      "confidence": "high"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "step:anthropics-skills-skills-algorithmic-art:load_skill_instructions",
+      "type": "has_step",
+      "confidence": "medium"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:detect_trigger",
+      "target": "step:anthropics-skills-skills-algorithmic-art:load_skill_instructions",
+      "type": "next_step",
+      "confidence": "medium"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:load_skill_instructions",
+      "target": "resource:anthropics-skills-skills-algorithmic-art:SKILL.md",
+      "type": "step_uses_resource",
+      "confidence": "medium"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "step:anthropics-skills-skills-algorithmic-art:plan_workflow",
+      "type": "has_step",
+      "confidence": "high"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:load_skill_instructions",
+      "target": "step:anthropics-skills-skills-algorithmic-art:plan_workflow",
+      "type": "next_step",
+      "confidence": "high"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "step:anthropics-skills-skills-algorithmic-art:load_viewer_template",
+      "type": "has_step",
+      "confidence": "high"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:plan_workflow",
+      "target": "step:anthropics-skills-skills-algorithmic-art:load_viewer_template",
+      "type": "next_step",
+      "confidence": "high"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:load_viewer_template",
+      "target": "resource:anthropics-skills-skills-algorithmic-art:templates/viewer.html",
+      "type": "step_uses_resource",
+      "confidence": "high"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "step:anthropics-skills-skills-algorithmic-art:generate_philosophy",
+      "type": "has_step",
+      "confidence": "high"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:load_viewer_template",
+      "target": "step:anthropics-skills-skills-algorithmic-art:generate_philosophy",
+      "type": "next_step",
+      "confidence": "high"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "step:anthropics-skills-skills-algorithmic-art:deduce_conceptual_seed",
+      "type": "has_step",
+      "confidence": "high"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:generate_philosophy",
+      "target": "step:anthropics-skills-skills-algorithmic-art:deduce_conceptual_seed",
+      "type": "next_step",
+      "confidence": "high"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "step:anthropics-skills-skills-algorithmic-art:implement_p5js_algorithm",
+      "type": "has_step",
+      "confidence": "high"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:deduce_conceptual_seed",
+      "target": "step:anthropics-skills-skills-algorithmic-art:implement_p5js_algorithm",
+      "type": "next_step",
+      "confidence": "high"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:implement_p5js_algorithm",
+      "target": "resource:anthropics-skills-skills-algorithmic-art:templates/viewer.html",
+      "type": "step_uses_resource",
+      "confidence": "high"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:implement_p5js_algorithm",
+      "target": "resource:anthropics-skills-skills-algorithmic-art:p5.js CDN (as reference)",
+      "type": "step_uses_resource",
+      "confidence": "high"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "step:anthropics-skills-skills-algorithmic-art:verify_artifact",
+      "type": "has_step",
+      "confidence": "medium"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:implement_p5js_algorithm",
+      "target": "step:anthropics-skills-skills-algorithmic-art:verify_artifact",
+      "type": "next_step",
+      "confidence": "medium"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "step:anthropics-skills-skills-algorithmic-art:deliver_artifact",
+      "type": "has_step",
+      "confidence": "high"
+    },
+    {
+      "source": "step:anthropics-skills-skills-algorithmic-art:verify_artifact",
+      "target": "step:anthropics-skills-skills-algorithmic-art:deliver_artifact",
+      "type": "next_step",
+      "confidence": "high"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:925546",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:924037",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:557109",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:386223",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:857265",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:908655",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:893913",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:797049",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:172718",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:6783",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:supported_claims:371641",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:inferred_claims:176087",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:inferred_claims:289738",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:inferred_claims:848068",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:inferred_claims:550379",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "audit:anthropics-skills-skills-algorithmic-art:inferred_claims:474562",
+      "type": "has_evidence_audit",
+      "confidence": "reviewer"
+    },
+    {
+      "source": "skill:anthropics-skills-skills-algorithmic-art",
+      "target": "reuse:1:patterns",
+      "type": "has_reuse_asset",
+      "confidence": "analysis"
+    }
+  ]
+}

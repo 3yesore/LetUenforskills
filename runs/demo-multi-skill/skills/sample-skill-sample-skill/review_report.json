@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "skill_id": "sample-skill-sample-skill",
+  "status": "needs_revision",
+  "scores": {
+    "evidence_score": 1,
+    "structure_score": 2,
+    "workflow_score": 2,
+    "pattern_score": 1,
+    "bilingual_score": 3,
+    "obsidian_score": 3
+  },
+  "issues": [
+    {
+      "severity": "major",
+      "category": "evidence",
+      "description": {
+        "zh": "Mock 输出缺少真实证据。",
+        "en": "Mock output lacks real evidence."
+      }
+    }
+  ],
+  "unsupported_claims": [],
+  "missing_evidence": [],
+  "over_inference": [],
+  "approved_for_publish": {
+    "value": false,
+    "rationale": "Mock artifacts require real analyst review."
+  }
+}
