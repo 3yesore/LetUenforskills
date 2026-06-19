@@ -1,0 +1,84 @@
+<svg width="1280" height="520" viewBox="0 0 1280 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">LetUen — Agent Skill Anatomy</title>
+  <desc id="desc">Dark research interface banner showing skill decomposition into reports, anchors, vault notes, and graph data.</desc>
+  <defs>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(220 108) rotate(38) scale(620 420)">
+      <stop stop-color="#d8ff75" stop-opacity="0.42"/>
+      <stop offset="0.45" stop-color="#49e0b5" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#07100f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1054 380) rotate(152) scale(590 360)">
+      <stop stop-color="#8ea7ff" stop-opacity="0.34"/>
+      <stop offset="0.52" stop-color="#f1a35b" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#07100f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="titleGrad" x1="80" y1="123" x2="666" y2="302" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8ffe7"/>
+      <stop offset="0.45" stop-color="#d8ff75"/>
+      <stop offset="1" stop-color="#50e3bd"/>
+    </linearGradient>
+    <linearGradient id="cardStroke" x1="734" y1="88" x2="1126" y2="445" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#e9ffae" stop-opacity="0.7"/>
+      <stop offset="0.5" stop-color="#67dcc4" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#9aa7ff" stop-opacity="0.5"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000000" flood-opacity="0.42"/>
+    </filter>
+  </defs>
+  <rect width="1280" height="520" rx="42" fill="#07100f"/>
+  <rect width="1280" height="520" rx="42" fill="url(#glowA)"/>
+  <rect width="1280" height="520" rx="42" fill="url(#glowB)"/>
+  <path d="M74 432C210 356 304 382 426 320C552 256 612 132 753 150C860 164 886 250 982 250C1078 250 1136 191 1206 124" stroke="#d8ff75" stroke-opacity="0.18" stroke-width="1.5"/>
+  <path d="M82 461C236 410 356 427 490 365C626 303 667 209 794 215C890 219 944 292 1041 300C1117 306 1165 274 1212 236" stroke="#70dfcc" stroke-opacity="0.16" stroke-width="1.5"/>
+  <g opacity="0.54">
+    <circle cx="154" cy="92" r="2" fill="#d8ff75"/>
+    <circle cx="237" cy="408" r="2" fill="#70dfcc"/>
+    <circle cx="690" cy="98" r="2" fill="#9aa7ff"/>
+    <circle cx="1160" cy="116" r="2" fill="#f1a35b"/>
+    <circle cx="1116" cy="430" r="2" fill="#d8ff75"/>
+  </g>
+  <g transform="translate(80 92)">
+    <rect x="0" y="0" width="184" height="38" rx="19" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="18" y="25" fill="#d8ff75" font-family="Inter, ui-sans-serif, system-ui" font-size="14" font-weight="700" letter-spacing="2.4">AGENT SKILL ANATOMY</text>
+    <text x="0" y="116" fill="url(#titleGrad)" font-family="Inter, ui-sans-serif, system-ui" font-size="76" font-weight="850" letter-spacing="-3.6">LetUen</text>
+    <text x="0" y="174" fill="#f5ffe9" font-family="Inter, ui-sans-serif, system-ui" font-size="34" font-weight="760" letter-spacing="-1.2">Deconstruct skills into reusable assets</text>
+    <text x="0" y="224" fill="#b9c8bd" font-family="Inter, ui-sans-serif, system-ui" font-size="19" font-weight="500">Reports · Anchors · Obsidian Vaults · Graph Data · Quality Gates</text>
+    <g transform="translate(0 276)">
+      <rect width="112" height="38" rx="19" fill="#d8ff75" fill-opacity="0.16" stroke="#d8ff75" stroke-opacity="0.34"/>
+      <text x="19" y="25" fill="#eaffaa" font-family="Inter, ui-sans-serif, system-ui" font-size="14" font-weight="760">fork-ready</text>
+      <rect x="124" width="134" height="38" rx="19" fill="#70dfcc" fill-opacity="0.13" stroke="#70dfcc" stroke-opacity="0.28"/>
+      <text x="143" y="25" fill="#acf7e7" font-family="Inter, ui-sans-serif, system-ui" font-size="14" font-weight="760">model-routed</text>
+      <rect x="270" width="138" height="38" rx="19" fill="#9aa7ff" fill-opacity="0.12" stroke="#9aa7ff" stroke-opacity="0.28"/>
+      <text x="289" y="25" fill="#cfd5ff" font-family="Inter, ui-sans-serif, system-ui" font-size="14" font-weight="760">evidence-first</text>
+    </g>
+  </g>
+  <g transform="translate(728 78)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="438" height="356" rx="30" fill="#0d1817" fill-opacity="0.72" stroke="url(#cardStroke)" stroke-width="1.2"/>
+    <g transform="translate(34 34)">
+      <text x="0" y="18" fill="#eaf7df" font-family="Inter, ui-sans-serif, system-ui" font-size="15" font-weight="800" letter-spacing="1.8">DECOMPOSITION FLOW</text>
+      <g transform="translate(0 48)">
+        <rect width="156" height="72" rx="18" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.1"/>
+        <text x="18" y="30" fill="#d8ff75" font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="800">Source</text>
+        <text x="18" y="53" fill="#aab8af" font-family="Inter, ui-sans-serif, system-ui" font-size="13">SKILL.md + assets</text>
+        <rect x="212" width="156" height="72" rx="18" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.1"/>
+        <text x="230" y="30" fill="#70dfcc" font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="800">Workflow</text>
+        <text x="230" y="53" fill="#aab8af" font-family="Inter, ui-sans-serif, system-ui" font-size="13">steps + tools</text>
+        <path d="M164 36H202" stroke="#d8ff75" stroke-opacity="0.32" stroke-width="2"/>
+      </g>
+      <g transform="translate(0 140)">
+        <rect width="156" height="72" rx="18" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.1"/>
+        <text x="18" y="30" fill="#9aa7ff" font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="800">Evidence</text>
+        <text x="18" y="53" fill="#aab8af" font-family="Inter, ui-sans-serif, system-ui" font-size="13">quotes + claims</text>
+        <rect x="212" width="156" height="72" rx="18" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.1"/>
+        <text x="230" y="30" fill="#f1a35b" font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="800">Anchors</text>
+        <text x="230" y="53" fill="#aab8af" font-family="Inter, ui-sans-serif, system-ui" font-size="13">reuse safely</text>
+        <path d="M164 36H202" stroke="#70dfcc" stroke-opacity="0.28" stroke-width="2"/>
+      </g>
+      <g transform="translate(0 232)">
+        <rect width="368" height="58" rx="18" fill="#d8ff75" fill-opacity="0.1" stroke="#d8ff75" stroke-opacity="0.22"/>
+        <text x="18" y="35" fill="#f4ffe0" font-family="Inter, ui-sans-serif, system-ui" font-size="16" font-weight="820">Report · Vault · Graph · Release Pack</text>
+      </g>
+    </g>
+  </g>
+</svg>
