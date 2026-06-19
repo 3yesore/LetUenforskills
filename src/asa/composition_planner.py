@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from typing import Any
 
+from .config import parse_simple_yaml
 from .jsonio import read_json, write_json
 
 
@@ -96,14 +97,10 @@ def plan_anchor_composition(anchors_path: Path, request_path: Path, output_path:
 
 
 def _read_request(path: Path) -> dict[str, Any]:
-    text = path.read_text(encoding="utf-8")
     if path.suffix.lower() == ".json":
-        return json.loads(text)
-    try:
-        import yaml  # type: ignore
-    except Exception as exc:  # pragma: no cover - exercised when optional dependency is absent
-        raise ValueError("YAML composition requests require PyYAML; use JSON or install PyYAML.") from exc
-    loaded = yaml.safe_load(text) or {}
+        loaded = json.loads(path.read_text(encoding="utf-8"))
+    else:
+        loaded = parse_simple_yaml(path)
     if not isinstance(loaded, dict):
         raise ValueError("Composition request must decode to an object.")
     return loaded
