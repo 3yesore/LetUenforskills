@@ -71,7 +71,7 @@ npm run demo:export
 npm run demo:serve
 ```
 
-打开 `http://localhost:4173/`。
+打开 `http://localhost:4173/`。仓库设置里启用 GitHub Pages，并选择 **GitHub Actions** 作为来源后，`Deploy GitHub Pages` workflow 会发布在线展示页。
 
 ## 真实模型调用
 
@@ -161,6 +161,16 @@ python -m asa smoke-github --sources sources.smoke.github.yaml --output runs/git
 python -m asa package-letuen-skill --output releases --version v0.2.0-dev
 ```
 
+## GitHub Pages 展示页
+
+仓库内置静态站点在 `site/`。启用 GitHub Pages 且选择 **GitHub Actions** 作为来源后，`Deploy GitHub Pages` workflow 会发布本地 showcase UI。
+
+启用后的预期地址：
+
+```text
+https://3yesore.github.io/LetUenforskills/
+```
+
 ## 仓库结构
 
 ```text
@@ -185,6 +195,12 @@ tests/                runtime、exporters、quality、packaging 单元测试
 - `docs/letuen-skill-anchor-pack-design.md`：基于 anchor 的 skill 拆解与重组方法包。
 - `docs/graph-data-surface-spec.md`：data table、graph nodes/edges、manifest 与 UI 要求。
 - `docs/ui-strategy.md`：本地研究 dashboard 与未来公开网站方向。
+
+## 参与贡献
+
+可使用 issue templates 提交可复现 bug 或边界清晰的功能建议。PR 建议按 `.github/pull_request_template.md` 中的验证命令检查。
+
+安全敏感问题请按 `SECURITY.md` 处理，不要直接发公开 issue。
 
 ## 发布状态
 

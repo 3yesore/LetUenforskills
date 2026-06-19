@@ -161,6 +161,16 @@ python -m asa smoke-github --sources sources.smoke.github.yaml --output runs/git
 python -m asa package-letuen-skill --output releases --version v0.2.0-dev
 ```
 
+## GitHub Pages Demo
+
+The repository includes a static site under `site/`. After enabling GitHub Pages with **GitHub Actions** as the source, the `Deploy GitHub Pages` workflow publishes the local showcase UI.
+
+Expected URL after Pages is enabled:
+
+```text
+https://3yesore.github.io/LetUenforskills/
+```
+
 ## Repository Layout
 
 ```text
@@ -185,6 +195,12 @@ tests/                Unit tests for runtime, exporters, quality, packaging
 - `docs/letuen-skill-anchor-pack-design.md` — anchor-based skill decomposition and recomposition method pack.
 - `docs/graph-data-surface-spec.md` — data table contracts, graph nodes/edges, manifest, and UI expectations.
 - `docs/ui-strategy.md` — local research dashboard and public website direction.
+
+## Contributing
+
+Use the issue templates for reproducible bugs and scoped feature requests. Pull requests should include the relevant validation commands from `.github/pull_request_template.md`.
+
+Security-sensitive reports should follow `SECURITY.md` instead of public issues.
 
 ## Release Status
 

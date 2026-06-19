@@ -1,0 +1,40 @@
+---
+name: Feature request
+description: Suggest a LetUen capability, output surface, provider, or skill-pack improvement
+title: "feat: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user workflow or research need should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: Describe the desired behavior or output.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Harness / runtime
+        - Report UI
+        - Cinema / repo UI
+        - Obsidian vault
+        - Data / graph export
+        - Skill anchor pack
+        - Provider / model route
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References or examples
+      description: Links, screenshots, related projects, or expected output examples.

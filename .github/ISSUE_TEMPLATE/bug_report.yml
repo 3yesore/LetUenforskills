@@ -1,0 +1,40 @@
+---
+name: Bug report
+description: Report a reproducible problem in LetUen
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Please include enough context for a maintainer to reproduce it.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What went wrong?
+      placeholder: The run fails when...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Commands, config, source repo, and relevant output.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, Node version, provider route, and whether the run used mock or real model calls.
+      placeholder: Windows 11, Python 3.11, Node 20, DeepSeek V4 Pro, real run with --limit-skills 1
+    validations:
+      required: true
