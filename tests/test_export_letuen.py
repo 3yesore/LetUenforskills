@@ -22,6 +22,8 @@ class ExportLetUenTest(unittest.TestCase):
             self.assertEqual(exit_code, 0)
             self.assertTrue((output_dir / "report" / "index.html").exists())
             self.assertTrue((output_dir / "vault" / "00 Maps" / "Agent Skill Anatomy MOC.md").exists())
+            self.assertTrue(any((output_dir / "vault").rglob("*.md")))
+            self.assertTrue(any((output_dir / "vault").glob("Agent-Skill-Anatomy-Vault-*.zip")))
             self.assertTrue((output_dir / "data" / "data_manifest.json").exists())
             self.assertTrue((output_dir / "anchors" / "anchors.json").exists())
             manifest = json.loads((output_dir / "letuen_manifest.json").read_text(encoding="utf-8"))

@@ -341,6 +341,7 @@ def export_report(run_dir: Path, output_dir: Path) -> dict[str, Any]:
     skills = _collect_skills(run_dir, inventory, quality, review_summary)
 
     _copy_artifacts(run_dir, output_dir / "artifacts")
+    _copy_source_evidence_files(run_dir, output_dir / "artifacts")
     write_text(output_dir / "assets" / "report.css", REPORT_CSS + "\n")
     write_text(output_dir / "assets" / "report.js", REPORT_JS + "\n")
     write_text(output_dir / "index.html", _render_index(run_dir, output_dir, skills, inventory, quality, review_summary, patterns, anchors, composition_plan))
@@ -1415,6 +1416,48 @@ def _format_counts(counts: dict[str, Any]) -> str:
     if not counts:
         return "none"
     return ", ".join(f"{key}={value}" for key, value in sorted(counts.items()))
+
+
+
+def _copy_source_evidence_files(run_dir: Path, artifacts_dir: Path) -> None:
+    skills_dir = artifacts_dir / "skills"
+    if not skills_dir.exists():
+        return
+    for skill_dir in sorted(path for path in skills_dir.iterdir() if path.is_dir()):
+        snapshot_path = skill_dir / "source_snapshot.json"
+        if not snapshot_path.exists():
+            continue
+        try:
+            snapshot = read_json(snapshot_path)
+        except Exception:
+            continue
+        source_name = str(snapshot.get("skill_package", {}).get("source_name") or snapshot.get("source", {}).get("name") or skill_dir.name)
+        source_target = artifacts_dir / "sources" / _safe_file_name(source_name) / "files"
+        context = snapshot.get("skill_context", {}) if isinstance(snapshot, dict) else {}
+        skill_md = context.get("skill_md") if isinstance(context, dict) else None
+        if isinstance(skill_md, dict):
+            _write_snapshot_file(source_target, skill_md)
+        for manifest_key in ("scripts_manifest", "references_manifest", "assets_manifest"):
+            for item in context.get(manifest_key, []) if isinstance(context, dict) else []:
+                if isinstance(item, dict):
+                    _write_snapshot_file(source_target, item)
+
+
+def _write_snapshot_file(source_target: Path, item: dict) -> None:
+    relative_path = str(item.get("path") or "").strip()
+    if not relative_path or "content" not in item:
+        return
+    destination = (source_target / relative_path).resolve()
+    try:
+        destination.relative_to(source_target.resolve())
+    except ValueError:
+        return
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(str(item.get("content") or ""), encoding="utf-8")
+
+def _safe_file_name(value: str) -> str:
+    safe = "".join(character if character.isalnum() or character in {"-", "_", "."} else "-" for character in value).strip(".-")
+    return safe or "source"
 
 
 def _copy_artifacts(run_dir: Path, artifacts_dir: Path) -> None:

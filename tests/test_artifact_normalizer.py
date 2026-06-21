@@ -86,6 +86,25 @@ class ArtifactNormalizerTest(unittest.TestCase):
         self.assertNotIn("EVIDENCE_QUOTE_TOO_LONG", issue_codes)
         self.assertNotIn("INFERRED_EVIDENCE_NEEDS_NOTES", issue_codes)
 
+    def test_structure_normalizer_caps_activation_confidence_and_documents_no_tools(self) -> None:
+        normalized, changes = normalize_structure_analysis(
+            {
+                "schema_version": 1,
+                "skill_id": "demo",
+                "tools": [],
+                "activation": {
+                    "semantic_triggers": ["demo requests"],
+                    "misfire_risks": ["real task confusion"],
+                    "confidence": "high",
+                },
+            }
+        )
+
+        self.assertEqual(normalized["activation"]["confidence"], "medium")
+        self.assertEqual(normalized["inventory_evidence"]["tools"]["evidence_type"], "deterministic_inventory")
+        self.assertIn("ACTIVATION_CONFIDENCE_DOWNGRADED", {change["code"] for change in changes})
+        self.assertIn("NO_TOOLS_INVENTORY_EVIDENCE_ADDED", {change["code"] for change in changes})
+
 
 if __name__ == "__main__":
     unittest.main()

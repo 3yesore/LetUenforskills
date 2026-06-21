@@ -11,7 +11,9 @@ def normalize_structure_analysis(data: dict[str, Any], *, max_quote_words: int =
     changes: list[dict[str, Any]] = []
 
     normalized["tools"] = _normalize_tools(normalized.get("tools", []) or [], changes)
+    _normalize_no_tools_evidence(normalized, changes)
     _normalize_target_agents(normalized, changes)
+    _normalize_activation_confidence(normalized, changes)
     _normalize_evidence_tree(normalized, changes, max_quote_words=max_quote_words)
     return normalized, changes
 
@@ -73,6 +75,45 @@ def _normalize_tools(tools: list[Any], changes: list[dict[str, Any]]) -> list[di
         changes.append({"code": "TOOL_VALUE_NORMALIZED", "path": f"tools[{index}]"})
     return normalized_tools
 
+
+
+def _normalize_no_tools_evidence(structure: dict[str, Any], changes: list[dict[str, Any]]) -> None:
+    if structure.get("tools") != []:
+        return
+    inventory_evidence = structure.setdefault("inventory_evidence", {})
+    if not isinstance(inventory_evidence, dict):
+        inventory_evidence = {}
+        structure["inventory_evidence"] = inventory_evidence
+    if "tools" not in inventory_evidence:
+        inventory_evidence["tools"] = {
+            "value": [],
+            "evidence_type": "deterministic_inventory",
+            "confidence": "high",
+            "notes": "No tool entries were present in the deterministic inventory or source snapshot.",
+        }
+        changes.append({"code": "NO_TOOLS_INVENTORY_EVIDENCE_ADDED", "path": "inventory_evidence.tools"})
+
+
+def _normalize_activation_confidence(structure: dict[str, Any], changes: list[dict[str, Any]]) -> None:
+    activation = structure.get("activation")
+    if not isinstance(activation, dict):
+        return
+    has_inferred_sections = any(activation.get(key) for key in ("semantic_triggers", "misfire_risks"))
+    has_section_evidence = any(structure_has_direct_evidence(activation.get(key)) for key in ("semantic_triggers", "misfire_risks"))
+    if has_inferred_sections and not has_section_evidence and activation.get("confidence") == "high":
+        activation["confidence"] = "medium"
+        activation.setdefault("inferred_notes", "Semantic triggers and misfire risks include inferred analysis, so activation confidence is capped at medium.")
+        changes.append({"code": "ACTIVATION_CONFIDENCE_DOWNGRADED", "path": "activation.confidence"})
+
+
+def structure_has_direct_evidence(value: Any) -> bool:
+    if isinstance(value, dict):
+        if value.get("evidence"):
+            return True
+        return any(structure_has_direct_evidence(child) for child in value.values())
+    if isinstance(value, list):
+        return any(structure_has_direct_evidence(item) for item in value)
+    return False
 
 def _normalize_target_agents(structure: dict[str, Any], changes: list[dict[str, Any]]) -> None:
     target_agents = structure.get("target_agents") or []

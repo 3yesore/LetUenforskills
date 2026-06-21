@@ -19,9 +19,7 @@ def quality_report_for_run(run_dir: Path) -> dict[str, Any]:
         source_root = None
         if snapshot_path.exists():
             snapshot = read_json(snapshot_path)
-            root_path = snapshot.get("source", {}).get("path") or snapshot.get("source", {}).get("root_path")
-            if root_path:
-                source_root = Path(root_path)
+            source_root = _source_root_for_snapshot(run_dir, snapshot)
         skill_issues = []
         if structure_path.exists():
             skill_issues.extend(check_structure_quality(read_json(structure_path), source_root))
@@ -46,3 +44,22 @@ def quality_report_for_run(run_dir: Path) -> dict[str, Any]:
         "issues": issues,
         "publishable_by_rules": not any(issue["severity"] in {"blocker", "major"} for issue in issues),
     }
+
+
+def _source_root_for_snapshot(run_dir: Path, snapshot: dict[str, Any]) -> Path | None:
+    source_name = str(snapshot.get("skill_package", {}).get("source_name") or snapshot.get("source", {}).get("name") or "").strip()
+    if source_name:
+        packaged_root = run_dir / "sources" / _safe_file_name(source_name) / "files"
+        if packaged_root.exists():
+            return packaged_root
+    root_path = snapshot.get("source", {}).get("path") or snapshot.get("source", {}).get("root_path")
+    if root_path:
+        source_root = Path(root_path)
+        if source_root.exists():
+            return source_root
+    return None
+
+
+def _safe_file_name(value: str) -> str:
+    safe = "".join(character if character.isalnum() or character in {"-", "_", "."} else "-" for character in value).strip(".-")
+    return safe or "source"

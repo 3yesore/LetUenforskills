@@ -6,6 +6,7 @@ from pathlib import Path
 
 from asa.cli import main
 from asa.jsonio import write_json
+from asa.quality.report import quality_report_for_run
 from asa.report_exporter import export_report
 
 
@@ -82,6 +83,7 @@ def make_run(root: Path) -> Path:
     write_json(skill_dir / "review_report.json", REVIEW)
     write_json(run_dir / "patterns" / "patterns.json", {"patterns": [], "reuse_assets": {"patterns": ["入口识别模式"], "templates": ["SKILL.md 模板"], "checklists": ["先确认触发边界"], "anti_patterns": ["只列文件不解释职责"], "extension_ideas": ["增加模型对比"]}})
     write_json(run_dir / "quality_report.json", {"checked_skill_count": 1, "issue_count": 0, "severity_counts": {}, "skills": [{"skill_id": "demo-skill", "issue_count": 0}], "issues": [], "publishable_by_rules": True})
+    write_json(skill_dir / "source_snapshot.json", {"source": {"name": "demo-source", "path": str(root / "missing-source")}, "skill_package": {"source_name": "demo-source", "skill_md_path": "SKILL.md"}, "skill_context": {"skill_md": {"path": "SKILL.md", "content": "# Demo Skill\n\n读取 SKILL.md。\n"}, "scripts_manifest": [], "references_manifest": [], "assets_manifest": []}})
     write_json(run_dir / "review_summary.json", {"reviewed_skill_count": 1, "status_counts": {"approved": 1}, "average_scores": {}, "totals": {}, "skills": [{"skill_id": "demo-skill", "approved_for_publish": True}]})
     return run_dir
 
@@ -120,6 +122,19 @@ class ExportReportTest(unittest.TestCase):
             self.assertIn("描述与文件结构不一致", index_html)
             self.assertIn("证据足够", index_html)
             self.assertIn("读取技能", (output_dir / "skills" / "demo-skill.html").read_text(encoding="utf-8"))
+
+    def test_exported_artifacts_include_source_mirror_for_offline_quality(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            run_dir = make_run(root)
+            output_dir = root / "site" / "report"
+
+            export_report(run_dir, output_dir)
+            artifacts_dir = output_dir / "artifacts"
+
+            self.assertTrue((artifacts_dir / "sources" / "demo-source" / "files" / "SKILL.md").exists())
+            quality = quality_report_for_run(artifacts_dir)
+            self.assertNotIn("EVIDENCE_SOURCE_NOT_FOUND", quality["code_counts"])
 
     def test_cli_export_report(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
