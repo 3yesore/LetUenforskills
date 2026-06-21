@@ -42,12 +42,12 @@ function setLanguage(language) {
   localStorage.setItem('asa-language', language);
 }
 
-const savedLanguage = localStorage.getItem('asa-language') || 'zh';
+const savedLanguage = localStorage.getItem('asa-language') || 'en';
 setLanguage(savedLanguage);
 
 document.querySelectorAll('[data-lang-toggle]').forEach((button) => {
   button.addEventListener('click', () => {
-    const current = localStorage.getItem('asa-language') || 'zh';
+    const current = localStorage.getItem('asa-language') || 'en';
     setLanguage(current === 'en' ? 'zh' : 'en');
   });
 });
@@ -650,7 +650,7 @@ let cinemaPlaying = true;
 let cinemaTimer;
 
 function currentLanguage() {
-  return localStorage.getItem('asa-language') || 'zh';
+  return localStorage.getItem('asa-language') || 'en';
 }
 
 function setCinemaScene(index) {
@@ -1636,7 +1636,7 @@ async function renderGraphSurface() {
     const edges = Array.isArray(graph.edges) ? graph.edges : [];
     const spine = document.createElement('div');
     spine.className = 'graph-spine';
-    const language = localStorage.getItem('asa-language') || 'zh';
+    const language = localStorage.getItem('asa-language') || 'en';
     const labels = language === 'en' ? ['Run', 'Skill', 'Resources', 'Workflow', 'Evidence', 'Reuse'] : ['运行', 'Skill', '资源', '流程', '证据', '复用'];
     const layerLabels = labels.map((label) => {
       const item = document.createElement('span');

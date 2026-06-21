@@ -6106,3 +6106,40 @@ button.ae-repo-profile::after {
   min-width: 126px;
   max-width: 158px;
 }
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.site-footer div,
+.site-footer nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.site-footer nav a {
+  border: 1px solid rgba(244,239,228,0.12);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: rgba(244,239,228,0.72);
+  background: rgba(244,239,228,0.04);
+  transition: color .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.site-footer nav a:hover {
+  color: var(--ink);
+  border-color: rgba(232,255,122,0.28);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 680px) {
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

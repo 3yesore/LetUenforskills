@@ -1,0 +1,9 @@
+{
+  "name": "LetUen · Agent Skill Anatomy",
+  "short_name": "LetUen",
+  "description": "Deconstruct Agent Skills into reports, anchors, Obsidian vaults, graph data, and reusable workflow assets.",
+  "start_url": "/LetUenforskills/",
+  "display": "standalone",
+  "background_color": "#07100f",
+  "theme_color": "#07100f"
+}
