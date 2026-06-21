@@ -316,6 +316,25 @@ tags:
 - [[Skill Anatomy Canvas.canvas|Skill Anatomy Canvas]]
 - [[README - Open in Obsidian|Open in Obsidian]]
 
+## Learning Path
+
+1. Open [[Skill Index]] and choose one skill.
+2. Read the skill note for identity, trigger, boundary, resources, and outputs.
+3. Open the paired workflow note to understand how the skill actually runs.
+4. Use [[Evidence And Quality Index]] to verify which claims are grounded.
+
+## Reuse Path
+
+1. Start from [[Reuse Asset Index]] or [[Anchor Index]].
+2. Follow each candidate back to its source skill and workflow.
+3. Copy only the anchor, checklist, or pattern that still fits your target harness.
+
+## Review Path
+
+1. Use [[Quality Report]] for deterministic issues.
+2. Use [[Review Summary]] for model reviewer concerns.
+3. Use [[Knowledge Graph]] when relationships are easier to inspect visually.
+
 ## Everyone Can Use This
 
 - **普通用户**：下载 ZIP，解压后在 Obsidian 中选择 `Open folder as vault`。
@@ -365,6 +384,12 @@ tags:
 
 # Skill Index
 
+## How To Read
+
+1. Open the skill note first to understand identity, triggers, boundaries, and outputs.
+2. Follow its workflow link to inspect the action path and resources.
+3. Return to Evidence And Quality Index before reusing an anchor or pattern.
+
 {skill_rows}
 """,
         "Workflow Index.md": f"""---
@@ -376,6 +401,11 @@ tags:
 ---
 
 # Workflow Index
+
+## How To Read
+
+- Start from the skill note, then use workflow notes to inspect step order, required resources, and fallback risks.
+- Treat workflow notes as the bridge between a readable report and a reusable implementation plan.
 
 {workflow_rows}
 """,
@@ -421,6 +451,12 @@ tags:
 ---
 
 # Reuse Asset Index
+
+## Reuse Path
+
+1. Pick a reuse candidate.
+2. Check the original skill note and workflow note.
+3. Verify evidence and boundary notes before copying it into another workflow.
 
 {reuse_rows}
 """,
@@ -692,6 +728,25 @@ tags:
 ---
 
 # {source}
+
+## Learning Path
+
+1. Open [[Skill Index]] and choose one skill.
+2. Read the skill note for identity, trigger, boundary, resources, and outputs.
+3. Open the paired workflow note to understand how the skill actually runs.
+4. Use [[Evidence And Quality Index]] to verify which claims are grounded.
+
+## Reuse Path
+
+1. Start from [[Reuse Asset Index]] or [[Anchor Index]].
+2. Follow each candidate back to its source skill and workflow.
+3. Copy only the anchor, checklist, or pattern that still fits your target harness.
+
+## Review Path
+
+1. Use [[Quality Report]] for deterministic issues.
+2. Use [[Review Summary]] for model reviewer concerns.
+3. Use [[Knowledge Graph]] when relationships are easier to inspect visually.
 
 ## Skills
 

@@ -98,15 +98,32 @@ def read_request_json(handler: BaseHTTPRequestHandler) -> dict[str, Any]:
     return json.loads(raw or "{}")
 
 
+def looks_like_api_key(value: str) -> bool:
+    lowered = value.lower()
+    return bool(value) and (lowered.startswith(("sk-", "sk_")) or len(value) >= 32 and not re.fullmatch(r"[A-Z_][A-Z0-9_]*", value))
+
+
+def normalized_api_key_env(payload: dict[str, Any], provider: str | None = None) -> str:
+    raw_env = str(payload.get("api_key_env") or "").strip()
+    if raw_env and not looks_like_api_key(raw_env):
+        return raw_env
+    provider_name = (provider or str(payload.get("provider") or "openai")).strip().upper().replace("-", "_")
+    if provider_name == "ANTHROPIC":
+        return "ANTHROPIC_API_KEY"
+    if "DEEPSEEK" in str(payload.get("model") or "").upper() or "DEEPSEEK" in str(payload.get("base_url") or "").upper():
+        return "DEEPSEEK_API_KEY"
+    return "LETUEN_API_KEY"
+
+
 def resolve_api_key(payload: dict[str, Any]) -> str:
     api_key = str(payload.get("api_key") or "").strip()
     if api_key:
         return api_key
-    api_key_env = str(payload.get("api_key_env") or "").strip()
-    if api_key_env:
-        return os.environ.get(api_key_env, "")
-    return ""
-
+    raw_env = str(payload.get("api_key_env") or "").strip()
+    if looks_like_api_key(raw_env):
+        return raw_env
+    api_key_env = normalized_api_key_env(payload)
+    return os.environ.get(api_key_env, "")
 
 
 GITHUB_URL_RE = re.compile(r"^https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/?$")
@@ -292,7 +309,7 @@ def override_provider_config(base_config: str, payload: dict[str, Any]) -> str:
     provider = str(payload.get("provider") or "").strip()
     model = str(payload.get("model") or "").strip()
     base_url = str(payload.get("base_url") or "").strip().rstrip("/")
-    api_key_env = str(payload.get("api_key_env") or "").strip()
+    api_key_env = normalized_api_key_env(payload, provider)
     api_mode = str(payload.get("api_mode") or "").strip()
     if not any([provider, model, base_url, api_key_env, api_mode]):
         return base_config
@@ -360,9 +377,12 @@ def run_local_analysis(payload: dict[str, Any], job_id: str | None = None) -> di
         env = os.environ.copy()
         env["PYTHONPATH"] = str(ROOT / "src")
         api_key = str(payload.get("api_key") or "").strip()
-        api_key_env = str(payload.get("api_key_env") or "").strip()
-        if api_key and api_key_env:
+        api_key_env = normalized_api_key_env(payload)
+        raw_api_key_env = str(payload.get("api_key_env") or "").strip()
+        if api_key:
             env[api_key_env] = api_key
+        elif looks_like_api_key(raw_api_key_env):
+            env[api_key_env] = raw_api_key_env
         run_cmd = [sys.executable, "-m", "asa", "run", "--config", str(config_path), "--limit-skills", str(limit_skills)]
         model_label = str(payload.get("model") or "configured model")
         append_job_log(job_id, "model", f"using {model_label}") if job_id else None

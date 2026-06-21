@@ -529,7 +529,7 @@ function currentSettingsConfig() {
 function updateSettingsPreview() {
   if (!configPreview) return;
   const config = currentSettingsConfig();
-  configPreview.textContent = `providers:\n  default:\n    type: ${config.provider}\n    model: ${config.model}\n    base_url: ${config.base}\n    api_key_env: ${config.env}\n\n# .env\n${config.env}=${config.key ? '***provided in local session***' : '<paste-key-locally>'}\n\n# run\npython -m asa run --config ${config.config}`;
+  configPreview.textContent = `# api_key_env is an environment variable name, not the raw key.\nproviders:\n  default:\n    type: ${config.provider}\n    model: ${config.model}\n    base_url: ${config.base}\n    api_key_env: ${config.env}\n\n# .env or local bridge session\n${config.env}=${config.key ? '***provided in local session only***' : '<paste-key-locally>'}\n\n# run\npython -m asa run --config ${config.config}`;
 }
 
 function applySettingsPreset(preset) {

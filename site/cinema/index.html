@@ -56,7 +56,7 @@
                 <p><b>输入</b> GitHub URL<br><b>分析</b> inventory / candidates<br><b>产物</b> 来源索引</p>
                 <div class="ae-card-tags"><em>README</em><em>tree</em><em>manifest</em></div>
               </a>
-              <a class="ae-card" href="../report/skills/sample-skill-sample-skill.html" data-ae-card data-card-index="1">
+              <a class="ae-card" href="../report/#skills" data-ae-card data-card-index="1">
                 <span class="ae-card-index">02</span>
                 <strong>Core</strong>
                 <p><b>输入</b> SKILL.md<br><b>分析</b> trigger / boundary / tools<br><b>产物</b> 结构化拆解</p>
@@ -68,7 +68,7 @@
                 <p><b>输入</b> scripts / refs / assets<br><b>分析</b> 复用边界<br><b>产物</b> 资产候选</p>
                 <div class="ae-card-tags"><em>scripts</em><em>refs</em><em>assets</em></div>
               </a>
-              <a class="ae-card" href="../report/skills/sample-skill-sample-skill.html" data-ae-card data-card-index="3">
+              <a class="ae-card" href="../report/#skills" data-ae-card data-card-index="3">
                 <span class="ae-card-index">04</span>
                 <strong>Workflow</strong>
                 <p><b>输入</b> 自然语言规则<br><b>分析</b> step / decision / handoff<br><b>产物</b> 可审计路径</p>
@@ -105,13 +105,13 @@
             <article data-ae-step data-title="Repo Signal" data-text="把 GitHub 仓库转成可分析的来源信号，先定位 SKILL.md、脚本、引用和资产入口。" data-input="GitHub URL / 本地仓库" data-action="扫描目录与候选 skill 包" data-output="repo inventory 与来源索引" data-links="Skill 清单|../report/#skills;候选模式|../report/#patterns">
               <span>01</span><h3>Source</h3><p>GitHub URL → inventory → SKILL.md candidates</p>
             </article>
-            <article data-ae-step data-title="Skill Core" data-text="把 SKILL.md 拆成触发条件、边界、工具依赖与执行步骤，形成可以比较的结构。" data-input="SKILL.md" data-action="提取 trigger / boundary / tools" data-output="结构化 skill 拆解" data-links="Skill 详情|../report/skills/sample-skill-sample-skill.html;Reviewer|../report/#reviews">
+            <article data-ae-step data-title="Skill Core" data-text="把 SKILL.md 拆成触发条件、边界、工具依赖与执行步骤，形成可以比较的结构。" data-input="SKILL.md" data-action="提取 trigger / boundary / tools" data-output="结构化 skill 拆解" data-links="Skill 详情|../report/#skills;Reviewer|../report/#reviews">
               <span>02</span><h3>Core</h3><p>Trigger / Boundary / Tools / Steps</p>
             </article>
             <article data-ae-step data-title="Resource Split" data-text="把 scripts、references、assets 拉成资源轨道，判断它们是否能沉淀为复用资产。" data-input="scripts / references / assets" data-action="识别复用边界与依赖关系" data-output="资源索引与候选模式" data-links="候选模式|../report/#patterns;Artifacts|../report/artifacts/">
               <span>03</span><h3>Resources</h3><p>Scripts and references become reusable evidence.</p>
             </article>
-            <article data-ae-step data-title="Workflow Trace" data-text="把自然语言工作流展开成可审计路径，每个节点都对应 action、decision 或 handoff。" data-input="规则与步骤描述" data-action="追踪 step / decision / handoff" data-output="workflow 审计路径" data-links="Skill 详情|../report/skills/sample-skill-sample-skill.html;报告首页|../report/">
+            <article data-ae-step data-title="Workflow Trace" data-text="把自然语言工作流展开成可审计路径，每个节点都对应 action、decision 或 handoff。" data-input="规则与步骤描述" data-action="追踪 step / decision / handoff" data-output="workflow 审计路径" data-links="Skill 详情|../report/#skills;报告首页|../report/">
               <span>04</span><h3>Workflow</h3><p>Natural language becomes an execution path.</p>
             </article>
             <article data-ae-step data-title="Evidence Lock" data-text="把结论锁定到文件路径、引用和 reviewer 判断，降低幻觉和过度推断。" data-input="拆解结论与引用" data-action="检查 path / quote / reviewer" data-output="证据扎根与质量状态" data-links="质量门禁|../report/#quality;Reviewer|../report/#reviews">

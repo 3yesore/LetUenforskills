@@ -359,6 +359,18 @@ def export_report(run_dir: Path, output_dir: Path) -> dict[str, Any]:
     }
 
 
+def refresh_run_surfaces(report_dir: Path, site_root: Path | None = None) -> None:
+    report_dir = report_dir.resolve()
+    site_root = site_root.resolve() if site_root else report_dir.parent
+    cinema_manifest = report_dir.parent / "cinema" / "cinema-data.json"
+    if not cinema_manifest.exists():
+        return
+    manifest = read_json(cinema_manifest)
+    target_cinema = site_root / "cinema" / "cinema-data.json"
+    if target_cinema.resolve() != cinema_manifest.resolve():
+        write_json(target_cinema, manifest)
+    write_json(site_root / "demo-data.latest.json", manifest)
+
 def _write_cinema_manifest(output_dir: Path, run_dir: Path, skills: list[dict[str, Any]], inventory: dict[str, Any], quality: dict[str, Any], review_summary: dict[str, Any], patterns: dict[str, Any]) -> None:
     cinema_dir = output_dir.parent / "cinema"
     run_meta = _read_optional_json(run_dir / "run.json", {})
@@ -958,7 +970,8 @@ def _anchor_surface(anchors_doc: dict[str, Any], composition_plan: dict[str, Any
     composition_html = _composition_plan_panel(composition_plan)
     heading = _section_heading("复用锚点", "Reusable Anchors", "拆小", "Split", "再拼接", "Compose")
     description = i18n("这里展示可以被借用、组合或固化的 LetUen anchors。默认只做 sidecar 输出，不修改用户已有 skill。", "This shows LetUen anchors that can be borrowed, composed, or solidified. By default they are sidecar outputs and do not modify existing user skills.")
-    return f'<section class="section" id="anchors">{heading}<span class="source-label" data-source="export">anchors</span><p class="muted">{description}</p><div class="manual-pill-row">{counts_html}</div><div class="anchor-grid">{cards}</div>{composition_html}<p class="muted"><a class="pill" href="../anchors/anchors.json">anchors.json</a> <a class="pill" href="../anchors/composition_plan.json">composition_plan.json</a></p></section>'
+    composition_link = ' <a class="pill" href="../anchors/composition_plan.json">composition_plan.json</a>' if composition_plan else ''
+    return f'<section class="section" id="anchors">{heading}<span class="source-label" data-source="export">anchors</span><p class="muted">{description}</p><div class="manual-pill-row">{counts_html}</div><div class="anchor-grid">{cards}</div>{composition_html}<p class="muted"><a class="pill" href="../anchors/anchors.json">anchors.json</a>{composition_link}</p></section>'
 
 
 def _anchor_card(anchor: dict[str, Any]) -> str:

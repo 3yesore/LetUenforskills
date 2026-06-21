@@ -208,7 +208,7 @@ def _build_graph(
     edges: list[dict[str, Any]] = []
 
     def add_node(node_id: str, node_type: str, label: str, **extra: Any) -> None:
-        nodes.setdefault(node_id, {"id": node_id, "type": node_type, "label": label, **extra})
+        nodes.setdefault(node_id, {"id": node_id, "type": node_type, "label": label, "lane": _graph_lane(node_type), **extra})
 
     add_node(f"run:{run_dir.name}", "run", run_dir.name)
     for skill in skill_rows:
@@ -247,17 +247,54 @@ def _build_graph(
         add_node(reuse_node, "reuse", str(row.get("value"))[:80], category=row.get("category"))
         for skill in skill_rows:
             edges.append({"source": f"skill:{skill.get('skill_id')}", "target": reuse_node, "type": "has_reuse_asset", "confidence": "analysis"})
-    return {"schema_version": 1, "run_id": run_dir.name, "nodes": list(nodes.values()), "edges": edges}
+    clusters = _graph_clusters(list(nodes.values()))
+    return {"schema_version": 1, "run_id": run_dir.name, "clusters": clusters, "nodes": list(nodes.values()), "edges": edges}
+
+
+def _graph_lane(node_type: str) -> str:
+    return {
+        "run": "source",
+        "skill": "skill",
+        "resource": "resource",
+        "workflow_step": "workflow",
+        "evidence": "evidence",
+        "reuse": "reuse",
+    }.get(node_type, "other")
+
+
+def _graph_clusters(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    labels = {
+        "source": "Source",
+        "skill": "Skills",
+        "resource": "Resources",
+        "workflow": "Workflow",
+        "evidence": "Evidence",
+        "reuse": "Reuse",
+        "other": "Other",
+    }
+    lanes = sorted({str(node.get("lane") or "other") for node in nodes})
+    return [{"id": f"cluster:{lane}", "label": labels.get(lane, lane.title()), "lane": lane, "node_count": sum(1 for node in nodes if node.get("lane") == lane)} for lane in lanes]
 
 
 def _graph_mermaid(graph: dict[str, Any]) -> str:
     lines = ["graph TD"]
     safe_ids: dict[str, str] = {}
-    for index, node in enumerate(graph.get("nodes", []), 1):
+    nodes = graph.get("nodes", [])
+    for index, node in enumerate(nodes, 1):
         safe_id = f"N{index}"
         safe_ids[node["id"]] = safe_id
-        label = str(node.get("label") or node.get("id", "node")).replace('"', "'")
-        lines.append(f'  {safe_id}["{label}"]')
+    for cluster in graph.get("clusters", []):
+        lane = cluster.get("lane")
+        cluster_id = str(cluster.get("id")).replace(":", "_")
+        cluster_label = str(cluster.get("label") or cluster_id).replace(chr(34), chr(39))
+        lines.append(f'  subgraph {cluster_id}["{cluster_label}"]')
+        for node in nodes:
+            if node.get("lane") != lane:
+                continue
+            safe_id = safe_ids[node["id"]]
+            label = str(node.get("label") or node.get("id", "node")).replace('"', "'")
+            lines.append(f'    {safe_id}["{label}"]')
+        lines.append("  end")
     for edge in graph.get("edges", []):
         source = safe_ids.get(edge.get("source"))
         target = safe_ids.get(edge.get("target"))

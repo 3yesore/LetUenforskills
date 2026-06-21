@@ -15,7 +15,7 @@ from .jsonio import write_json
 from .planner import plan_run
 from .quality.report import quality_report_for_run
 from .review_summary import summarize_run_reviews
-from .report_exporter import export_report
+from .report_exporter import export_report, refresh_run_surfaces
 from .release_packager import package_letuen_skill_pack
 from .runtime import resume_harness, run_harness
 from .vault_exporter import export_vault
@@ -247,6 +247,7 @@ def main(argv: list[str] | None = None) -> int:
         vault = export_vault(Path(args.run), output_dir / "vault")
         data = export_data(Path(args.run), output_dir / "data")
         report = export_report(Path(args.run), output_dir / "report")
+        refresh_run_surfaces(output_dir / "report", output_dir)
         print(f"Exported report: {report['index']}")
         print(f"Exported vault: {vault['output_dir']}")
         print(f"Exported data: {output_dir / 'data'} rows={data['row_counts']}")
@@ -368,6 +369,7 @@ def export_letuen_bundle(run_dir: Path, output_dir: Path, composition_request: P
     vault = export_vault(run_dir, output_dir / "vault")
     data = export_data(run_dir, output_dir / "data")
     report = export_report(run_dir, output_dir / "report")
+    refresh_run_surfaces(output_dir / "report", output_dir)
     manifest = {
         "schema_version": 1,
         "output_dir": str(output_dir),

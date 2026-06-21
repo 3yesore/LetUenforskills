@@ -56,7 +56,10 @@ class ExportDataTest(unittest.TestCase):
             self.assertTrue(any(node["type"] == "resource" and node["label"] == "SKILL.md" for node in graph["nodes"]))
             self.assertTrue(any(edge["type"] == "uses_resource" for edge in graph["edges"]))
             self.assertTrue(any(edge["type"] == "has_step" for edge in graph["edges"]))
-            self.assertIn("graph TD", (output_dir / "graph.mmd").read_text(encoding="utf-8"))
+            self.assertIn("clusters", graph)
+            self.assertTrue(any(cluster["id"] == "cluster:workflow" for cluster in graph["clusters"]))
+            self.assertTrue(all("lane" in node for node in graph["nodes"]))
+            self.assertIn("subgraph", (output_dir / "graph.mmd").read_text(encoding="utf-8"))
 
     def test_cli_export_all_includes_data_directory(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
